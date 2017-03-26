@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateArchivoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateArchivoLabel_archivoid}" for="archivoid" />
+                    <h:inputText id="archivoid" value="#{archivoController.selected.archivoid}" title="#{bundle.CreateArchivoTitle_archivoid}" required="true" requiredMessage="#{bundle.CreateArchivoRequiredMessage_archivoid}"/>
+                    <h:outputLabel value="#{bundle.CreateArchivoLabel_odontograma}" for="odontograma" />
+                    <h:selectOneMenu id="odontograma" value="#{archivoController.selected.odontograma}" title="#{bundle.CreateArchivoTitle_odontograma}" required="true" requiredMessage="#{bundle.CreateArchivoRequiredMessage_odontograma}">
+                        <f:selectItems value="#{odontogramaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateArchivoLabel_historialclinico}" for="historialclinico" />
+                    <h:selectOneMenu id="historialclinico" value="#{archivoController.selected.historialclinico}" title="#{bundle.CreateArchivoTitle_historialclinico}" required="true" requiredMessage="#{bundle.CreateArchivoRequiredMessage_historialclinico}">
+                        <f:selectItems value="#{historialclinicoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateArchivoLabel_tipo}" for="tipo" />
+                    <h:inputText id="tipo" value="#{archivoController.selected.tipo}" title="#{bundle.CreateArchivoTitle_tipo}" required="true" requiredMessage="#{bundle.CreateArchivoRequiredMessage_tipo}"/>
+                    <h:outputLabel value="#{bundle.CreateArchivoLabel_bytes}" for="bytes" />
+                    <h:inputText id="bytes" value="#{archivoController.selected.bytes}" title="#{bundle.CreateArchivoTitle_bytes}" required="true" requiredMessage="#{bundle.CreateArchivoRequiredMessage_bytes}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{archivoController.create}" value="#{bundle.CreateArchivoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{archivoController.prepareList}" value="#{bundle.CreateArchivoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateArchivoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

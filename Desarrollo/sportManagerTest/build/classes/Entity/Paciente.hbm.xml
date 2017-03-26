@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-jul-2014 19:36:53 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Entity.Paciente" table="paciente" schema="clinica">
+        <id name="pacienteid" type="int">
+            <column name="pacienteid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="medico" class="Entity.Medico" >
+            <column name="medicoid" not-null="true" />
+        </many-to-one>
+        <property name="apellidopaterno" type="string">
+            <column name="apellidopaterno" length="100" not-null="true" />
+        </property>
+        <property name="cedula" type="string">
+            <column name="cedula" length="10" not-null="true" />
+        </property>
+        <property name="profesion" type="string">
+            <column name="profesion" length="100" not-null="true" />
+        </property>
+        <property name="numerohijos" type="string">
+            <column name="numerohijos" length="5" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="100" not-null="true" />
+        </property>
+        <property name="lugartrabajo" type="string">
+            <column name="lugartrabajo" length="200" not-null="true" />
+        </property>
+        <property name="segundonombre" type="string">
+            <column name="segundonombre" length="100" not-null="true" />
+        </property>
+        <property name="edad" type="string">
+            <column name="edad" length="10" not-null="true" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="20" not-null="true" />
+        </property>
+        <property name="celular" type="string">
+            <column name="celular" length="20" not-null="true" />
+        </property>
+        <property name="fechanacimiento" type="date">
+            <column name="fechanacimiento" length="13" not-null="true" />
+        </property>
+        <property name="nacionalidad" type="string">
+            <column name="nacionalidad" length="100" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="100" not-null="true" />
+        </property>
+        <property name="genero" type="string">
+            <column name="genero" length="10" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="1000" not-null="true" />
+        </property>
+        <property name="estadocivil" type="string">
+            <column name="estadocivil" length="50" not-null="true" />
+        </property>
+      
+        <property name="apellidomaterno" type="string">
+            <column name="apellidomaterno" length="100" not-null="true" />
+        </property>
+        <property name="provincia" type="string">
+            <column name="provincia" length="100" not-null="true" />
+        </property>
+        <!--set name="informes" inverse="true">
+            <key>
+                <column name="pacienteid" not-null="true" />
+            </key>
+            <one-to-many class="Entity.Informe" />
+        </set>
+        <set name="recetas" inverse="true">
+            <key>
+                <column name="pacienteid" not-null="true" />
+            </key>
+            <one-to-many class="Entity.Receta" />
+        </set>
+        <set name="historialclinicos" inverse="true">
+            <key>
+                <column name="pacienteid" not-null="true" />
+            </key>
+            <one-to-many class="Entity.Historialclinico" />
+        </set>
+        <set name="consultas" inverse="true">
+            <key>
+                <column name="pacienteid" not-null="true" />
+            </key>
+            <one-to-many class="Entity.Consulta" />
+        </set>
+        <set name="cabecerafacturas" inverse="true">
+            <key>
+                <column name="pacienteid" not-null="true" />
+            </key>
+            <one-to-many class="Entity.Cabecerafactura" />
+        </set>
+        <set name="odontogramas" inverse="true">
+            <key>
+                <column name="pacienteid" not-null="true" />
+            </key>
+            <one-to-many class="Entity.Odontograma" />
+        </set>
+        <set name="citas" inverse="true">
+            <key>
+                <column name="pacienteid" not-null="true" />
+            </key>
+            <one-to-many class="Entity.Cita" />
+        </set-->
+    </class>
+</hibernate-mapping>

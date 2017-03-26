@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateRecetaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel header="#{bundle.CreateRecetaTitle}" style="font-size: 12px" >
+                    <p:panelGrid columns="2" styleClass="panel_grid_border">
+                        <h:outputLabel value="#{bundle.CreateRecetaLabel_numero}" for="numero" />
+                        <h:panelGroup>
+                            <p:spinner id="numero" size="18" min="1" value="#{recetaController.selected.numero}" title="#{bundle.CreateRecetaTitle_numero}" required="true" requiredMessage="#{bundle.CreateRecetaRequiredMessage_numero}"/>
+                            <p:message for="numero" />
+                        </h:panelGroup>
+                        <h:outputLabel value="#{bundle.CreateRecetaLabel_paciente}" for="paciente" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="paciente"  style="width: 100%" value="#{recetaController.selected.paciente}" title="#{bundle.CreateRecetaTitle_paciente}" required="true" requiredMessage="#{bundle.CreateRecetaRequiredMessage_paciente}">
+                                <f:selectItems value="#{pacienteController.itemsAvailableSelectOneByUser}"/>
+                            </p:selectOneMenu>
+                            <p:message for="paciente" />
+                        </h:panelGroup>
+                      
+                        <h:outputLabel value="#{bundle.CreateRecetaLabel_fechaprescripcion}" for="fechaprescripcion" />
+                        <h:panelGroup>
+                            <p:calendar id="fechaprescripcion"  value="#{recetaController.selected.fechaprescripcion}" title="#{bundle.CreateRecetaTitle_fechaprescripcion}" required="true" requiredMessage="#{bundle.CreateRecetaRequiredMessage_fechaprescripcion}" />
+                            <p:message for="fechaprescripcion" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateRecetaLabel_farmaco}" for="farmaco" />
+                        <h:panelGroup>
+                            <p:inputText id="farmaco" maxlength="100"  value="#{recetaController.selected.farmaco}" title="#{bundle.CreateRecetaTitle_farmaco}" required="true" requiredMessage="#{bundle.CreateRecetaRequiredMessage_farmaco}" validatorMessage="#{bundle.CreateMedicoString_nombre}">
+                             <f:validateRegex pattern="^[a-zA-Z ]+$" />
+                            </p:inputText>
+                            <p:message for="farmaco" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateRecetaLabel_numeroenvases}" for="numeroenvases" />
+                        <h:panelGroup>
+                            <p:spinner id="numeroenvases" size="18" min="1" value="#{recetaController.selected.numeroenvases}" title="#{bundle.CreateRecetaTitle_numeroenvases}" required="true" requiredMessage="#{bundle.CreateRecetaRequiredMessage_numeroenvases}"/>
+                            <p:message for="numeroenvases" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateRecetaLabel_duraciontratamiento}" for="duraciontratamiento" />
+                        <h:panelGroup>
+                            <p:spinner  size="18" min="1"  id="duraciontratamiento" value="#{recetaController.selected.duraciontratamiento}" title="#{bundle.CreateRecetaTitle_duraciontratamiento}" required="true" requiredMessage="#{bundle.CreateRecetaRequiredMessage_duraciontratamiento}"/>
+                            <p:message for="duraciontratamiento" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateRecetaLabel_posologia}" for="posologia" />
+                        <h:panelGroup>
+                            <p:spinner size="18" min="1" id="posologia" value="#{recetaController.selected.posologia}" title="#{bundle.CreateRecetaTitle_posologia}" required="true" requiredMessage="#{bundle.CreateRecetaRequiredMessage_posologia}"/>
+                            <p:message for="posologia" />
+                        </h:panelGroup>
+                        <h:outputLabel value="#{bundle.CreateRecetaLabel_pauta}" for="pauta" />
+                        <h:panelGroup>
+                            <p:inputText style="width: 95%" id="pauta" value="#{recetaController.selected.pauta}" title="#{bundle.CreateRecetaTitle_pauta}" required="true" requiredMessage="#{bundle.CreateRecetaRequiredMessage_pauta}" validatorMessage="#{bundle.CreateMedicoString_nombre}">
+                            <f:validateRegex pattern="^[a-zA-Z ]+$" />
+                            </p:inputText>
+                            <p:message for="pauta" />
+                        </h:panelGroup>
+                        <h:outputLabel value="#{bundle.CreateRecetaLabel_informacionadicional}" for="informacionadicional" />
+                        <h:panelGroup>
+                            <p:inputTextarea id="informacionadicional" style="width: 200%" value="#{recetaController.selected.informacionadicional}" title="#{bundle.CreateRecetaTitle_informacionadicional}" required="true" requiredMessage="#{bundle.CreateRecetaRequiredMessage_informacionadicional}"/>
+                            <p:message for="informacionadicional" />
+                        </h:panelGroup>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                   
+                    <p:commandButton action="#{recetaController.create}"  style="font-size: 12px" value="#{bundle.CreateRecetaSaveLink}" ajax="false" />
+
+                    <p:commandButton action="#{recetaController.prepareList}" style="font-size: 12px" value="#{bundle.CreateRecetaShowAllLink}" immediate="true" ajax="false"/>
+
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

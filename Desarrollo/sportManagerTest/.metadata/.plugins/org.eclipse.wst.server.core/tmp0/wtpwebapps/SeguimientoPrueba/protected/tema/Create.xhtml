@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Catálogos"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+        
+		  <h:form>
+			<h:panelGroup >
+				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+			</h:panelGroup>
+		</h:form> 
+
+           <h:form>
+           	
+               <p:panel header="Temas" style="font-size: 12px" >
+
+                   <p:panelGrid columns="2" styleClass="panel_grid_border">
+
+					<h:outputLabel value="Estado" for="parametro" />
+                        <h:panelGroup>
+                            <p:selectOneMenu style="width:525px" disabled="true" id="parametro" value="#{temaController.selected.parametroDetalle}" required="true" requiredMessage="#{bundle.labelRequerido}">
+                                <f:selectItems value="#{parametroDetalleController.itemsAvailableSelectOneByUser}"/>
+                            </p:selectOneMenu>
+                            <p:message for="parametro" />
+                        </h:panelGroup>
+
+					<h:outputLabel value="Estudiante" for="estudiante" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="estudiante" style="width:525px" value="#{temaController.selected.estudiante}" required="true" requiredMessage="#{bundle.labelRequerido}">
+                                <f:selectItems value="#{estudianteController.itemsAvailableSelectOneByUser}"/>
+                            </p:selectOneMenu>
+                            <p:message for="estudiante" />
+                        </h:panelGroup>
+
+					<h:outputLabel value="Maestría" for="parametroDetalleMaestria" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="parametroDetalleMaestria" style="width:525px" value="#{temaController.selected.parametroDetalleMaestria}" required="true" requiredMessage="#{bundle.labelRequerido}">
+                                <f:selectItems value="#{parametroDetalleController.itemsAvailablesByMaestria}"/>
+                            </p:selectOneMenu>
+                            <p:message for="parametroDetalleMaestria" />
+                        </h:panelGroup>
+
+                        
+                       <h:outputLabel value="Tema" for="temDescripcion"  />
+                       <h:panelGroup>
+                           <p:inputText id="temDescripcion" style="width:525px" maxlength="64" value="#{temaController.selected.temDescripcion}"  required="true" requiredMessage="#{bundle.labelRequerido}" validatorMessage="#{bundle.labelFormatoIncorrecto}">
+                           </p:inputText>
+                           <p:message for="temDescripcion" />
+                       </h:panelGroup>
+
+                        <h:outputLabel value="Fecha Inicio" for="temFechaPresentacion" />
+                        <h:panelGroup>
+                            <p:calendar id="temFechaPresentacion"  value="#{temaController.selected.temFechaPresentacion}" required="true" requiredMessage="#{bundle.labelRequerido}" validatorMessage="#{bundle.labelFormatoIncorrecto}"/>
+                            <p:message for="temFechaPresentacion" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="Fecha Fin" for="temFechaMaximaAprobacion" />
+                        <h:panelGroup>
+                            <p:calendar id="temFechaMaximaAprobacion"  value="#{temaController.selected.temFechaMaximaAprobacion}" required="true" requiredMessage="#{bundle.labelRequerido}" validatorMessage="#{bundle.labelFormatoIncorrecto}"/>
+                            <p:message for="temFechaMaximaAprobacion" />
+                        </h:panelGroup>
+
+                       <h:outputLabel value="Abstract" for="temObservarcharciones" />
+                       <h:panelGroup>
+							
+							<p:inputTextarea  id="temObservarcharciones" style="width:525px" value= "#{temaController.selected.temObservarcharciones}" rows="10" cols="30" counter="display" maxlength="1024" counterTemplate="{0} cracteres disponibles." autoResize="false" requiredMessage="#{bundle.labelRequerido}" required="true"  >
+							</p:inputTextarea> 
+							
+							<!--  <p:inputTextarea id="temObservarcharciones" rows="5" cols="30" style="width: 100%" counter="display" value="#{temaController.selected.temObservarcharciones}" title="titulo" /> -->
+							<h:outputText id="display" />
+							<p:message for="temObservarcharciones" />
+                       </h:panelGroup>
+                       
+                       
+                   <p:commandButton action="#{temaController.create}" value="#{bundle.CreatePacienteSaveLink}" ajax="false"  >
+                       <f:param name="action" value="#{temaController.selected.teId}"/>
+                   </p:commandButton>
+
+                   <p:commandButton action="#{temaController.prepareList}" value="#{bundle.CreatePacienteShowAllLink}" immediate="true" ajax="false"/>
+				</p:panelGrid>
+				
+				
+               </p:panel>
+           </h:form>
+
+        </ui:define>
+    </ui:composition>
+
+</html>

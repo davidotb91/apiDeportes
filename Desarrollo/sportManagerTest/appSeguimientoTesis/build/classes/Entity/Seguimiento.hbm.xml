@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 16/01/2015 11:00:47 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="Entity.Seguimiento" table="seguimiento" schema="clinica">
+        <id name="segId" type="int">
+            <column name="seg_id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tema" class="Entity.Tema" fetch="select">
+            <column name="te_id" />
+        </many-to-one>
+        <many-to-one name="docente" class="Entity.Docente" fetch="select">
+            <column name="doc_id" />
+        </many-to-one>
+        <property name="segFecha" type="date">
+            <column name="seg_fecha" length="13" />
+        </property>
+        <property name="segDocumento" type="string">
+            <column name="seg_documento" length="64" />
+        </property>
+        <property name="segPathDocumento" type="string">
+            <column name="seg_path_documento" />
+        </property>
+        <property name="segObservaciones" type="string">
+            <column name="seg_observaciones" />
+        </property>
+        <property name="audUsuModi" type="java.lang.Integer">
+            <column name="aud_usu_modi" />
+        </property>
+        <property name="audUsuCrea" type="java.lang.Integer">
+            <column name="aud_usu_crea" />
+        </property>
+        <property name="audFechaCrea" type="date">
+            <column name="aud_fecha_crea" length="13" />
+        </property>
+        <property name="audFechaModi" type="date">
+            <column name="aud_fecha_modi" length="13" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPacienteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel header="#{bundle.EditPacienteTitle}" style="font-size: 12px" >
+
+                    <p:panelGrid columns="5" styleClass="panel_grid_border">
+
+                        <h:outputLabel value="#{bundle.CreatePacienteLabel_nombre}" for="nombre" />
+                        <h:panelGroup>
+                            <p:inputText id="nombre"  maxlength="100" value="#{pacienteController.selected.nombre}" title="#{bundle.CreatePacienteTitle_nombre}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_nombre}" validatorMessage="#{bundle.CreateMedicoString_nombre}">
+                                <f:validateRegex pattern="^[a-zA-Z ]+$" />
+                            </p:inputText>
+                            <p:message for="nombre" />
+                        </h:panelGroup>
+                        <h:outputLabel value="                   "/>
+                        <h:outputLabel value="                   "/>
+                        <h:outputLabel value="                   "/>
+
+                      
+                        <h:outputLabel value="#{bundle.CreatePacienteLabel_segundonombre}" for="segundonombre" />
+                        <h:panelGroup>
+                            <p:inputText id="segundonombre" maxlength="100" value="#{pacienteController.selected.segundonombre}" title="#{bundle.CreatePacienteTitle_segundonombre}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_segundonombre}" />
+                            <p:message for="segundonombre" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="                   "/>
+
+                        <h:outputLabel value="#{bundle.CreatePacienteLabel_apellidopaterno}" for="apellidopaterno" />
+                        <h:panelGroup>
+                            <p:inputText id="apellidopaterno" maxlength="100" value="#{pacienteController.selected.apellidopaterno}" title="#{bundle.CreatePacienteTitle_apellidopaterno}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_apellidopaterno}" validatorMessage="#{bundle.CreateMedicoString_nombre}">
+                                <f:validateRegex pattern="^[a-zA-Z ]+$" />
+                            </p:inputText>
+                            <p:message for="apellidopaterno" />
+                        </h:panelGroup>
+
+
+
+                        <h:outputLabel value="#{bundle.CreatePacienteLabel_apellidomaterno}" for="apellidomaterno" />
+                        <h:panelGroup>
+                            <p:inputText id="apellidomaterno" maxlength="100" value="#{pacienteController.selected.apellidomaterno}" title="#{bundle.CreatePacienteTitle_apellidomaterno}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_apellidomaterno}" validatorMessage="#{bundle.CreateMedicoString_nombre}">
+                                <f:validateRegex pattern="^[a-zA-Z ]+$" />
+                            </p:inputText>
+                            <p:message for="apellidomaterno" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="                   "/>
+
+                        <h:outputLabel value="#{bundle.CreatePacienteLabel_cedula}" for="cedula" />
+                        <h:panelGroup>
+                            <p:inputMask mask="9999999999" id="cedula" maxlength="10" validator="#{pacienteController.validateCedula}" value="#{pacienteController.selected.cedula}" title="#{bundle.CreatePacienteTitle_cedula}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_cedula}"/>
+                            <p:message for="cedula" />
+                        </h:panelGroup>
+
+
+
+                        <h:outputLabel value="#{bundle.CreatePacienteLabel_profesion}" for="profesion" />
+                        <h:panelGroup>
+                            <p:inputText id="profesion" maxlength="100" value="#{pacienteController.selected.profesion}" title="#{bundle.CreatePacienteTitle_profesion}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_profesion}" validatorMessage="#{bundle.CreateMedicoString_nombre}">
+                                <f:validateRegex pattern="^[a-zA-Z ]+$" />
+                            </p:inputText>
+                            <p:message for="profesion" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="                   "/>
+
+                        <h:outputLabel value="#{bundle.CreatePacienteLabel_lugartrabajo}" for="lugartrabajo" />
+                        <h:panelGroup>
+                            <p:inputText id="lugartrabajo" maxlength="100" value="#{pacienteController.selected.lugartrabajo}" title="#{bundle.CreatePacienteTitle_lugartrabajo}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_lugartrabajo}" validatorMessage="#{bundle.CreateMedicoString_nombre}">
+                                <f:validateRegex pattern="^[a-zA-Z ]+$" />
+                            </p:inputText>
+                            <p:message for="lugartrabajo" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreatePacienteLabel_genero}" for="genero" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="genero" style="width: 100%" value="#{pacienteController.selected.genero}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_genero}">
+                                <f:selectItem itemLabel="Seleccione uno" itemValue=" " />
+                                <f:selectItem itemLabel="Femenino" itemValue="Femenino" />
+                                <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+                            </p:selectOneMenu>
+                            <p:message for="genero" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="                   "/>
+
+                        <h:outputLabel value="#{bundle.CreatePacienteLabel_estadocivil}" for="estadocivil" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="estadocivil" style="width: 100%" value="#{pacienteController.selected.estadocivil}"  required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_estadocivil}">
+                                <f:selectItem itemLabel="Seleccione uno " itemValue=" " />
+                                <f:selectItem itemLabel="Soltero" itemValue="Soltero" />
+                                <f:selectItem itemLabel="Casado" itemValue="Casado" />
+                                <f:selectItem itemLabel="Divorciado" itemValue="Divorciado" />
+                            </p:selectOneMenu>
+                            <p:message for="estadocivil" />
+                        </h:panelGroup>
+
+
+
+                        <h:outputLabel value="#{bundle.CreatePacienteLabel_numerohijos}" for="numerohijos" />
+                        <h:panelGroup>
+                            <p:spinner id="numerohijos" min="1" maxlength="18" max="10" size="18"   value="#{pacienteController.selected.numerohijos}" title="#{bundle.CreatePacienteTitle_numerohijos}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_numerohijos}"/>
+                            <p:message for="numerohijos" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="                   "/>
+
+                        <h:outputLabel value="#{bundle.CreatePacienteLabel_edad}" for="edad" />
+                        <h:panelGroup>
+                            <p:spinner id="edad" size="18" maxlength="10" min="18" max="100" value="#{pacienteController.selected.edad}" title="#{bundle.CreatePacienteTitle_edad}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_edad}"/>
+                            <p:message for="edad" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreatePacienteLabel_fechanacimiento}" for="fechanacimiento" />
+                        <h:panelGroup>
+                            <p:calendar value="#{pacienteController.selected.fechanacimiento}" id="fechanacimiento" title="#{bundle.CreatePacienteTitle_fechanacimiento}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_fechanacimiento}"  />
+                            <p:message for="fechanacimiento" />
+                        </h:panelGroup>
+                        <h:outputLabel value="                   "/>
+
+
+                        <h:outputLabel value="#{bundle.CreatePacienteLabel_nacionalidad}" for="nacionalidad" />
+                        <h:panelGroup>
+                            <p:inputText id="nacionalidad" maxlength="100" value="#{pacienteController.selected.nacionalidad}" title="#{bundle.CreatePacienteTitle_nacionalidad}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_nacionalidad}" validatorMessage="#{bundle.CreateMedicoString_nombre}" >
+                                <f:validateRegex pattern="^[a-zA-Z ]+$" />
+                            </p:inputText>
+                            <p:message for="nacionalidad" />
+                        </h:panelGroup>
+
+
+
+                        <h:outputLabel value="#{bundle.CreatePacienteLabel_provincia}" for="provincia" />
+                        <h:panelGroup>
+                            <p:inputText id="provincia" maxlength="100" value="#{pacienteController.selected.provincia}" title="#{bundle.CreatePacienteTitle_provincia}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_provincia}" validatorMessage="#{bundle.CreateMedicoString_nombre}">
+                                <f:validateRegex pattern="^[a-zA-Z ]+$" />
+                            </p:inputText>
+                            <p:message for="provincia" />
+                        </h:panelGroup>
+                        <h:outputLabel value="                   "/>
+
+
+                        <h:outputLabel value="#{bundle.CreatePacienteLabel_telefono}" for="telefono" />
+                        <h:panelGroup>
+                            <p:inputMask mask="9999-9999" id="telefono" value="#{pacienteController.selected.telefono}" title="#{bundle.CreatePacienteTitle_telefono}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_telefono}"/>
+                            <p:message for="telefono" />
+                        </h:panelGroup>
+
+
+                        <h:outputLabel value="#{bundle.CreatePacienteLabel_celular}" for="celular" />
+                        <h:panelGroup>
+                            <p:inputMask mask="999-999-9999" id="celular" value="#{pacienteController.selected.celular}" title="#{bundle.CreatePacienteTitle_celular}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_celular}"/>
+                            <p:message for="celular" />
+                        </h:panelGroup>
+                        <h:outputLabel value="                   "/>
+
+
+
+                        <h:outputLabel value="#{bundle.CreatePacienteLabel_email}" for="email" />
+                        <h:panelGroup>
+                            <p:inputText id="email" maxlength="100" value="#{pacienteController.selected.email}" title="#{bundle.CreatePacienteTitle_email}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_email}" validator="#{pacienteController.validateEmail}"/>
+                            <p:message for="email" />
+                        </h:panelGroup>
+
+
+                        <h:outputLabel value="#{bundle.CreatePacienteLabel_direccion}" for="direccion" />
+                        <h:panelGroup>
+                            <p:inputTextarea id="direccion"  maxlength="250" style="width: 270%" value="#{pacienteController.selected.direccion}" title="#{bundle.CreatePacienteTitle_direccion}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_direccion}"/>
+                            <p:message for="direccion" />
+                        </h:panelGroup>
+
+                    </p:panelGrid>
+
+
+                    <p:commandButton action="#{pacienteController.update}" value="#{bundle.CreatePacienteSaveLink}" ajax="false" >
+                        <f:param name="action" value="#{pacienteController.selected.pacienteid}"/>
+                    </p:commandButton>
+
+                    <p:commandButton action="#{pacienteController.prepareList}" value="#{bundle.CreatePacienteShowAllLink}" immediate="true" ajax="false"/>
+
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

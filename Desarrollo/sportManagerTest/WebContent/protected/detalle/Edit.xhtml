@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDetalleTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDetalleLabel_detalleid}" for="detalleid" />
+                    <h:inputText id="detalleid" value="#{detalleController.selected.detalleid}" title="#{bundle.EditDetalleTitle_detalleid}" required="true" requiredMessage="#{bundle.EditDetalleRequiredMessage_detalleid}"/>
+                    <h:outputLabel value="#{bundle.EditDetalleLabel_cabecerafactura}" for="cabecerafactura" />
+                    <h:selectOneMenu id="cabecerafactura" value="#{detalleController.selected.cabecerafactura}" title="#{bundle.EditDetalleTitle_cabecerafactura}" required="true" requiredMessage="#{bundle.EditDetalleRequiredMessage_cabecerafactura}">
+                        <f:selectItems value="#{cabecerafacturaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDetalleLabel_concepto}" for="concepto" />
+                    <h:inputText id="concepto" value="#{detalleController.selected.concepto}" title="#{bundle.EditDetalleTitle_concepto}" required="true" requiredMessage="#{bundle.EditDetalleRequiredMessage_concepto}"/>
+                    <h:outputLabel value="#{bundle.EditDetalleLabel_unidades}" for="unidades" />
+                    <h:inputText id="unidades" value="#{detalleController.selected.unidades}" title="#{bundle.EditDetalleTitle_unidades}" required="true" requiredMessage="#{bundle.EditDetalleRequiredMessage_unidades}"/>
+                    <h:outputLabel value="#{bundle.EditDetalleLabel_importe}" for="importe" />
+                    <h:inputText id="importe" value="#{detalleController.selected.importe}" title="#{bundle.EditDetalleTitle_importe}" required="true" requiredMessage="#{bundle.EditDetalleRequiredMessage_importe}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{detalleController.update}" value="#{bundle.EditDetalleSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditDetalleViewLink}"/>
+                <br />
+                <h:commandLink action="#{detalleController.prepareList}" value="#{bundle.EditDetalleShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditDetalleIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

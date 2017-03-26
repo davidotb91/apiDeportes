@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/03/2017 14:13:39 by Hibernate Tools 5.1.2.Final -->
+<hibernate-mapping>
+    <class name="Entity.CampeonaoAuspiciante" table="campeonao_auspiciante" catalog="dbcampeonatos" optimistic-lock="version">
+        <id name="campId" type="int">
+            <column name="CAMP_ID" />
+            <generator class="foreign">
+                <param name="property">campeonato</param>
+            </generator>
+        </id>
+        <one-to-one name="campeonato" class="Entity.Campeonato" constrained="true"></one-to-one>
+        <many-to-one name="parametroDetalle" class="Entity.ParametroDetalle" fetch="select">
+            <column name="PADE_ID" />
+        </many-to-one>
+        <property name="caauMontoAuspicio" type="java.lang.Float">
+            <column name="CAAU_MONTO_AUSPICIO" precision="8" />
+        </property>
+        <property name="caauObservaciones" type="string">
+            <column name="CAAU_OBSERVACIONES" />
+        </property>
+        <property name="audUsuCrea" type="string">
+            <column name="AUD_USU_CREA" length="128" />
+        </property>
+        <property name="audUsuModi" type="string">
+            <column name="AUD_USU_MODI" length="128" />
+        </property>
+        <property name="audFechaCrea" type="timestamp">
+            <column name="AUD_FECHA_CREA" length="0" />
+        </property>
+        <property name="audFechaModi" type="timestamp">
+            <column name="AUD_FECHA_MODI" length="0" />
+        </property>
+    </class>
+</hibernate-mapping>

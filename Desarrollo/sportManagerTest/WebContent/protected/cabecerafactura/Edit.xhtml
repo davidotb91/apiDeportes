@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCabecerafacturaEditLink}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:panel id="messagePanel" layout="block" rendered="false">
+                <p:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </p:panel>
+            <h:form>
+                <p:panel header="#{bundle.ListCabecerafacturaEditLink}" style="font-size: 12px" >
+                    <p:panelGrid columns="2" styleClass="panel_grid_border" >
+                        <h:outputLabel value="#{bundle.CreateCabecerafacturaLabel_paciente}" for="paciente" />
+                        <h:panelGroup>
+                            <p:selectOneMenu  style="font-size: 14px;width: 100%" id="paciente" value="#{cabecerafacturaController.selected.paciente}" title="#{bundle.CreateCabecerafacturaTitle_paciente}" required="true" requiredMessage="#{bundle.CreateCabecerafacturaRequiredMessage_paciente}">
+                                <f:selectItems value="#{pacienteController.itemsAvailableSelectOne}"/>
+                            </p:selectOneMenu>
+                            <p:message for="paciente" />
+                        </h:panelGroup>
+                        <h:outputLabel value="#{bundle.CreateCabecerafacturaLabel_numerofactura}" for="numerofactura" />
+                        <h:panelGroup>
+                            <p:spinner id="numerofactura" min="0" value="#{cabecerafacturaController.selected.numerofactura}" title="#{bundle.CreateCabecerafacturaTitle_numerofactura}" required="true" requiredMessage="#{bundle.CreateCabecerafacturaRequiredMessage_numerofactura}"/>
+                            <p:message for="numerofactura" />
+                        </h:panelGroup>
+                        <h:outputLabel value="#{bundle.CreateCabecerafacturaLabel_total}" for="total" />
+                        <h:panelGroup>
+                            <p:spinner id="total" value="#{cabecerafacturaController.selected.total}" title="#{bundle.CreateCabecerafacturaTitle_total}" required="true" requiredMessage="#{bundle.CreateCabecerafacturaRequiredMessage_total}"/>
+                            <p:message for="total" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateCabecerafacturaLabel_descuento}" for="descuento" />
+                        <h:panelGroup>
+                            <p:spinner id="descuento" min="0"  value="#{cabecerafacturaController.selected.descuento}" title="#{bundle.CreateCabecerafacturaTitle_descuento}" required="true" requiredMessage="#{bundle.CreateCabecerafacturaRequiredMessage_descuento}"/>
+                            <p:message for="descuento" />
+                        </h:panelGroup>
+                        <h:outputLabel value="#{bundle.CreateCabecerafacturaLabel_otroimpuestos}" for="otroimpuestos" />
+                        <h:panelGroup>
+                            <p:spinner id="otroimpuestos" min="0" value="#{cabecerafacturaController.selected.otroimpuestos}" title="#{bundle.CreateCabecerafacturaTitle_otroimpuestos}" required="true" requiredMessage="#{bundle.CreateCabecerafacturaRequiredMessage_otroimpuestos}"/>
+                            <p:message for="otroimpuestos" />
+                        </h:panelGroup>
+                        <h:outputLabel value="#{bundle.CreateCabecerafacturaLabel_iva}" for="iva" />
+                        <h:panelGroup>
+                            <p:spinner id="iva" min="0" value="#{cabecerafacturaController.selected.iva}" title="#{bundle.CreateCabecerafacturaTitle_iva}" required="true" requiredMessage="#{bundle.CreateCabecerafacturaRequiredMessage_iva}"/>
+                            <p:message for="iva" />
+                        </h:panelGroup> 
+
+                        <h:outputLabel value="#{bundle.CreateCabecerafacturaLabel_observaciones}" for="observaciones" />
+                        <h:panelGroup>
+                            <p:inputTextarea style="width: 200%" counterTemplate="{0} characters remaining" id="observaciones" value="#{cabecerafacturaController.selected.observaciones}" title="#{bundle.CreateCabecerafacturaTitle_observaciones}" required="true" requiredMessage="#{bundle.CreateCabecerafacturaRequiredMessage_observaciones}"/>
+                            <p:message for="observaciones" />
+                        </h:panelGroup>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <br />
+                    <p:commandButton  value="#{bundle.CreateCabecerafacturaSaveLink}" style="font-size: 14px" id="btn1" action="#{cabecerafacturaController.update}"
+                                      ajax="false"/>
+                    <p:commandButton action="#{cabecerafacturaController.prepareList}" style="font-size: 14px" id="btn2" value="#{bundle.EditCabecerafacturaShowAllLink}" immediate="true" ajax="false"/>
+
+                </p:panel> 
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

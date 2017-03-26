@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-jul-2014 19:36:53 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Entity.Tratamiento" table="tratamiento" schema="clinica">
+        <id name="tratamientoid" type="int">
+            <column name="tratamientoid" />
+            <generator class="identity" />
+        </id>
+       <many-to-one name="odontograma" class="Entity.Odontograma" fetch="select">
+            <column name="odontogramaid" />
+        </many-to-one>
+        <property name="tratamiento" type="string">
+            <column name="tratamiento" length="5000" not-null="true" />
+        </property>
+        <property name="tipo" type="string">
+            <column name="tipo" length="50" not-null="true" />
+        </property>
+        
+        <set name="consultas" inverse="true">
+            <key>
+                <column name="tratamientoid" />
+            </key>
+            <one-to-many class="Entity.Consulta" />
+        </set>
+        
+       
+     
+    </class>
+</hibernate-mapping>

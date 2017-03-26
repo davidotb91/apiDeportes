@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateInformeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form>
+                <p:panel header="#{bundle.CreateInformeTitle}" style="font-size: 12px" >
+                    <p:panelGrid columns="2" styleClass="panel_grid_border" style="font-size: 12px">
+
+                        <h:outputLabel value="#{bundle.CreateInformeLabel_numero}" for="numero" />
+                        <h:panelGroup>
+                            <p:spinner id="numero" min="1"  size="18" value="#{informeController.selected.numero}" title="#{bundle.CreateInformeTitle_numero}" required="true" requiredMessage="#{bundle.CreateInformeRequiredMessage_numero}"/>
+                            <p:message for="numero" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateInformeLabel_paciente}" for="paciente" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="paciente" style="width: 100%" value="#{informeController.selected.paciente}" title="#{bundle.CreateInformeTitle_paciente}" required="true" requiredMessage="#{bundle.CreateInformeRequiredMessage_paciente}">
+                                <f:selectItems value="#{pacienteController.itemsAvailableSelectOneByUser}"/>
+                            </p:selectOneMenu>
+                            <p:message for="paciente" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateInformeLabel_fecha}" for="fecha" />
+                        <h:panelGroup>
+                            <p:calendar id="fecha"  value="#{informeController.selected.fecha}" title="#{bundle.CreateInformeTitle_fecha}" required="true" requiredMessage="#{bundle.CreateInformeRequiredMessage_fecha}"/>
+                            <p:message for="fecha" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateInformeLabel_tipo}" for="tipo" />
+                        <h:panelGroup>
+                            <p:inputText id="tipo" value="#{informeController.selected.tipo}" title="#{bundle.CreateInformeTitle_tipo}" required="true" requiredMessage="#{bundle.CreateInformeRequiredMessage_tipo}" validatorMessage="#{bundle.CreateMedicoString_nombre}">
+                                <f:validateRegex pattern="^[a-zA-Z ]+$" />
+                            </p:inputText>
+                            <p:message for="tipo" />
+                        </h:panelGroup> 
+
+
+                        <h:outputLabel value="#{bundle.CreateInformeLabel_texto}" for="texto" />
+                        <h:panelGroup>
+                            <p:inputTextarea style="width: 200%" id="texto" value="#{informeController.selected.texto}" title="#{bundle.CreateInformeTitle_texto}" required="true" requiredMessage="#{bundle.CreateInformeRequiredMessage_texto}"/>
+                            <p:message for="texto" />
+                        </h:panelGroup> 
+
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <br />
+                    <p:commandButton action="#{informeController.create}" value="#{bundle.CreateInformeSaveLink}" ajax="false" />
+
+                    <p:commandButton action="#{informeController.prepareList}" value="#{bundle.CreateInformeShowAllLink}" immediate="true" ajax="false"/>
+
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

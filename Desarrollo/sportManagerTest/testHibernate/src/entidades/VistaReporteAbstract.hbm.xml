@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-mar-2017 23:14:36 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="entidades.VistaReporteAbstract" table="vista_reporte_abstract" schema="seguimiento">
+        <composite-id name="id" class="entidades.VistaReporteAbstractId">
+            <key-property name="anio" type="string">
+                <column name="anio" />
+            </key-property>
+            <key-property name="temDescripcion" type="string">
+                <column name="tem_descripcion" length="64" />
+            </key-property>
+            <key-property name="docNombres" type="string">
+                <column name="doc_nombres" length="64" />
+            </key-property>
+            <key-property name="docApellidos" type="string">
+                <column name="doc_apellidos" length="64" />
+            </key-property>
+            <key-property name="segDocumento" type="string">
+                <column name="seg_documento" length="64" />
+            </key-property>
+            <key-property name="segPathDocumento" type="string">
+                <column name="seg_path_documento" />
+            </key-property>
+            <key-property name="segObservaciones" type="string">
+                <column name="seg_observaciones" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

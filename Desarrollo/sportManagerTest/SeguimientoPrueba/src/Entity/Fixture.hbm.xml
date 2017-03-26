@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/03/2017 14:13:39 by Hibernate Tools 5.1.2.Final -->
+<hibernate-mapping>
+    <class name="Entity.Fixture" table="fixture" catalog="dbcampeonatos" optimistic-lock="version">
+        <id name="fixtId" type="java.lang.Integer">
+            <column name="FIXT_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="campeonato" class="Entity.Campeonato" fetch="select">
+            <column name="CAMP_ID" />
+        </many-to-one>
+        <many-to-one name="campeonatoEquipoBySpoCampId3" class="Entity.CampeonatoEquipo" fetch="select">
+            <column name="SPO_CAMP_ID3" />
+        </many-to-one>
+        <many-to-one name="campeonatoEquipoBySpoCampId2" class="Entity.CampeonatoEquipo" fetch="select">
+            <column name="SPO_CAMP_ID2" />
+        </many-to-one>
+        <many-to-one name="campeonatoEquipoBySpoCampId" class="Entity.CampeonatoEquipo" fetch="select">
+            <column name="SPO_CAMP_ID" />
+        </many-to-one>
+        <many-to-one name="parametroDetalleBySpoPadeId3" class="Entity.ParametroDetalle" fetch="select">
+            <column name="SPO_PADE_ID3" />
+        </many-to-one>
+        <many-to-one name="parametroDetalleBySpoPadeId5" class="Entity.ParametroDetalle" fetch="select">
+            <column name="SPO_PADE_ID5" />
+        </many-to-one>
+        <many-to-one name="parametroDetalleBySpoPadeId4" class="Entity.ParametroDetalle" fetch="select">
+            <column name="SPO_PADE_ID4" />
+        </many-to-one>
+        <many-to-one name="parametroDetalleBySpoPadeId" class="Entity.ParametroDetalle" fetch="select">
+            <column name="SPO_PADE_ID" />
+        </many-to-one>
+        <many-to-one name="parametroDetalleByPadeId" class="Entity.ParametroDetalle" fetch="select">
+            <column name="PADE_ID" />
+        </many-to-one>
+        <many-to-one name="parametroDetalleBySpoPadeId2" class="Entity.ParametroDetalle" fetch="select">
+            <column name="SPO_PADE_ID2" />
+        </many-to-one>
+        <property name="fixtFecha" type="timestamp">
+            <column name="FIXT_FECHA" length="0" />
+        </property>
+        <property name="fixtHora" type="time">
+            <column name="FIXT_HORA" length="0" />
+        </property>
+        <property name="fixtNumeroFecha" type="java.lang.Long">
+            <column name="FIXT_NUMERO_FECHA" />
+        </property>
+        <property name="audUsuCrea" type="string">
+            <column name="AUD_USU_CREA" length="128" />
+        </property>
+        <property name="audUsuModi" type="string">
+            <column name="AUD_USU_MODI" length="128" />
+        </property>
+        <property name="audFechaCrea" type="timestamp">
+            <column name="AUD_FECHA_CREA" length="0" />
+        </property>
+        <property name="audFechaModi" type="timestamp">
+            <column name="AUD_FECHA_MODI" length="0" />
+        </property>
+        <property name="fixtNumGolesGanador" type="java.lang.Long">
+            <column name="FIXT_NUM_GOLES_GANADOR" />
+        </property>
+        <property name="fixtNumGolesPerdedor" type="java.lang.Long">
+            <column name="FIXT_NUM_GOLES_PERDEDOR" />
+        </property>
+        <set name="partidoJugadors" table="partido_jugador" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="FIXT_ID" />
+            </key>
+            <one-to-many class="Entity.PartidoJugador" />
+        </set>
+    </class>
+</hibernate-mapping>

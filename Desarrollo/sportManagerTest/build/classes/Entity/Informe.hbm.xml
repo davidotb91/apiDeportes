@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-jul-2014 19:36:53 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Entity.Informe" table="informe" schema="clinica">
+        <id name="informeid" type="int">
+            <column name="informeid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="paciente" class="Entity.Paciente" fetch="select" >
+            <column name="pacienteid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="medico" class="Entity.Medico" fetch="select" >
+            <column name="medicoid" not-null="true" />
+        </many-to-one>
+        <property name="numero" type="big_decimal">
+            <column name="numero" precision="131089" scale="0" not-null="true" />
+        </property>
+        <property name="fecha" type="date">
+            <column name="fecha" length="13" not-null="true" />
+        </property>
+        <property name="texto" type="string">
+            <column name="texto" length="5000" not-null="true" />
+        </property>
+        <property name="tipo" type="string">
+            <column name="tipo" length="100" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

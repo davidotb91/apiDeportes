@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/12/2014 11:11:15 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="Entity.PerfilRecurso" table="perfil_recurso" schema="clinica">
+        <id name="recuId" type="int">
+            <column name="recu_id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="parametroDetalle" class="Entity.ParametroDetalle" fetch="select">
+            <column name="pad_codigo" length="6" not-null="true" />
+        </many-to-one>
+        <property name="audUsuCrea" type="int">
+            <column name="aud_usu_crea" not-null="true" />
+        </property>
+        <property name="audUsuModi" type="int">
+            <column name="aud_usu_modi" not-null="true" />
+        </property>
+        <property name="audFechaCrea" type="date">
+            <column name="aud_fecha_crea" length="13" not-null="true" />
+        </property>
+        <property name="audFechaModif" type="date">
+            <column name="aud_fecha_modif" length="13" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

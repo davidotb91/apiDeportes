@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-jul-2014 19:36:53 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Entity.Cabecerafactura" table="cabecerafactura" schema="clinica">
+        <id name="cabecerafactura" type="int">
+            <column name="cabecerafactura" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="paciente" class="Entity.Paciente" fetch="select" >
+            <column name="pacienteid" not-null="true" />
+        </many-to-one>
+        <property name="numerofactura" type="big_decimal">
+            <column name="numerofactura" precision="131089" scale="0" not-null="true" />
+        </property>
+        <property name="total" type="string">
+            <column name="total" length="20" not-null="true" />
+        </property>
+        <property name="observaciones" type="string">
+            <column name="observaciones" length="2000" not-null="true" />
+        </property>
+        <property name="descuento" type="string">
+            <column name="descuento" length="20" not-null="true" />
+        </property>
+        <property name="otroimpuestos" type="string">
+            <column name="otroimpuestos" length="20" not-null="true" />
+        </property>
+        <property name="iva" type="string">
+            <column name="iva" length="20" not-null="true" />
+        </property>
+        <set name="detalles" inverse="true">
+            <key>
+                <column name="cabecerafactura" not-null="true" />
+            </key>
+            <one-to-many class="Entity.Detalle" />
+        </set>
+    </class>
+</hibernate-mapping>

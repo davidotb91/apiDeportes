@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-mar-2017 23:12:57 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="entidades.ParametroDetalle" table="parametro_detalle" schema="seguimiento">
+        <id name="padCodigo" type="string">
+            <column name="pad_codigo" length="6" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="parametro" class="entidades.Parametro" fetch="select">
+            <column name="para_id" not-null="true" />
+        </many-to-one>
+        <property name="padDesCorta" type="string">
+            <column name="pad_des_corta" length="64" not-null="true" />
+        </property>
+        <property name="padDesLarga" type="string">
+            <column name="pad_des_larga" not-null="true" />
+        </property>
+        <property name="audUsuCrea" type="int">
+            <column name="aud_usu_crea" not-null="true" />
+        </property>
+        <property name="audUsuModi" type="int">
+            <column name="aud_usu_modi" not-null="true" />
+        </property>
+        <property name="audFechaCrea" type="date">
+            <column name="aud_fecha_crea" length="13" not-null="true" />
+        </property>
+        <property name="audFechaModi" type="date">
+            <column name="aud_fecha_modi" length="13" not-null="true" />
+        </property>
+        <set name="docentesForParPadCodigo" table="docente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="par_pad_codigo" length="6" not-null="true" />
+            </key>
+            <one-to-many class="entidades.Docente" />
+        </set>
+        <set name="perfilRecursos" table="perfil_recurso" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="pad_codigo" length="6" not-null="true" />
+            </key>
+            <one-to-many class="entidades.PerfilRecurso" />
+        </set>
+        <set name="temasForPadCodigo" table="tema" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="pad_codigo" length="6" not-null="true" />
+            </key>
+            <one-to-many class="entidades.Tema" />
+        </set>
+        <set name="temasForPadeCodigoMaestria" table="tema" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="pade_codigo_maestria" length="6" />
+            </key>
+            <one-to-many class="entidades.Tema" />
+        </set>
+        <set name="usuariosForParPadCodigo" table="usuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="par_pad_codigo" length="6" not-null="true" />
+            </key>
+            <one-to-many class="entidades.Usuario" />
+        </set>
+        <set name="usuariosForPadCodigo" table="usuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="pad_codigo" length="6" not-null="true" />
+            </key>
+            <one-to-many class="entidades.Usuario" />
+        </set>
+        <set name="estudiantesForPadCodigoFacultad" table="estudiante" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="pad_codigo_facultad" length="6" />
+            </key>
+            <one-to-many class="entidades.Estudiante" />
+        </set>
+        <set name="docentesForPadCodigo" table="docente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="pad_codigo" length="6" not-null="true" />
+            </key>
+            <one-to-many class="entidades.Docente" />
+        </set>
+        <set name="estudiantesForPadCodigoProfesion" table="estudiante" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="pad_codigo_profesion" length="6" />
+            </key>
+            <one-to-many class="entidades.Estudiante" />
+        </set>
+        <set name="estudiantesForPadCodigo" table="estudiante" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="pad_codigo" length="6" not-null="true" />
+            </key>
+            <one-to-many class="entidades.Estudiante" />
+        </set>
+    </class>
+</hibernate-mapping>

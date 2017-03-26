@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTratamientoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel header="#{bundle.ViewTratamientoTitle}" style="font-size: 12px" >
+                    <p:dataTable id="tabla_detalles" style="font-size: 12px" value="#{tratamiento.selected}" var="tratamiento" styleClass="borderless" rendered="false">
+                        <p:column>
+                        </p:column>
+                    </p:dataTable>
+                    <p:fieldset >
+                        <p:panelGrid columns="2" styleClass="panel_grid_border">
+                            <h:outputText style="font-weight: bold"  value="#{bundle.ViewTratamientoLabel_tratamientoid}"/>
+                            <h:outputText value="#{tratamientoController.selected.tratamientoid}" title="#{bundle.ViewTratamientoTitle_tratamientoid}"/>
+                            <h:outputText style="font-weight: bold"  value="#{bundle.ViewTratamientoLabel_tratamiento}"/>
+                            <h:outputText value="#{tratamientoController.selected.tratamiento}" title="#{bundle.ViewTratamientoTitle_tratamiento}"/>
+                            <h:outputText style="font-weight: bold"  value="#{bundle.ViewTratamientoLabel_tipo}"/>
+                            <h:outputText value="#{tratamientoController.selected.tipo}" title="#{bundle.ViewTratamientoTitle_tipo}"/>
+                        </p:panelGrid>
+                        <br />
+                        <br />
+                        <br />
+                        <p:commandButton title="Exportar como PDF" value="Imprimir" ajax="false">
+                             <f:param name="action" value="#{tratamientoController.selected.tratamientoid}"/>
+                            <p:dataExporter type="pdf" target="tabla_detalles" fileName="Detalle_Tratamiento"  encoding="ISO-8859-1"  preProcessor="#{tratamientoController.preProcessDetallePDF}"/>
+                        </p:commandButton>
+                        <p:commandButton action="#{tratamientoController.prepareList}" value="#{bundle.ViewTratamientoShowAllLink}" ajax="false"/>
+                      
+                    </p:fieldset>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

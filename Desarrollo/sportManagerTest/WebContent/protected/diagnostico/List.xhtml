@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDiagnosticoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <p:panel header="#{bundle.ListDiagnosticoTitle}" style="font-size: 12px" >
+                    <p:menubar>
+                        <p:menuitem rendered="false" value="#{bundle.ListDiagnosticoCreateLink}"   icon="ui-icon-newwin"  style="color: cornflowerblue" action="#{diagnosticoController.prepareCreate}" ajax="false" />
+                         <p:menuitem title="Exportar como PDF" icon="ui-icon-print" style="color: cornflowerblue" value="Imprimir" ajax="false" >
+                            <p:dataExporter type="pdf" target="TableDiagnostico" fileName="Listado_Diagnostico" excludeColumns="3" encoding="ISO-8859-1"  preProcessor="#{diagnosticoController.preProcessPDF}"/>
+                        </p:menuitem>
+                    </p:menubar>
+                    <f:facet name="footer">
+                        <h:outputText  style="color: cornflowerblue" value="Hay un total de #{diagnosticoController.items.rowCount} registros" />
+                    </f:facet>
+
+                   
+                    <p:dataTable var="item" id="TableDiagnostico" value="#{diagnosticoController.items}" emptyMessage="No hay registros" paginatorPosition="bottom" paginator="true" rows="5" widgetVar="cabTable" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,15 ">
+                        <p:column style="width:10%" sortBy="#{item.diagnosticoid}" filterBy="#{item.diagnosticoid}" headerText="#{bundle.ListDiagnosticoTitle_diagnosticoid}" filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiagnosticoTitle_diagnosticoid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diagnosticoid}"/>
+                        </p:column>
+                        <p:column style="width:40%" sortBy="#{item.titulo}" filterBy="#{item.titulo}" headerText="#{bundle.ListDiagnosticoTitle_titulo}" filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiagnosticoTitle_titulo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.titulo}"/>
+                        </p:column>
+                        <p:column style="width:40%" sortBy="#{item.descripcion}" filterBy="#{item.descripcion}" headerText="#{bundle.ListDiagnosticoTitle_descripcion}" filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiagnosticoTitle_descripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcion}"/>
+                        </p:column>
+                        <p:column style="width:10%">
+                            <f:facet name="header">
+                                <h:outputText value="Acciones"/>
+                            </f:facet>
+                            <p:commandButton icon="star" action="#{diagnosticoController.prepareView}" title="#{bundle.ListDiagnosticoViewLink}" ajax="false">
+                            <f:param name="action" value="#{item.position}"/>
+                            </p:commandButton>   
+                            <h:outputText value=" "/>
+                            <p:commandButton rendered="false" icon="ui-icon-arrowrefresh-1-w" action="#{diagnosticoController.prepareEdit}" title="#{bundle.ListDiagnosticoEditLink}" ajax="false" >
+                            <f:param name="action" value="#{item.position}"/>
+                            </p:commandButton>   
+                            <h:outputText value=" "/>
+                            <p:commandButton rendered="false" icon="ui-icon-close" action="#{diagnosticoController.destroy}" title="#{bundle.ListDiagnosticoDestroyLink}" ajax="false">
+                           <f:param name="action" value="#{item.position}"/>
+                            </p:commandButton>   
+                        </p:column>
+                    </p:dataTable>
+
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

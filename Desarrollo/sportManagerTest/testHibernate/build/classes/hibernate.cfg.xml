@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory name="SfDeportes">
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">root</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/dbcampeonatos</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.search.autoregister_listeners">true</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.validator.apply_to_ddl">false</property>
+        <mapping resource="entity/SpoCampeonato.hbm.xml" />
+        <mapping resource="entity/SpoRequisitos.hbm.xml" />
+        <mapping resource="entity/SpoJugador.hbm.xml" />
+        <mapping resource="entity/SpoEquipo.hbm.xml" />
+        <mapping resource="entity/SpoCampeonatoEquipo.hbm.xml" />
+        <mapping resource="entity/CampeonaoAuspiciante.hbm.xml" />
+        <mapping resource="entity/SpoPartidoJugador.hbm.xml" />
+        <mapping resource="entity/SpoUsuario.hbm.xml" />
+        <mapping resource="entity/SpoParametroDetalle.hbm.xml" />
+        <mapping resource="entity/SpoPerfilRecurso.hbm.xml" />
+        <mapping resource="entity/SpoFixture.hbm.xml" />
+        <mapping resource="entity/SpoParametro.hbm.xml" />
+        <mapping resource="entity/SpoCaracteristica.hbm.xml" />
+    </session-factory>
+</hibernate-configuration>

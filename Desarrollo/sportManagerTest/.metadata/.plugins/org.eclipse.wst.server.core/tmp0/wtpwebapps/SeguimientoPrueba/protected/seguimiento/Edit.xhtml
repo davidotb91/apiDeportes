@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Seguimiento"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+        
+		  <h:form>
+			<h:panelGroup >
+				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+			</h:panelGroup>
+		</h:form> 
+
+           <h:form>
+           	
+               <p:panel header="Seguimiento" style="font-size: 12px" >
+
+                   <p:panelGrid columns="2" styleClass="panel_grid_border">
+
+					<h:outputLabel value="Tema" for="tema" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="tema" style="width:525px" value="#{seguimientoTesisController.selected.tema}" required="true" requiredMessage="#{bundle.labelRequerido}">
+                                <f:selectItems value="#{temaController.itemsAvailableSelectOneByUser}"/>
+                            </p:selectOneMenu>
+                            <p:message for="tema" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="Fecha" for="segFecha" />
+                        <h:panelGroup>
+                            <p:calendar id="segFecha" showOn="button" value="#{seguimientoTesisController.selected.segFecha}" required="true" requiredMessage="#{bundle.labelRequerido}" validatorMessage="#{bundle.labelFormatoIncorrecto}"/>
+                            <p:message for="segFecha" />
+                        </h:panelGroup>
+                        
+                       <h:outputLabel value="Descripción Documento" for="segDocumento"  />
+                       <h:panelGroup>
+                           <p:inputText id="segDocumento" style="width:525px" maxlength="64" value="#{seguimientoTesisController.selected.segDocumento}"  required="true" requiredMessage="#{bundle.labelRequerido}" validatorMessage="#{bundle.labelFormatoIncorrecto}">
+                           </p:inputText>
+                           <p:message for="segDocumento" />
+                       </h:panelGroup>
+
+                      <h:outputLabel value="Path Documento" for="segPathDocumento"  />
+                       <h:panelGroup>
+                           <p:inputText id="segPathDocumento" disabled="true" style="width:525px" maxlength="64" value="#{seguimientoTesisController.selected.segPathDocumento}"  required="true" requiredMessage="#{bundle.labelRequerido}" validatorMessage="#{bundle.labelFormatoIncorrecto}">
+                           </p:inputText>
+                           <p:message for="segPathDocumento" />
+                       </h:panelGroup>
+                       
+                       <h:outputLabel value="Observaciones" for="segObservaciones" />
+                       <h:panelGroup>
+							
+							<p:inputTextarea  id="segObservaciones" style="width:525px" value= "#{seguimientoTesisController.selected.segObservaciones}" rows="5" cols="30" counter="display" maxlength="132" counterTemplate="{0} cracteres disponibles." autoResize="false" requiredMessage="#{bundle.labelRequerido}" required="true"  >
+							</p:inputTextarea> 
+							
+							<!--  <p:inputTextarea id="temObservarcharciones" rows="5" cols="30" style="width: 100%" counter="display" value="#{temaController.selected.temObservarcharciones}" title="titulo" /> -->
+							<h:outputText id="display" />
+							<p:message for="segObservaciones" />
+                       </h:panelGroup>                       
+                    
+
+                   <p:commandButton action="#{seguimientoTesisController.update}" value="#{bundle.CreatePacienteSaveLink}" ajax="false"  >
+                       <f:param name="action" value="#{seguimientoTesisController.selected.segId}"/>
+                   </p:commandButton>
+
+                   <p:commandButton action="#{seguimientoTesisController.prepareList}" value="#{bundle.CreatePacienteShowAllLink}" immediate="true" ajax="false"/>
+				</p:panelGrid>
+				
+				
+               </p:panel>
+           </h:form>
+
+        </ui:define>
+    </ui:composition>
+
+</html>
+

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCabecerafacturaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <p:panel header="#{bundle.ListCabecerafacturaTitle}" style="font-size: 12px" >
+                    <p:menubar>
+                        <p:menuitem value="#{bundle.ListCabecerafacturaCreateLink}" icon="ui-icon-newwin" style="color: cornflowerblue"  action="#{cabecerafacturaController.prepareCreate}" ajax="false" />
+                        <p:menuitem value="#{bundle.ListCabecerafacturaIndexLink}" icon="ui-icon-extlink" style="color: cornflowerblue" url="../../faces/index.xhtml" />
+
+                    </p:menubar>
+                    <f:facet name="footer">
+                        <h:outputText style="color: cornflowerblue" value="Hay un total de #{cabecerafacturaController.items.rowCount} registros" />
+                    </f:facet>
+
+                    <f:facet name="options">
+
+                        <p:menu style="font-size: 12px;" id="menu" >
+                            <p:menuitem label="Salir"  value="Salir" style="color: cornflowerblue" action="#"/> 
+                        </p:menu>
+
+                        <p:tooltip for="menu" value="#{bundle.menu}"/>
+                    </f:facet>
+                    <p:dataTable var="item" value="#{cabecerafacturaController.items}" paginator="true" rows="5" widgetVar="cabTable" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,15 ">
+                        <p:column sortBy="#{item.numerofactura}" filterBy="#{item.numerofactura}" headerText="#{bundle.ListCabecerafacturaTitle_numerofactura}" filterMatchMode="exact">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCabecerafacturaTitle_numerofactura}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numerofactura}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.paciente.nombre}" filterBy="#{item.paciente.nombre}" headerText="#{bundle.ListCabecerafacturaTitle_paciente}" filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCabecerafacturaTitle_paciente}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.paciente.nombre} #{item.paciente.apellidopaterno}"/>
+                        </p:column>
+
+
+                        <p:column sortBy="#{item.observaciones}" filterBy="#{item.observaciones}" headerText="#{bundle.ListCabecerafacturaTitle_observaciones}" filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCabecerafacturaTitle_observaciones}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observaciones}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.descuento}" filterBy="#{item.descuento}" headerText="#{bundle.ListCabecerafacturaTitle_descuento}" filterMatchMode="exact">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCabecerafacturaTitle_descuento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descuento}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Acciones"/>
+                            </f:facet>
+                            <p:commandButton icon="star" action="#{cabecerafacturaController.prepareView}" title="#{bundle.ListCabecerafacturaViewLink}" ajax="false"/>
+                            <h:outputText value=" "/>
+                            <p:commandButton icon="ui-icon-arrowrefresh-1-w" action="#{cabecerafacturaController.prepareEdit}" title="#{bundle.ListCabecerafacturaEditLink}" ajax="false"/>
+                            <h:outputText value=" "/>
+                            <p:commandButton icon="ui-icon-close" action="#{cabecerafacturaController.destroy}" title="#{bundle.ListCabecerafacturaDestroyLink}" ajax="false"/>
+                            <p:commandButton title="Exportar como PDF" value="PDF" ajax="false" >
+                                <p:dataExporter type="pdf" target="TableConsulta" fileName="item"/>
+                            </p:commandButton>
+                        </p:column>
+                    </p:dataTable>
+
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

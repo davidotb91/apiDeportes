@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-jul-2014 19:36:53 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Entity.Consulta" table="consulta" schema="clinica">
+        <id name="consultaid" type="int">
+            <column name="consultaid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="paciente" class="Entity.Paciente" fetch="select" >
+            <column name="pacienteid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="medico" class="Entity.Medico" fetch="select" >
+            <column name="medicoid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tratamiento" class="Entity.Tratamiento" fetch="select" >
+            <column name="tratamientoid" />
+        </many-to-one>
+        <many-to-one name="diagnostico" class="Entity.Diagnostico" fetch="select" >
+            <column name="diagnosticoid" />
+        </many-to-one>
+        <property name="fechaconsulta" type="date">
+            <column name="fechaconsulta" length="13" not-null="true" />
+        </property>
+        <property name="sist" type="int">
+            <column name="sist" not-null="true" />
+        </property>
+        <property name="diast" type="int">
+            <column name="diast" not-null="true" />
+        </property>
+        <property name="pulsaciones" type="int">
+            <column name="pulsaciones" not-null="true" />
+        </property>
+        <property name="ritmorespiratorio" type="int">
+            <column name="ritmorespiratorio" not-null="true" />
+        </property>
+        <property name="temperatura" type="int">
+            <column name="temperatura" not-null="true" />
+        </property>
+        <property name="altura" type="int">
+            <column name="altura" not-null="true" />
+        </property>
+        <property name="peso" type="int">
+            <column name="peso" not-null="true" />
+        </property>
+        <property name="imc" type="int">
+            <column name="imc" not-null="true" />
+        </property>
+        <property name="observacion" type="string">
+            <column name="observacion" length="250" />
+        </property>
+        <property name="anamnesis" type="string">
+            <column name="anamnesis" length="250" />
+        </property>
+        <property name="exploracion" type="string">
+            <column name="exploracion" length="250" />
+        </property>
+       
+       
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-jul-2014 19:36:53 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Entity.Receta" table="receta" schema="clinica">
+        <id name="recetaid" type="int">
+            <column name="recetaid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="paciente" class="Entity.Paciente" fetch="select" >
+            <column name="pacienteid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="medico" class="Entity.Medico" fetch="select" >
+            <column name="medicoid" not-null="true" />
+        </many-to-one>
+        <property name="fechaprescripcion" type="date">
+            <column name="fechaprescripcion" length="13" not-null="true" />
+        </property>
+        <property name="farmaco" type="string">
+            <column name="farmaco" length="200" not-null="true" />
+        </property>
+        <property name="numero" type="int">
+            <column name="numero" not-null="true" />
+        </property>
+        <property name="numeroenvases" type="int">
+            <column name="numeroenvases" not-null="true" />
+        </property>
+        <property name="duraciontratamiento" type="string">
+            <column name="duraciontratamiento" length="100" not-null="true" />
+        </property>
+        <property name="posologia" type="string">
+            <column name="posologia" length="500" not-null="true" />
+        </property>
+        <property name="pauta" type="string">
+            <column name="pauta" length="200" not-null="true" />
+        </property>
+        <property name="informacionadicional" type="string">
+            <column name="informacionadicional" length="1000" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

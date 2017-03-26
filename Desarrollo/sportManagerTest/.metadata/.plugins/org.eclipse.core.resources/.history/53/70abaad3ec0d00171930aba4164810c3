@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-mar-2017 23:12:57 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="entidades.Usuario" table="usuario" schema="seguimiento">
+        <id name="usuId" type="int">
+            <column name="usu_id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="parametroDetalleByParPadCodigo" class="entidades.ParametroDetalle" fetch="select">
+            <column name="par_pad_codigo" length="6" not-null="true" />
+        </many-to-one>
+        <many-to-one name="parametroDetalleByPadCodigo" class="entidades.ParametroDetalle" fetch="select">
+            <column name="pad_codigo" length="6" not-null="true" />
+        </many-to-one>
+        <many-to-one name="docente" class="entidades.Docente" fetch="select">
+            <column name="emp_id" not-null="true" />
+        </many-to-one>
+        <property name="usuDescripcion" type="string">
+            <column name="usu_descripcion" length="64" not-null="true" />
+        </property>
+        <property name="usuLogin" type="string">
+            <column name="usu_login" length="16" not-null="true" />
+        </property>
+        <property name="usuPassword" type="string">
+            <column name="usu_password" length="8" not-null="true" />
+        </property>
+        <property name="audUsuCrea" type="int">
+            <column name="aud_usu_crea" not-null="true" />
+        </property>
+        <property name="audUsuModi" type="int">
+            <column name="aud_usu_modi" not-null="true" />
+        </property>
+        <property name="audFechaCrea" type="date">
+            <column name="aud_fecha_crea" length="13" not-null="true" />
+        </property>
+        <property name="audFechaModi" type="date">
+            <column name="aud_fecha_modi" length="13" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

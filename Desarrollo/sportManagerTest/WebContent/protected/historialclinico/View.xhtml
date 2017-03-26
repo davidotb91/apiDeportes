@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewHistorialclinicoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewHistorialclinicoLabel_historialclinicoid}"/>
+                    <h:outputText value="#{historialclinicoController.selected.historialclinicoid}" title="#{bundle.ViewHistorialclinicoTitle_historialclinicoid}"/>
+                    <h:outputText value="#{bundle.ViewHistorialclinicoLabel_paciente}"/>
+                    <h:outputText value="#{historialclinicoController.selected.paciente}" title="#{bundle.ViewHistorialclinicoTitle_paciente}"/>
+                    <h:outputText value="#{bundle.ViewHistorialclinicoLabel_fechahistorial}"/>
+                    <h:outputText value="#{historialclinicoController.selected.fechahistorial}" title="#{bundle.ViewHistorialclinicoTitle_fechahistorial}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewHistorialclinicoLabel_padecimiento}"/>
+                    <h:outputText value="#{historialclinicoController.selected.padecimiento}" title="#{bundle.ViewHistorialclinicoTitle_padecimiento}"/>
+                    <h:outputText value="#{bundle.ViewHistorialclinicoLabel_diagnostico}"/>
+                    <h:outputText value="#{historialclinicoController.selected.diagnostico}" title="#{bundle.ViewHistorialclinicoTitle_diagnostico}"/>
+                    <h:outputText value="#{bundle.ViewHistorialclinicoLabel_tratamiento}"/>
+                    <h:outputText value="#{historialclinicoController.selected.tratamiento}" title="#{bundle.ViewHistorialclinicoTitle_tratamiento}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{historialclinicoController.destroyAndView}" value="#{bundle.ViewHistorialclinicoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewHistorialclinicoEditLink}"/>
+                <br />
+                <h:commandLink action="#{historialclinicoController.prepareCreate}" value="#{bundle.ViewHistorialclinicoCreateLink}" />
+                <br />
+                <h:commandLink action="#{historialclinicoController.prepareList}" value="#{bundle.ViewHistorialclinicoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewHistorialclinicoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

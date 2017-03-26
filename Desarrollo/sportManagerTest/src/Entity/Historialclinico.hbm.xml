@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-jul-2014 19:36:53 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Entity.Historialclinico" table="historialclinico" schema="clinica">
+        <id name="historialclinicoid" type="int">
+            <column name="historialclinicoid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="paciente" class="Entity.Paciente" fetch="select" lazy="false">
+            <column name="pacienteid" not-null="true" />
+        </many-to-one>
+        <property name="fechahistorial" type="date">
+            <column name="fechahistorial" length="13" not-null="true" />
+        </property>
+        <property name="padecimiento" type="string">
+            <column name="padecimiento" length="5000" not-null="true" />
+        </property>
+        <property name="diagnostico" type="string">
+            <column name="diagnostico" length="5000" not-null="true" />
+        </property>
+        <property name="tratamiento" type="string">
+            <column name="tratamiento" length="5000" not-null="true" />
+        </property>
+        <set name="antecedentes" inverse="true">
+            <key>
+                <column name="historialclinicoid" not-null="true" />
+            </key>
+            <one-to-many class="Entity.Antecedente" />
+        </set>
+        <set name="archivos" inverse="true">
+            <key>
+                <column name="historialclinicoid" not-null="true" />
+            </key>
+            <one-to-many class="Entity.Archivo" />
+        </set>
+    </class>
+</hibernate-mapping>

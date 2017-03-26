@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kb-project>
+ <depends-on-projects/>
+ <used-by-projects/>
+ <paths>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/xml/registry/api/main/jboss-jaxr-api_1.0_spec-1.0.1.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/servlet/jsp/api/main/jboss-jsp-api_2.2_spec-1.0.0.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/xml/bind/api/main/jboss-jaxb-api_2.2_spec-1.0.3.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/org/jboss/resteasy/resteasy-jaxrs/main/async-http-servlet-3.0-2.3.2.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/org/jboss/resteasy/resteasy-jaxrs/main/async-http-servlet-3.0-2.3.2.Final-jandex.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/annotation/api/main/jboss-annotations-api_1.1_spec-1.0.0.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/interceptor/api/main/jboss-interceptors-api_1.1_spec-1.0.0.Final.jar"/>
+  <path value="X:/Proyectos/sportsManager/Solucion/sportManagerTest/testJsfProject/WebContent/WEB-INF/lib/commons-logging.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/security/auth/message/api/main/jboss-jaspi-api_1.0_spec-1.0.0.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/ejb/api/main/jboss-ejb-api_3.1_spec-1.0.1.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/org/jboss/resteasy/resteasy-jaxb-provider/main/resteasy-jaxb-provider-2.3.2.Final-jandex.jar"/>
+  <path value="X:/Proyectos/sportsManager/Solucion/sportManagerTest/testJsfProject/WebContent/WEB-INF/lib/commons-beanutils.jar"/>
+  <path value="X:/Proyectos/sportsManager/Solucion/sportManagerTest/testJsfProject/WebContent/WEB-INF/lib/jstl.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/management/j2ee/api/main/jboss-j2eemgmt-api_1.1_spec-1.0.0.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/org/jboss/resteasy/resteasy-jaxrs/main/resteasy-jaxrs-2.3.2.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/mail/api/main/mail-1.4.4.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/transaction/api/main/jboss-transaction-api_1.1_spec-1.0.0.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/org/picketbox/main/picketbox-4.0.7.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/rmi/api/main/jboss-rmi-api_1.0_spec-1.0.4.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/org/jboss/resteasy/resteasy-jaxb-provider/main/resteasy-jaxb-provider-2.3.2.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/inject/api/main/javax.inject-1.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/org/jboss/resteasy/resteasy-jaxrs/main/resteasy-jaxrs-2.3.2.Final-jandex.jar"/>
+  <path value="X:/Proyectos/sportsManager/Solucion/sportManagerTest/testJsfProject/WebContent/WEB-INF/lib/common-annotations.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/security/jacc/api/main/jboss-jacc-api_1.4_spec-1.0.1.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/xml/soap/api/main/jboss-saaj-api_1.3_spec-1.0.1.Final.jar"/>
+  <path value="X:/Proyectos/sportsManager/Solucion/sportManagerTest/testJsfProject/WebContent/WEB-INF/lib/commons-digester.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/org/jboss/dmr/main/jboss-dmr-1.1.1.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/enterprise/api/main/cdi-api-1.0-SP4.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/xml/ws/api/main/jboss-jaxws-api_2.2_spec-2.0.0.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/resource/api/main/jboss-connector-api_1.6_spec-1.0.0.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/el/api/main/jboss-el-api_2.2_spec-1.0.0.Final.jar"/>
+  <path value="X:/Proyectos/sportsManager/Solucion/sportManagerTest/testJsfProject/WebContent/WEB-INF/lib/commons-collections.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/jms/api/main/jboss-jms-api_1.1_spec-1.0.0.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/org/jboss/resteasy/resteasy-multipart-provider/main/resteasy-multipart-provider-2.3.2.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/xml/rpc/api/main/jboss-jaxrpc-api_1.1_spec-1.0.0.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/org/hibernate/validator/main/hibernate-validator-4.2.0.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/org/jboss/as/controller-client/main/jboss-as-controller-client-7.1.1.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/org/jboss/resteasy/resteasy-multipart-provider/main/resteasy-multipart-provider-2.3.2.Final-jandex.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/jws/api/main/jsr181-api-1.0-MR1.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/servlet/api/main/jboss-servlet-api_3.0_spec-1.0.0.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/validation/api/main/validation-api-1.0.0.GA.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/enterprise/deploy/api/main/jboss-jad-api_1.2_spec-1.0.0.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/servlet/jstl/api/main/jboss-jstl-api_1.2_spec-1.0.2.Final.jar">
+   <libraries>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.0.2.Final.jar/meta-inf/c-1_0-rt.tld" project="Seguimiento"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.0.2.Final.jar/meta-inf/c-1_0.tld" project="Seguimiento"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.0.2.Final.jar/meta-inf/c.tld" project="Seguimiento"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.0.2.Final.jar/meta-inf/fmt-1_0-rt.tld" project="Seguimiento"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.0.2.Final.jar/meta-inf/fmt-1_0.tld" project="Seguimiento"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.0.2.Final.jar/meta-inf/fmt.tld" project="Seguimiento"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.0.2.Final.jar/meta-inf/fn.tld" project="Seguimiento"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.0.2.Final.jar/meta-inf/permittedtaglibs.tld" project="Seguimiento"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.0.2.Final.jar/meta-inf/scriptfree.tld" project="Seguimiento"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.0.2.Final.jar/meta-inf/sql-1_0-rt.tld" project="Seguimiento"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.0.2.Final.jar/meta-inf/sql-1_0.tld" project="Seguimiento"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.0.2.Final.jar/meta-inf/sql.tld" project="Seguimiento"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.0.2.Final.jar/meta-inf/x-1_0-rt.tld" project="Seguimiento"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.0.2.Final.jar/meta-inf/x-1_0.tld" project="Seguimiento"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jboss-jstl-api_1.2_spec-1.0.2.Final.jar/meta-inf/x.tld" project="Seguimiento"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/jboss-as-7.1.1.Final/modules/org/picketbox/main/picketbox-commons-1.0.0.final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/org/jboss/logging/main/jboss-logging-3.1.0.GA.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/org/jboss/ejb3/main/jboss-ejb3-ext-api-2.0.0.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/org/picketbox/main/picketbox-infinispan-4.0.7.Final.jar"/>
+  <path value="X:/Proyectos/sportsManager/Solucion/sportManagerTest/testJsfProject/WebContent/WEB-INF/lib/standard.jar">
+   <libraries>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/c-1_0-rt.tld" project="testJsfProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/c-1_0.tld" project="testJsfProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/c.tld" project="testJsfProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/fmt-1_0-rt.tld" project="testJsfProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/fmt-1_0.tld" project="testJsfProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/fmt.tld" project="testJsfProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/fn.tld" project="testJsfProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/permittedtaglibs.tld" project="testJsfProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/scriptfree.tld" project="testJsfProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/sql-1_0-rt.tld" project="testJsfProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/sql-1_0.tld" project="testJsfProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/sql.tld" project="testJsfProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/x-1_0-rt.tld" project="testJsfProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/x-1_0.tld" project="testJsfProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/x.tld" project="testJsfProject"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/faces/api/main/jboss-jsf-api_2.1_spec-2.0.1.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/activation/api/main/activation-1.1.1.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/wsdl4j/api/main/wsdl4j-1.6.2.jar"/>
+  <path value="/testJsfProject/WebContent/WEB-INF/faces-config.xml">
+   <libraries>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/WEB-INF/faces-config.xml" project="testJsfProject"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/persistence/api/main/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+  <path value="C:/jboss-as-7.1.1.Final/modules/javax/ws/rs/api/main/jboss-jaxrs-api_1.1_spec-1.0.0.Final.jar"/>
+ </paths>
+ <validation>
+  <el/>
+ </validation>
+ <aliases/>
+ <includes/>
+ <uris/>
+</kb-project>

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-jul-2014 19:36:53 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Entity.Diagnostico" table="diagnostico" schema="clinica">
+        <id name="diagnosticoid" type="int">
+            <column name="diagnosticoid" />
+            <generator class="identity" />
+        </id>
+        
+        <property name="titulo" type="string">
+            <column name="titulo" length="100" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="250" not-null="true" />
+        </property>
+        
+        <set name="consultas" inverse="true">
+            <key>
+                <column name="diagnosticoid" />
+            </key>
+            <one-to-many class="Entity.Consulta" />
+        </set>
+    </class>
+</hibernate-mapping>

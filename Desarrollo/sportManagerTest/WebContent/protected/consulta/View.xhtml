@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewConsultaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel header="#{bundle.ViewConsultaTitle}" style="font-size: 12px" >
+                    <p:dataTable id="tabla_detalles" style="font-size: 12px" value="#{consulta.selected}" var="medico" styleClass="borderless" rendered="false">
+                        <p:column>
+                        </p:column>
+                    </p:dataTable>
+                    <p:fieldset >
+                        <p:panelGrid columns="6" styleClass="panel_grid_border">
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewConsultaLabel_consultaid}"/>
+                            <h:outputText value="#{consultaController.selected.consultaid}" title="#{bundle.ViewConsultaTitle_consultaid}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewConsultaLabel_diagnostico}"/>
+                            <h:outputText value="#{consultaController.selected.diagnostico.titulo}" title="#{bundle.ViewConsultaTitle_diagnostico}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewConsultaLabel_paciente} "/>
+                            <h:outputText value="#{consultaController.selected.paciente.nombre} #{consultaController.selected.paciente.apellidopaterno}" title="#{bundle.ViewConsultaTitle_paciente}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewConsultaLabel_tratamiento}"/>
+                            <h:outputText value="#{consultaController.selected.tratamiento.tratamiento}" title="#{bundle.ViewConsultaTitle_tratamiento}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewConsultaLabel_medicoid}"/>
+                            <h:outputText value="#{consultaController.selected.medico.nombre} #{consultaController.selected.medico.apellidopaterno}" title="#{bundle.ViewConsultaTitle_medicoid}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewConsultaLabel_fechaconsulta}"/>
+                            <h:outputText value="#{consultaController.selected.fechaconsulta}" title="#{bundle.ViewConsultaTitle_fechaconsulta}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewConsultaLabel_sist}"/>
+                            <h:outputText value="#{consultaController.selected.sist}" title="#{bundle.ViewConsultaTitle_sist}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewConsultaLabel_diast}"/>
+                            <h:outputText value="#{consultaController.selected.diast}" title="#{bundle.ViewConsultaTitle_diast}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewConsultaLabel_pulsaciones}"/>
+                            <h:outputText value="#{consultaController.selected.pulsaciones} (ppm)" title="#{bundle.ViewConsultaTitle_pulsaciones}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewConsultaLabel_ritmorespiratorio}"/>
+                            <h:outputText value="#{consultaController.selected.ritmorespiratorio} (rpm)" title="#{bundle.ViewConsultaTitle_ritmorespiratorio}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewConsultaLabel_temperatura}"/>
+                            <h:outputText value="#{consultaController.selected.temperatura} (grados)" title="#{bundle.ViewConsultaTitle_temperatura}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewConsultaLabel_altura}"/>
+                            <h:outputText value="#{consultaController.selected.altura} (cms)" title="#{bundle.ViewConsultaTitle_altura}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewConsultaLabel_peso}"/>
+                            <h:outputText value="#{consultaController.selected.peso} (kgrs)" title="#{bundle.ViewConsultaTitle_peso}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewConsultaLabel_imc}"/>
+                            <h:outputText value="#{consultaController.selected.imc} (kgrs)" title="#{bundle.ViewConsultaTitle_imc}"/>
+                        </p:panelGrid>
+                        <br />
+                        <p:panelGrid columns="2" styleClass="panel_grid_border">
+
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewConsultaLabel_observacion}"/>
+                            <h:outputText value="#{consultaController.selected.observacion}" title="#{bundle.ViewConsultaTitle_observacion}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewConsultaLabel_anamnesis}"/>
+                            <h:outputText value="#{consultaController.selected.anamnesis}" title="#{bundle.ViewConsultaTitle_anamnesis}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewConsultaLabel_exploracion}"/>
+                            <h:outputText value="#{consultaController.selected.exploracion}" title="#{bundle.ViewConsultaTitle_exploracion}"/>
+
+                        </p:panelGrid>
+                        <br />
+                        <br />
+                          <p:commandButton title="Exportar como PDF" value="Imprimir" ajax="false">
+                             <f:param name="action" value="#{consultaController.selected.consultaid}"/>
+                            <p:dataExporter type="pdf" target="tabla_detalles" fileName="Detalle_Consulta"  encoding="ISO-8859-1"  preProcessor="#{consultaController.preProcessDetallePDF}"/>
+                        </p:commandButton>
+                        <p:commandButton action="#{consultaController.prepareList}" value="#{bundle.ViewConsultaShowAllLink}" ajax="false"/>
+                    </p:fieldset>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

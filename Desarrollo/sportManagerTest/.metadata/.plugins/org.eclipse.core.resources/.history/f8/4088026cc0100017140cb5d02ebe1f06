@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/03/2017 13:33:24 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="entity.SpoJugador" table="spo_jugador" catalog="dbcampeonatos" optimistic-lock="version">
+        <id name="jugaId" type="java.lang.Integer">
+            <column name="JUGA_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="spoEquipo" class="entity.SpoEquipo" fetch="select">
+            <column name="EQUI_ID" />
+        </many-to-one>
+        <property name="jugaNombres" type="string">
+            <column name="JUGA_NOMBRES" length="32" />
+        </property>
+        <property name="jugaApellidos" type="string">
+            <column name="JUGA_APELLIDOS" length="32" />
+        </property>
+        <property name="jugaNumeroCedula" type="string">
+            <column name="JUGA_NUMERO_CEDULA" length="32" />
+        </property>
+        <property name="jugaFoto" type="binary">
+            <column name="JUGA_FOTO" />
+        </property>
+        <property name="jugaImagenCedula" type="binary">
+            <column name="JUGA_IMAGEN_CEDULA" />
+        </property>
+        <property name="jugaImagenCedulaReverso" type="binary">
+            <column name="JUGA_IMAGEN_CEDULA_REVERSO" />
+        </property>
+        <property name="jugaMail" type="string">
+            <column name="JUGA_MAIL" length="32" />
+        </property>
+        <property name="jugaTelefono" type="string">
+            <column name="JUGA_TELEFONO" length="32" />
+        </property>
+        <property name="jugaLugarNacimiento" type="string">
+            <column name="JUGA_LUGAR_NACIMIENTO" length="32" />
+        </property>
+        <property name="jugaFechaNacimiento" type="timestamp">
+            <column name="JUGA_FECHA_NACIMIENTO" length="0" />
+        </property>
+        <property name="jugaNacionalidad" type="string">
+            <column name="JUGA_NACIONALIDAD" length="32" />
+        </property>
+        <property name="audUsuModi" type="string">
+            <column name="AUD_USU_MODI" length="128" />
+        </property>
+        <property name="audFechaCrea" type="timestamp">
+            <column name="AUD_FECHA_CREA" length="0" />
+        </property>
+        <property name="audFechaModi" type="timestamp">
+            <column name="AUD_FECHA_MODI" length="0" />
+        </property>
+        <set name="spoPartidoJugadors" table="spo_partido_jugador" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="JUGA_ID" />
+            </key>
+            <one-to-many class="entity.SpoPartidoJugador" />
+        </set>
+    </class>
+</hibernate-mapping>

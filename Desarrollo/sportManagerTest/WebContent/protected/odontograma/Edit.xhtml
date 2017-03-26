@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditOdontogramaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form id="odontForm">
+                <p:panel header="#{bundle.EditOdontogramaTitle}" style="font-size: 12px" >
+                    <p:panelGrid columns="2" styleClass="panel_grid_border" style="font-size: 12px">
+
+                        <h:panelGrid columns="1">
+                            <h:panelGrid columns="2">
+                                <p:commandButton value="Borrar lienzo" onclick="clearCanvas();" />
+                                <p:commandButton value="Guardar dibujo" onclick="saveAsImage();" />
+                                <p:commandButton id="drawEraseBtn" value="Dibujar" onclick="changeDrawMode();" />
+                                <h:panelGroup>
+                                    <p:spinner styleClass="myPenWidth" min="1" max="10" size="2" value="2" style="margin-right: 5px" />
+                                    <p:colorPicker styleClass="myColorPicker" />
+                                </h:panelGroup>
+                            </h:panelGrid>
+                            <canvas id="myCanvas" width="306px" height="395px"></canvas>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="1">
+                            <p:panelGrid columns="2" styleClass="panel_grid_border">
+
+                                <h:outputLabel value="#{bundle.CreateOdontogramaTitle_paciente}" for="paciente" />
+                                <h:panelGroup>
+                                    <p:selectOneMenu id="paciente" style="width: 100%" value="#{odontogramaController.selected.paciente}" required="true" requiredMessage="#{bundle.CreateOdontogramaRequiredMessage_paciente}">
+                                        <f:selectItems value="#{pacienteController.itemsAvailableSelectOneByUser}"/>
+                                    </p:selectOneMenu>
+                                    <p:message for="paciente" />
+                                </h:panelGroup>
+                                <h:outputLabel value="#{bundle.CreateOdontogramaLabel_fecha}" for="fecha" />
+                                <h:panelGroup>
+                                    <p:calendar value="#{odontogramaController.selected.fecha}" id="fecha" title="#{bundle.CreateOdontogramaLabel_fecha}" required="true" requiredMessage="#{bundle.CreateOdontogramaRequiredMessage_fecha}" />
+                                    <p:message for="fecha" />
+                                </h:panelGroup>
+
+                                <h:outputLabel value="#{bundle.CreateOdontogramaLabel_numerodepieza}" for="numerodepieza" />
+                                <h:panelGroup>
+                                    <p:spinner id="numerodepieza" size="18" min="1" value="#{odontogramaController.selected.numerodepieza}" title="#{bundle.CreateOdontogramaLabel_numerodepieza}" required="true" requiredMessage="#{bundle.CreateOdontogramaRequiredMessage_numerodepieza}"/>
+                                    <p:message for="numerodepieza" />
+                                </h:panelGroup>
+                                 <h:outputLabel value="#{bundle.CreateOdontogramaLabel_realizado}" for="realizado" />
+                                <h:panelGroup>
+                                    <p:spinner id="realizado" min="0" size="18" value="#{odontogramaController.selected.realizado}" suffix="%" title="#{bundle.CreateOdontogramaTitle_realizado}" required="true" requiredMessage="#{bundle.CreateOdontogramaRequiredMessage_realizado}"/>
+                                    <p:message for="realizado" />
+                                </h:panelGroup>
+
+                                <h:outputLabel value="#{bundle.CreateOdontogramaLabel_materialrelleno}" for="materialrelleno" />
+                                <h:panelGroup>
+                                    <p:inputText id="materialrelleno" maxlength="200" value="#{odontogramaController.selected.materialrelleno}" title="#{bundle.CreateOdontogramaTitle_materialrelleno}" required="true" requiredMessage="#{bundle.CreateOdontogramaRequiredMessage_materialrelleno}">
+                                        <f:validateRegex pattern="^[a-zA-Z ]+$" />
+                                    </p:inputText>
+                                    <p:message for="materialrelleno" />
+                                </h:panelGroup>
+                                <h:outputLabel value="#{bundle.CreateOdontogramaLabel_materialsellado}" for="materialsellado" />
+                                <h:panelGroup>
+                                    <p:inputText id="materialsellado" maxlength="200" value="#{odontogramaController.selected.materialsellado}" title="#{bundle.CreateOdontogramaTitle_materialsellado}" required="true" requiredMessage="#{bundle.CreateOdontogramaRequiredMessage_materialsellado}">
+                                        <f:validateRegex pattern="^[a-zA-Z ]+$" />
+                                    </p:inputText>
+                                    <p:message for="materialsellado" />
+                                </h:panelGroup>
+
+                                <h:outputLabel value="#{bundle.CreateOdontogramaLabel_presupuesto}" for="presupuesto" />
+                                <h:panelGroup>
+                                    <p:inputText id="presupuesto" value="#{odontogramaController.selected.presupuesto}" title="#{bundle.CreateOdontogramaTitle_presupuesto}" required="true" requiredMessage="#{bundle.CreateOdontogramaRequiredMessage_presupuesto}"/>
+                                    <p:message for="presupuesto" />
+                                </h:panelGroup>
+                                <h:outputLabel value="#{bundle.CreateOdontogramaLabel_formadepago}" for="formadepago" />
+                                <h:panelGroup>
+                                    <p:inputText id="formadepago" value="#{odontogramaController.selected.formadepago}" title="#{bundle.CreateOdontogramaTitle_formadepago}" required="true" requiredMessage="#{bundle.CreateOdontogramaRequiredMessage_formadepago}"/>
+                                    <p:message for="formadepago" />
+                                </h:panelGroup>
+
+                            </p:panelGrid>
+
+                            <p:panelGrid columns="1">
+                                <h:outputLabel value="#{bundle.CreateOdontogramaLabel_descripciontratamiento}" for="descripciontratamiento" />
+                                <h:panelGroup>
+                                    <p:inputTextarea id="descripciontratamiento"  style="width:200%" value="#{odontogramaController.selected.descripciontratamiento}" title="#{bundle.CreateOdontogramaTitle_descripciontratamiento}" required="true" requiredMessage="#{bundle.CreateOdontogramaRequiredMessage_descripciontratamiento}"/>
+                                    <p:message for="descripciontratamiento" />
+                                </h:panelGroup>    
+                            </p:panelGrid>
+
+                            <h:inputHidden id="image" value="#{odontogramaController.selected.image}" />
+
+                        </h:panelGrid>
+
+                    </p:panelGrid>
+                    <br />
+                    <p:commandButton value="#{bundle.CreateOdontogramaSaveLink}" id="btn1" style="font-size: 14px" action="#{odontogramaController.update}"
+                                     ajax="false">
+                        <f:param name="action" value="#{odontogramaController.selected.odontogramaid}"/>
+                    </p:commandButton>
+
+                    <p:commandButton action="#{odontogramaController.prepareList}" id="btn2" style="font-size: 14px" value="#{bundle.CreateOdontogramaShowAllLink}" 
+                                     immediate="true" ajax="false"/>
+
+                </p:panel> 
+            </h:form>
+
+            <script>
+                var create=false,
+                drawWord = 'Dibujar',
+                eraseWord = 'Borrar';                
+            </script>
+
+            <h:outputScript name="/javascript/base64.js" />
+            <h:outputScript name="/javascript/canvas2image.js" />
+            <h:outputScript name="/javascript/drawOdontograma.js" />
+
+        </ui:define>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAntecedenteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAntecedenteLabel_antecedenteid}" for="antecedenteid" />
+                    <h:inputText id="antecedenteid" value="#{antecedenteController.selected.antecedenteid}" title="#{bundle.EditAntecedenteTitle_antecedenteid}" required="true" requiredMessage="#{bundle.EditAntecedenteRequiredMessage_antecedenteid}"/>
+                    <h:outputLabel value="#{bundle.EditAntecedenteLabel_historialclinico}" for="historialclinico" />
+                    <h:selectOneMenu id="historialclinico" value="#{antecedenteController.selected.historialclinico}" title="#{bundle.EditAntecedenteTitle_historialclinico}" required="true" requiredMessage="#{bundle.EditAntecedenteRequiredMessage_historialclinico}">
+                        <f:selectItems value="#{historialclinicoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditAntecedenteLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{antecedenteController.selected.fecha}" title="#{bundle.EditAntecedenteTitle_fecha}" required="true" requiredMessage="#{bundle.EditAntecedenteRequiredMessage_fecha}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditAntecedenteLabel_antecedente}" for="antecedente" />
+                    <h:inputText id="antecedente" value="#{antecedenteController.selected.antecedente}" title="#{bundle.EditAntecedenteTitle_antecedente}" required="true" requiredMessage="#{bundle.EditAntecedenteRequiredMessage_antecedente}"/>
+                    <h:outputLabel value="#{bundle.EditAntecedenteLabel_tipo}" for="tipo" />
+                    <h:inputText id="tipo" value="#{antecedenteController.selected.tipo}" title="#{bundle.EditAntecedenteTitle_tipo}" required="true" requiredMessage="#{bundle.EditAntecedenteRequiredMessage_tipo}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{antecedenteController.update}" value="#{bundle.EditAntecedenteSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAntecedenteViewLink}"/>
+                <br />
+                <h:commandLink action="#{antecedenteController.prepareList}" value="#{bundle.EditAntecedenteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAntecedenteIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

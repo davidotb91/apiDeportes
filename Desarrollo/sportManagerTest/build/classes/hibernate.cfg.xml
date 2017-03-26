@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/dbClinica01</property>
+    <property name="hibernate.connection.username">postgres</property>
+    <property name="hibernate.connection.password">SQLP</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <mapping resource="Entity/Tratamiento.hbm.xml"/>
+    <mapping resource="Entity/Cita.hbm.xml"/>
+    <mapping resource="Entity/Medico.hbm.xml"/>
+    <mapping resource="Entity/Antecedente.hbm.xml"/>
+    <mapping resource="Entity/Informe.hbm.xml"/>
+    <mapping resource="Entity/Odontograma.hbm.xml"/>
+    <mapping resource="Entity/Categoria.hbm.xml"/>
+    <mapping resource="Entity/Detalle.hbm.xml"/>
+    <mapping resource="Entity/Consulta.hbm.xml"/>
+    <mapping resource="Entity/Receta.hbm.xml"/>
+    <mapping resource="Entity/Cabecerafactura.hbm.xml"/>
+    <mapping resource="Entity/Paciente.hbm.xml"/>
+    <mapping resource="Entity/Historialclinico.hbm.xml"/>
+    <mapping resource="Entity/Diagnostico.hbm.xml"/>
+    <mapping resource="Entity/Archivo.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-jul-2014 19:36:53 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Entity.Categoria" table="categoria" schema="clinica">
+        <id name="categoriaid" type="int">
+            <column name="categoriaid" />
+            <generator class="identity" />
+        </id>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="100" not-null="true" />
+        </property>
+        <set name="medicos" inverse="true">
+            <key>
+                <column name="categoriaid" />
+            </key>
+            <one-to-many class="Entity.Medico" />
+        </set>
+    </class>
+</hibernate-mapping>

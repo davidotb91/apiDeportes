@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateConsultaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel header="#{bundle.CreateConsultaTitle}" style="font-size: 12px" >
+                    <p:panelGrid columns="4" styleClass="panel_grid_border" style="font-size: 12px">
+
+                        <h:outputLabel value="#{bundle.CreateConsultaLabel_paciente}" for="paciente" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="paciente" style="width: 100%" value="#{consultaController.selected.paciente}" title="#{bundle.CreateConsultaTitle_paciente}" required="true" requiredMessage="#{bundle.CreateConsultaRequiredMessage_paciente}">
+                                <f:selectItems value="#{pacienteController.itemsAvailableSelectOneByUser}"/>
+                            </p:selectOneMenu>
+                            <p:message for="paciente" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateConsultaLabel_fechaconsulta}" for="fechaconsulta" />
+                        <h:panelGroup>
+                            <p:calendar id="fechaconsulta"  value="#{consultaController.selected.fechaconsulta}" title="#{bundle.CreateConsultaTitle_fechaconsulta}" required="true" requiredMessage="#{bundle.CreateConsultaRequiredMessage_fechaconsulta}"/>
+                            <p:message for="fechaconsulta" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateConsultaLabel_sist}" for="sist" />
+                        <h:panelGroup>
+                            <p:spinner id="sist" min="0" size="18" value="#{consultaController.selected.sist}" title="#{bundle.CreateConsultaTitle_sist}" required="true" requiredMessage="#{bundle.CreateConsultaRequiredMessage_sist}"/>
+                            <p:message for="sist" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateConsultaLabel_diast}" for="diast" />
+                        <h:panelGroup>
+                            <p:spinner min="0" id="diast" size="18" value="#{consultaController.selected.diast}" title="#{bundle.CreateConsultaTitle_diast}" required="true" requiredMessage="#{bundle.CreateConsultaRequiredMessage_diast}"/>
+                            <p:message for="diast" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateConsultaLabel_pulsaciones}(ppm) " for="pulsaciones" />
+                        <h:panelGroup>
+                            <p:spinner min="0" id="pulsaciones" size="18" value="#{consultaController.selected.pulsaciones}" title="#{bundle.CreateConsultaTitle_pulsaciones}" required="true" requiredMessage="#{bundle.CreateConsultaRequiredMessage_pulsaciones}"/>
+                            <p:message for="pulsaciones" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateConsultaLabel_ritmorespiratorio} (rpm)" for="ritmorespiratorio" />
+                        <h:panelGroup>
+                            <p:spinner min="0" id="ritmorespiratorio" size="18" value="#{consultaController.selected.ritmorespiratorio}" title="#{bundle.CreateConsultaTitle_ritmorespiratorio}" required="true" requiredMessage="#{bundle.CreateConsultaRequiredMessage_ritmorespiratorio}"/>
+                            <p:message for="ritmorespiratorio" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateConsultaLabel_temperatura} (grados)" for="temperatura" />
+                        <h:panelGroup>
+                            <p:spinner min="0" id="temperatura" size="18" value="#{consultaController.selected.temperatura}" title="#{bundle.CreateConsultaTitle_temperatura}" required="true" requiredMessage="#{bundle.CreateConsultaRequiredMessage_temperatura}"/>
+                            <p:message for="temperatura" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateConsultaLabel_altura} (cms)" for="altura" />
+                        <h:panelGroup>
+                            <p:spinner min="0" id="altura" size="18" value="#{consultaController.selected.altura}" title="#{bundle.CreateConsultaTitle_altura}" required="true" requiredMessage="#{bundle.CreateConsultaRequiredMessage_altura}"/>
+                            <p:message for="altura" />
+                        </h:panelGroup> 
+
+                        <h:outputLabel value="#{bundle.CreateConsultaLabel_peso} (kgrs)" for="peso" />
+                        <h:panelGroup>
+                            <p:spinner min="0" id="peso" size="18" value="#{consultaController.selected.peso}" title="#{bundle.CreateConsultaTitle_peso}" required="true" requiredMessage="#{bundle.CreateConsultaRequiredMessage_peso}"/>
+                            <p:message for="peso" />
+                        </h:panelGroup> 
+
+                        <h:outputLabel value="#{bundle.CreateConsultaLabel_imc} (kg/m^2)" for="imc" />
+                        <h:panelGroup>
+                            <p:spinner id="imc" size="18" min="0" value="#{consultaController.selected.imc}" title="#{bundle.CreateConsultaTitle_imc}" required="true" requiredMessage="#{bundle.CreateConsultaRequiredMessage_imc}"/>
+                            <p:message for="imc" />
+                        </h:panelGroup>
+
+
+                    </p:panelGrid>
+                    <br />
+                    <p:tabView>
+                        <p:tab title="#{bundle.CreateConsultaLabel_observacion}">
+
+                            <h:panelGroup>
+                                <p:inputTextarea id="observacion" style="width: 100%" value="#{consultaController.selected.observacion}" title="#{bundle.CreateConsultaTitle_observacion}" />
+                                <p:message for="observacion" />
+                            </h:panelGroup>
+                        </p:tab>
+                        <p:tab title="#{bundle.CreateConsultaLabel_anamnesis}">
+                            <h:panelGroup>
+                                <p:inputTextarea id="anamnesis" style="width: 100%" value="#{consultaController.selected.anamnesis}" title="#{bundle.CreateConsultaTitle_anamnesis}" />
+                                <p:message for="anamnesis" />
+                            </h:panelGroup>
+                        </p:tab>
+                        <p:tab title="#{bundle.CreateConsultaLabel_exploracion}">
+                            <h:panelGroup>
+                                <p:inputTextarea id="exploracion" style="width: 100%" value="#{consultaController.selected.exploracion}" title="#{bundle.CreateConsultaTitle_exploracion}" />
+                                <p:message for="exploracion" />
+                            </h:panelGroup>
+                        </p:tab>
+
+                        <p:tab title="#{bundle.CreateConsultaLabel_tratamiento}">
+
+                            <p:fieldset>
+                                <h:outputLabel value="#{bundle.CreateTratamientoLabel_tipo}" for="tratamiento_tipo" />
+                                <h:panelGroup>
+                                    <p:inputText id="tratamiento_tipo" style="width: 100%" value="#{consultaController.selected.tratamiento.tipo}" title="#{bundle.CreateTratamientoLabel_tipo}" validatorMessage="#{bundle.CreateMedicoString_nombre}">
+                                        <f:validateRegex pattern="^[a-zA-Z ]+$" />
+                                    </p:inputText>
+                                    <p:message for="tratamiento_tipo" />
+                                </h:panelGroup>
+                                <h:outputLabel value="#{bundle.CreateTratamientoLabel_tratamiento}" for="tratamiento" />
+                                <h:panelGroup>
+                                    <p:inputTextarea id="tratamiento" style="width: 100%" value="#{consultaController.selected.tratamiento.tratamiento}" title="#{bundle.CreateTratamientoLabel_tratamiento}" />
+                                    <p:message for="tratamiento" />
+                                </h:panelGroup>
+                            </p:fieldset>
+                        </p:tab>
+
+                        <p:tab title="#{bundle.CreateConsultaLabel_diagnostico}">
+                            <p:fieldset>
+                                <h:outputLabel value="#{bundle.CreateDiagnosticoLabel_titulo}" for="diagnostico_title" />
+                                <h:panelGroup>
+                                    <p:inputText id="diagnostico_title" style="width: 100%" value="#{consultaController.selected.diagnostico.titulo}" title="#{bundle.CreateDiagnosticoLabel_titulo}" validatorMessage="#{bundle.CreateMedicoString_nombre}">
+                                    <f:validateRegex pattern="^[a-zA-Z ]+$" />
+                                    </p:inputText>
+                                    <p:message for="diagnostico_title" />
+                                </h:panelGroup>
+                                <h:outputLabel value="#{bundle.CreateDiagnosticoLabel_descripcion}" for="diagnostico" />
+                                <h:panelGroup>
+                                    <p:inputTextarea id="diagnostico" style="width: 100%" value="#{consultaController.selected.diagnostico.descripcion}" title="#{bundle.CreateDiagnosticoLabel_descripcion}" />
+                                    <p:message for="diagnostico" />
+                                </h:panelGroup>
+                            </p:fieldset>
+                        </p:tab>
+
+                    </p:tabView>
+
+
+                    <br />
+                    <p:commandButton action="#{consultaController.create}" value="#{bundle.CreateConsultaSaveLink}" ajax="false"/>
+
+                    <p:commandButton action="#{consultaController.prepareList}" value="#{bundle.CreateConsultaShowAllLink}" immediate="true" ajax="false"/>
+
+
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

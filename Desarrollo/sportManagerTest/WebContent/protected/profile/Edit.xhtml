@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Editar perfil"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form id="editProfileForm">
+                <p:panel header="Editar perfil" style="font-size: 12px" >
+
+                    <h:inputHidden value="#{loginBean.selected.medicoid}" id="medicoid"/>
+
+                    <p:fieldset legend="Datos de usuario">
+
+                        <p:panelGrid columns="2" styleClass="panel_grid_border">
+                            <h:outputLabel value="Contraseña actual:" for="contrasenaactual" />
+                            <h:panelGroup>
+                                <p:password id="contrasenaactual" title="#{bundle.CreateMedicoTitle_contrasena}" required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_contrasena}" validator="#{loginBean.validateCurrentPassword}">
+                                    <!--f:validateRegex for="contrasena"
+                                                     pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" /-->
+                                </p:password>
+                                <p:message for="contrasenaactual" />
+                            </h:panelGroup>
+                            <h:outputLabel value="Contraseña:" for="contrasena" />
+                            <h:panelGroup>
+                                <p:password id="contrasena"  inline="true" feedback= "true" value="#{loginBean.selected.contrasena}" title="#{bundle.CreateMedicoTitle_contrasena}" validatorMessage="#{bundle.CreateMedicoString_password}">
+                                    <!--f:validateRegex for="contrasena"
+                                                     pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" /-->
+                                </p:password>
+                                <p:message for="contrasena" />
+                            </h:panelGroup>
+                            <h:outputLabel value="Confirmar contraseña:" for="confirmcontrasena" />
+                            <h:panelGroup>
+                                <p:password id="confirmcontrasena" title="#{bundle.CreateMedicoTitle_contrasena}" validator="#{loginBean.validateConfirmPassword}">
+                                    <!--f:validateRegex for="contrasena"
+                                                     pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" /-->
+                                </p:password>
+                                <p:message for="confirmcontrasena" />
+                            </h:panelGroup>
+                        </p:panelGrid>
+
+                    </p:fieldset>
+
+                    <br />
+                    <br />                    
+
+                    <p:panelGrid columns="4" styleClass="panel_grid_border">
+
+                        <h:outputLabel value="#{bundle.CreateMedicoLabel_nombre}" for="nombre" />
+                        <h:panelGroup>
+                            <p:inputText id="nombre" maxlength="100" value="#{loginBean.selected.nombre}" title="#{bundle.CreateMedicoTitle_nombre}" required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_nombre}" validatorMessage="#{bundle.CreateMedicoString_nombre}">
+                                <!--<f:validateRegex pattern="^[a-zA-Z ]+$" />-->
+                            </p:inputText>
+                            <p:message for="nombre" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateMedicoLabel_segundonombre}" for="segundonombre" />
+                        <h:panelGroup>
+                            <p:inputText maxlength="100" id="segundonombre" value="#{loginBean.selected.segundonombre}" title="#{bundle.CreateMedicoTitle_segundonombre}" required="false" requiredMessage="#{bundle.CreateMedicoRequiredMessage_segundonombre}" validatorMessage="#{bundle.CreateMedicoString_nombre}" >
+                                <!--f:validateRegex pattern="^[a-zA-Z ]+$" /-->
+                            </p:inputText>
+                            <p:message for="segundonombre" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateMedicoLabel_apellidopaterno}" for="apellidopaterno" />
+                        <h:panelGroup>
+                            <p:inputText maxlength="100" id="apellidopaterno" value="#{loginBean.selected.apellidopaterno}" title="#{bundle.CreateMedicoTitle_apellidopaterno}" required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_apellidopaterno}" validatorMessage="#{bundle.CreateMedicoString_nombre}" >
+                                <f:validateRegex pattern="^[a-zA-Z ]+$" />
+                            </p:inputText>
+                            <p:message for="apellidopaterno" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateMedicoLabel_apellidomaterno}" for="apellidomaterno" />
+                        <h:panelGroup>
+                            <p:inputText  maxlength="100" id="apellidomaterno" value="#{loginBean.selected.apellidomaterno}" title="#{bundle.CreateMedicoTitle_apellidomaterno}" required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_apellidomaterno}" validatorMessage="#{bundle.CreateMedicoString_nombre}" >
+                                <f:validateRegex pattern="^[a-zA-Z ]+$" />
+                            </p:inputText>
+                            <p:message for="apellidomaterno" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateMedicoLabel_cedula}" for="cedula" />
+                        <h:panelGroup>
+                            <p:inputText id="cedula" maxlength="10" value="#{loginBean.selected.cedula}" title="#{bundle.CreateMedicoTitle_cedula}" required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_cedula}" validator="#{loginBean.validateCedula}">
+                                <!--f:validateRegex pattern="^(?:\+|-)?\d+$" /-->
+                            </p:inputText>
+                            <p:message for="cedula" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateMedicoLabel_profesion}" for="profesion" />
+                        <h:panelGroup>
+                            <p:inputText id="profesion" value="#{loginBean.selected.profesion}" title="#{bundle.CreateMedicoTitle_profesion}" required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_profesion}" validatorMessage="#{bundle.CreateMedicoString_nombre}">
+                                <f:validateRegex pattern="^[a-zA-Z ]+$" />
+                            </p:inputText>
+                            <p:message for="profesion" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateMedicoLabel_lugartrabajo}" for="lugartrabajo" />
+                        <h:panelGroup>
+                            <p:inputText id="lugartrabajo" value="#{loginBean.selected.lugartrabajo}" title="#{bundle.CreateMedicoTitle_lugartrabajo}" required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_lugartrabajo}" validatorMessage="#{bundle.CreateMedicoString_nombre}">
+                                <f:validateRegex pattern="^[a-zA-Z ]+$" />
+                            </p:inputText>
+                            <p:message for="lugartrabajo" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateMedicoLabel_genero}" for="genero" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="genero" style="width: 100%" value="#{loginBean.selected.genero}" title="#{bundle.CreateMedicoTitle_genero}" required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_genero}">
+                                <f:selectItem itemLabel="Seleccione un genero" itemValue=" " />
+                                <f:selectItem itemLabel="Femenino" itemValue="Femenino" />
+                                <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+                            </p:selectOneMenu>
+                            <p:message for="genero" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateMedicoLabel_estadocivil}" for="estadocivil" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="estadocivil" style="width: 100%" value="#{loginBean.selected.estadocivil}" title="#{bundle.CreateMedicoTitle_estadocivil}" required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_estadocivil}">
+                                <f:selectItem itemLabel="Seleccione un estado civil" itemValue=" " />
+                                <f:selectItem itemLabel="Soltero" itemValue="Soltero" />
+                                <f:selectItem itemLabel="Casado" itemValue="Casado" />
+                                <f:selectItem itemLabel="Divorciado" itemValue="Divorciado" />
+                            </p:selectOneMenu>
+                            <p:message for="estadocivil" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateMedicoLabel_numerohijos}" for="numerohijos" />
+                        <h:panelGroup>
+                            <p:spinner  min="1" id="numerohijos" size="18" value="#{loginBean.selected.numerohijos}" title="#{bundle.CreateMedicoTitle_numerohijos}" required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_numerohijos}" />
+                            <p:message for="numerohijos" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateMedicoLabel_edad}" for="edad" />
+                        <h:panelGroup>
+                            <p:spinner id="edad"  min="18" size="18" max="100" value="#{loginBean.selected.edad}" title="#{bundle.CreateMedicoTitle_edad}" required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_edad}"/>
+                            <p:message for="edad" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateMedicoLabel_fechanacimiento}" for="fechanacimiento" />
+                        <h:panelGroup>
+                            <p:calendar value="#{loginBean.selected.fechanacimiento}" id="fechanacimiento" title="#{bundle.CreateMedicoTitle_fechanacimiento}" required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_fechanacimiento}" />
+                            <p:message for="fechanacimiento" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateMedicoLabel_nacionalidad}" for="nacionalidad" />
+                        <h:panelGroup>
+                            <p:inputText maxlength="100" id="nacionalidad" value="#{loginBean.selected.nacionalidad}" title="#{bundle.CreateMedicoTitle_nacionalidad}" required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_nacionalidad}" >
+                                <f:validateRegex pattern="^[a-zA-Z ]+$" />
+                            </p:inputText>
+                            <p:message for="nacionalidad" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateMedicoLabel_provincia}" for="provincia" />
+                        <h:panelGroup>
+                            <p:inputText id="provincia" value="#{loginBean.selected.provincia}" title="#{bundle.CreateMedicoTitle_provincia}" required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_provincia}" validatorMessage="#{bundle.CreateMedicoString_nombre}">
+                                <f:validateRegex pattern="^[a-zA-Z ]+$" />
+                            </p:inputText>
+                            <p:message for="provincia" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateMedicoLabel_localidad}" for="localidad" />
+                        <h:panelGroup>
+                            <p:inputText id="localidad" value="#{loginBean.selected.localidad}" title="#{bundle.CreateMedicoTitle_localidad}" required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_localidad}" validatorMessage="#{bundle.CreateMedicoString_nombre}">
+                                <f:validateRegex pattern="^[a-zA-Z ]+$" />
+                            </p:inputText>
+                            <p:message for="localidad" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateMedicoLabel_telefono}" for="telefono" />
+                        <h:panelGroup>
+                            <p:inputMask mask="9999-9999" id="telefono" value="#{loginBean.selected.telefono}" title="#{bundle.CreateMedicoTitle_telefono}" required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_telefono}"/>
+                            <p:message for="telefono" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateMedicoLabel_celular}" for="celular" />
+                        <h:panelGroup>
+                            <p:inputMask mask="999-999-9999" id="celular" value="#{loginBean.selected.celular}" title="#{bundle.CreateMedicoTitle_celular}" required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_celular}"/>
+                            <p:message for="celular" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateMedicoLabel_email}" for="email" />
+                        <h:panelGroup>
+                            <p:inputText maxlength="20" id="email" value="#{loginBean.selected.email}" title="#{bundle.CreateMedicoTitle_email}" required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_email}" validator="#{loginBean.validateEmail}">
+                                <!--f:validateRegex for="email"
+                                                 pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" /-->
+                            </p:inputText>
+                            <p:message for="email" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateMedicoLabel_categoria}" for="categoria" />
+                        <h:panelGroup>
+                            <p:selectOneMenu style="width: 100%" id="categoria" value="#{loginBean.selected.categoria}" required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_categoria}">
+                                <f:selectItems value="#{categoriaController.itemsAvailableSelectOne}"/>
+                            </p:selectOneMenu>  
+                            <p:message for="categoria" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateMedicoLabel_fechaalta}" for="fechaalta" />
+                        <h:panelGroup>
+                            <p:calendar value="#{loginBean.selected.fechaalta}" id="fechaalta" title="#{bundle.CreateMedicoTitle_fechaalta}" required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_fechaalta}" />
+                            <p:message for="fechaalta" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateMedicoLabel_fechabaja}" for="fechabaja" />
+                        <h:panelGroup>
+                            <p:calendar value="#{loginBean.selected.fechabaja}" id="fechabaja" title="#{bundle.CreateMedicoTitle_fechabaja}" required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_fechabaja}" />
+                            <p:message for="fechabaja" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateMedicoLabel_sueldo}" for="sueldo" />
+                        <h:panelGroup>
+                            <p:spinner  id="sueldo" prefix="$" min="1" size="18" value="#{loginBean.selected.sueldo}" title="#{bundle.CreateMedicoTitle_sueldo}" required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_sueldo}" />
+                            <p:message for="sueldo" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateMedicoLabel_direccion}" for="direccion" />
+                        <h:panelGroup>
+                            <p:inputTextarea id="direccion"  style="width: 278%" value="#{loginBean.selected.direccion}" title="#{bundle.CreateMedicoTitle_direccion}" required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_direccion}"/>
+                            <p:message for="direccion" />
+                        </h:panelGroup>
+
+                    </p:panelGrid>
+
+                    <br />
+                    <br />                    
+                    <p:commandButton action="#{loginBean.updateProfile}" value="#{bundle.CreateMedicoSaveLink}" ajax="false" >
+                        <f:param name="action" value="#{loginBean.selected.medicoid}"/>
+                    </p:commandButton>
+
+                </p:panel>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

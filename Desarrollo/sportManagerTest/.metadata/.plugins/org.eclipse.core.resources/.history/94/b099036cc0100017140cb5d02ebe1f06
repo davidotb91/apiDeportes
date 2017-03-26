@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/03/2017 13:33:24 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="entity.SpoParametroDetalle" table="spo_parametro_detalle" catalog="dbcampeonatos" optimistic-lock="version">
+        <id name="padeId" type="java.lang.Integer">
+            <column name="PADE_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="spoParametro" class="entity.SpoParametro" fetch="select">
+            <column name="PARA_ID" />
+        </many-to-one>
+        <property name="padeNemonico" type="string">
+            <column name="PADE_NEMONICO" length="32" />
+        </property>
+        <property name="padeDesCorta" type="string">
+            <column name="PADE_DES_CORTA" length="32" />
+        </property>
+        <property name="padeDesLarga" type="string">
+            <column name="PADE_DES_LARGA" length="32" />
+        </property>
+        <property name="audUsuCrea" type="string">
+            <column name="AUD_USU_CREA" length="128" />
+        </property>
+        <property name="audUsuModi" type="string">
+            <column name="AUD_USU_MODI" length="128" />
+        </property>
+        <property name="audFechaCrea" type="timestamp">
+            <column name="AUD_FECHA_CREA" length="0" />
+        </property>
+        <property name="audFechaModi" type="timestamp">
+            <column name="AUD_FECHA_MODI" length="0" />
+        </property>
+        <set name="spoPerfilRecursosForSpoPadeId" table="spo_perfil_recurso" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SPO_PADE_ID" not-null="true" />
+            </key>
+            <one-to-many class="entity.SpoPerfilRecurso" />
+        </set>
+        <set name="spoCampeonatosForPadeId" table="spo_campeonato" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PADE_ID" />
+            </key>
+            <one-to-many class="entity.SpoCampeonato" />
+        </set>
+        <set name="spoCampeonatosForSpoPadeId" table="spo_campeonato" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SPO_PADE_ID" />
+            </key>
+            <one-to-many class="entity.SpoCampeonato" />
+        </set>
+        <set name="spoCaracteristicasForPadeId" table="spo_caracteristica" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PADE_ID" />
+            </key>
+            <one-to-many class="entity.SpoCaracteristica" />
+        </set>
+        <set name="spoFixturesForSpoPadeId3" table="spo_fixture" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SPO_PADE_ID3" />
+            </key>
+            <one-to-many class="entity.SpoFixture" />
+        </set>
+        <set name="spoCaracteristicasForSpoPadeId" table="spo_caracteristica" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SPO_PADE_ID" />
+            </key>
+            <one-to-many class="entity.SpoCaracteristica" />
+        </set>
+        <set name="spoFixturesForSpoPadeId5" table="spo_fixture" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SPO_PADE_ID5" />
+            </key>
+            <one-to-many class="entity.SpoFixture" />
+        </set>
+        <set name="spoFixturesForSpoPadeId4" table="spo_fixture" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SPO_PADE_ID4" />
+            </key>
+            <one-to-many class="entity.SpoFixture" />
+        </set>
+        <set name="spoUsuarios" table="spo_usuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PADE_ID" />
+            </key>
+            <one-to-many class="entity.SpoUsuario" />
+        </set>
+        <set name="spoFixturesForSpoPadeId" table="spo_fixture" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SPO_PADE_ID" />
+            </key>
+            <one-to-many class="entity.SpoFixture" />
+        </set>
+        <set name="spoCampeonatosForSpoPadeId2" table="spo_campeonato" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SPO_PADE_ID2" />
+            </key>
+            <one-to-many class="entity.SpoCampeonato" />
+        </set>
+        <set name="spoPerfilRecursosForPadeId" table="spo_perfil_recurso" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PADE_ID" not-null="true" />
+            </key>
+            <one-to-many class="entity.SpoPerfilRecurso" />
+        </set>
+        <set name="spoFixturesForPadeId" table="spo_fixture" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PADE_ID" />
+            </key>
+            <one-to-many class="entity.SpoFixture" />
+        </set>
+        <set name="campeonaoAuspiciantes" table="campeonao_auspiciante" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PADE_ID" />
+            </key>
+            <one-to-many class="entity.CampeonaoAuspiciante" />
+        </set>
+        <set name="spoFixturesForSpoPadeId2" table="spo_fixture" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SPO_PADE_ID2" />
+            </key>
+            <one-to-many class="entity.SpoFixture" />
+        </set>
+        <set name="spoPartidoJugadors" table="spo_partido_jugador" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PADE_ID" />
+            </key>
+            <one-to-many class="entity.SpoPartidoJugador" />
+        </set>
+    </class>
+</hibernate-mapping>

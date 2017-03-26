@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Catálogos"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+        
+		  <h:form>
+			<h:panelGroup >
+				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+			</h:panelGroup>
+		</h:form> 
+		
+            <h:form>
+                <p:panel header="Lugar Geográfico" style="font-size: 12px" >
+
+                    <p:panelGrid columns="2" styleClass="panel_grid_border">
+
+                        <h:outputLabel value="Id" for="idLugar" />
+                        <h:panelGroup>
+                            <p:inputText id="idLugar" disabled="true" maxlength="6" value="#{lugarGeograficoController.selected.idLugar}"  required="true" requiredMessage="#{bundle.labelRequerido}" validatorMessage="#{bundle.labelFormatoIncorrecto}">
+                                <f:validateRegex pattern="^[0-9a-zA-Z ]+$" />
+                            </p:inputText>
+                            <p:message for="idLugar" />
+                        </h:panelGroup>
+
+						<h:outputLabel value="Padre" for="lugarGeograficop" />
+                         <h:panelGroup>
+                             <p:selectOneMenu id="lugarGeograficop" style="width: 100%" value="#{lugarGeograficoController.selected.lugarGeograficop}" required="true" requiredMessage="#{bundle.labelRequerido}">
+                                 <f:selectItems value="#{lugarGeograficoController.itemsAvailableSelectOneByUser}"/>
+                             </p:selectOneMenu>
+                             <p:message for="lugarGeograficop" />
+                         </h:panelGroup>
+                         
+                        <h:outputLabel value="Des. Corta" for="desCorta" />
+                        <h:panelGroup>
+                            <p:inputText id="desCorta" maxlength="32" value="#{lugarGeograficoController.selected.desCorta}"  required="true" requiredMessage="#{bundle.labelRequerido}" validatorMessage="#{bundle.labelFormatoIncorrecto}">
+                                <f:validateRegex pattern="^[0-9a-zA-Z ]+$" />
+                            </p:inputText>
+                            <p:message for="desCorta" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="Des. Larga" for="desLarga" />
+                        <h:panelGroup>
+                            <p:inputText id="desLarga" maxlength="64" value="#{lugarGeograficoController.selected.desLarga}"  required="true" requiredMessage="#{bundle.labelRequerido}" validatorMessage="#{bundle.labelFormatoIncorrecto}">
+                                <f:validateRegex pattern="^[0-9a-zA-Z ]+$" />
+                            </p:inputText>
+                            <p:message for="desLarga" />
+                        </h:panelGroup>
+                        
+                         <h:outputLabel value="Nivel" for="nivel" />
+                         <h:panelGroup>
+                            <p:spinner id="nivel" min="1" max="10" value="#{lugarGeograficoController.selected.nivel}"  required="true" requiredMessage="#{bundle.labelRequerido}"/>
+                            <p:message for="nivel" />
+                        </h:panelGroup>
+
+                    <p:commandButton action="#{lugarGeograficoController.update}" value="#{bundle.CreatePacienteSaveLink}" ajax="false" >
+                        <f:param name="action" value="#{lugarGeograficoController.selected.idLugar}"/>
+                    </p:commandButton>
+
+                    <p:commandButton action="#{lugarGeograficoController.prepareList}" value="#{bundle.CreatePacienteShowAllLink}" immediate="true" ajax="false"/>
+					</p:panelGrid>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewMedicoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel header="#{bundle.ViewMedicoTitle}" style="font-size: 12px" id="panel_detalles">
+                    <p:dataTable id="tabla_detalles" style="font-size: 12px" styleClass="borderless" rendered="false">
+                        <p:column style="background-color: grey">
+                             <f:facet name="header">
+                                <h:outputText value="  "/>
+                            </f:facet>
+                        </p:column>
+                    </p:dataTable>
+                    <p:fieldset >
+                        <p:panelGrid columns="5" styleClass="panel_grid_border">
+
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewMedicoLabel_nombre}"/>
+                            <h:outputText value="#{medicoController.selected.nombre} #{medicoController.selected.apellidopaterno} #{medicoController.selected.apellidomaterno}" title="#{bundle.ViewMedicoTitle_nombre}"/>
+                            <h:outputLabel value="                   "/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewMedicoLabel_cedula}"/>
+                            <h:outputText value="#{medicoController.selected.cedula}" title="#{bundle.ViewMedicoTitle_cedula}"/>
+
+                            <h:outputText style="font-weight: bold"  value="#{bundle.ViewMedicoLabel_profesion}"/>
+                            <h:outputText value="#{medicoController.selected.profesion}" title="#{bundle.ViewMedicoTitle_profesion}"/>
+                            <h:outputLabel value="                   "/>
+                            <h:outputText style="font-weight: bold"  value="#{bundle.ViewMedicoLabel_lugartrabajo}"/>
+                            <h:outputText value="#{medicoController.selected.lugartrabajo}" title="#{bundle.ViewMedicoTitle_lugartrabajo}"/>
+
+                            <h:outputText style="font-weight: bold"  value="#{bundle.ViewMedicoLabel_genero}"/>
+                            <h:outputText value="#{medicoController.selected.genero}" title="#{bundle.ViewMedicoTitle_genero}"/>
+                            <h:outputLabel value="                   "/>
+                            <h:outputText style="font-weight: bold"  value="#{bundle.ViewMedicoLabel_estadocivil}"/>
+                            <h:outputText value="#{medicoController.selected.estadocivil}" title="#{bundle.ViewMedicoTitle_estadocivil}"/>
+
+
+                            <h:outputText style="font-weight: bold"  value="#{bundle.ViewMedicoLabel_numerohijos}"/>
+                            <h:outputText value="#{medicoController.selected.numerohijos}" title="#{bundle.ViewMedicoTitle_numerohijos}"/>
+                            <h:outputLabel value="                   "/>
+                            <h:outputText style="font-weight: bold"  value="#{bundle.ViewMedicoLabel_edad}"/>
+                            <h:outputText value="#{medicoController.selected.edad}" title="#{bundle.ViewMedicoTitle_edad}"/>
+
+
+                            <h:outputText style="font-weight: bold"  value="#{bundle.ViewMedicoLabel_fechanacimiento}"/>
+                            <h:outputText value="#{medicoController.selected.fechanacimiento}" title="#{bundle.ViewMedicoTitle_fechanacimiento}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                            <h:outputLabel value="                   "/>
+                            <h:outputText style="font-weight: bold"  value="#{bundle.ViewMedicoLabel_telefono}"/>
+                            <h:outputText value="#{medicoController.selected.telefono}" title="#{bundle.ViewMedicoTitle_telefono}"/>
+
+
+                            <h:outputText style="font-weight: bold"  value="#{bundle.ViewMedicoLabel_celular}"/>
+                            <h:outputText value="#{medicoController.selected.celular}" title="#{bundle.ViewMedicoTitle_celular}"/>
+                            <h:outputLabel value="                   "/>
+                            <h:outputText style="font-weight: bold"  value="#{bundle.ViewMedicoLabel_email}"/>
+                            <h:outputText value="#{medicoController.selected.email}" title="#{bundle.ViewMedicoTitle_email}"/>
+
+
+                            <h:outputText style="font-weight: bold"  value="#{bundle.ViewMedicoLabel_nacionalidad}"/>
+                            <h:outputText value="#{medicoController.selected.nacionalidad}" title="#{bundle.ViewMedicoTitle_nacionalidad}"/>
+                            <h:outputLabel value="                   "/>
+                            <h:outputText style="font-weight: bold"  value="#{bundle.ViewMedicoLabel_provincia}"/>
+                            <h:outputText value="#{medicoController.selected.provincia}" title="#{bundle.ViewMedicoTitle_provincia}"/>
+
+
+                            <h:outputText style="font-weight: bold"  value="#{bundle.ViewMedicoLabel_localidad}"/>
+                            <h:outputText value="#{medicoController.selected.localidad}" title="#{bundle.ViewMedicoTitle_localidad}"/>
+                            <h:outputLabel value="                   "/>
+                            <h:outputText style="font-weight: bold"  value="#{bundle.ViewMedicoLabel_categoria}"/>
+                            <h:outputText value="#{medicoController.selected.categoria.descripcion}" title="#{bundle.ViewMedicoTitle_categoria}"/>
+
+                            <h:outputText style="font-weight: bold"  value="#{bundle.ViewMedicoLabel_sueldo}"/>
+                            <h:outputText value="#{medicoController.selected.sueldo}" title="#{bundle.ViewMedicoTitle_sueldo}"/>
+                            <h:outputLabel value="                   "/>
+                            <h:outputText style="font-weight: bold"  value="#{bundle.ViewMedicoLabel_fechaalta}"/>
+                            <h:outputText value="#{medicoController.selected.fechaalta}" title="#{bundle.ViewMedicoTitle_fechaalta}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+
+                            <h:outputText style="font-weight: bold"  value="#{bundle.ViewMedicoLabel_fechabaja}"/>
+                            <h:outputText value="#{medicoController.selected.fechabaja}" title="#{bundle.ViewMedicoTitle_fechabaja}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                            <h:outputLabel value="                   "/>
+                            <h:outputLabel style="font-weight: bold" value="#{bundle.CreateMedicoTitle_administrador}" for="Administrdor" />
+                            <h:outputLabel value="#{medicoController.selected.admin}" />
+
+                            <h:outputLabel style="font-weight: bold" value="#{bundle.CreateMedicoTitle_activo}" for="Administrdor" />
+                            <h:outputLabel value="#{medicoController.selected.activ}" />
+                            <h:outputLabel value="                   "/>
+                            <h:outputLabel value="                   "/>
+                            <h:outputLabel value="                   "/>
+                            <h:outputText style="font-weight: bold"  value="#{bundle.ViewMedicoLabel_direccion}"/>
+                            <h:outputText value="#{medicoController.selected.direccion}" style="width: 278%" title="#{bundle.ViewMedicoTitle_direccion}"/>
+                        </p:panelGrid>
+                        <br />
+                        <br />
+
+                        <p:commandButton title="Exportar como PDF" value="Imprimir" ajax="false">
+                            <f:param name="action" value="#{medicoController.selected.medicoid}"/>
+                            <p:dataExporter type="pdf" target="tabla_detalles" fileName="Detalle_Medico"  encoding="ISO-8859-1"  preProcessor="#{medicoController.preProcessDetallePDF}"/>
+                        </p:commandButton>
+                        <p:commandButton action="#{medicoController.prepareList}" value="#{bundle.ViewMedicoShowAllLink}" ajax="false"/>
+                    </p:fieldset>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

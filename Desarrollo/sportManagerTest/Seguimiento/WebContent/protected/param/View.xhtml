@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPacienteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel header="#{bundle.ViewPacienteTitle}" style="font-size: 12px" >
+                    <p:dataTable id="tabla_detalles" style="font-size: 12px" value="#{paciente.selected}" var="medico" styleClass="borderless" rendered="false">
+                        <p:column>
+                        </p:column>
+                    </p:dataTable>
+                    <p:fieldset >
+                        <p:panelGrid columns="5" styleClass="panel_grid_border">
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewPacienteLabel_medico}"/>
+                            <h:outputText value="#{pacienteController.selected.medico.nombre} #{pacienteController.selected.medico.apellidopaterno}" title="#{bundle.ViewPacienteTitle_medico}"/>
+                            <h:outputLabel value="                   "/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewPacienteLabel_nombre}"/>
+                            <h:outputText value="#{pacienteController.selected.nombre} #{pacienteController.selected.apellidopaterno} #{pacienteController.selected.apellidomaterno}" title="#{bundle.ViewPacienteTitle_nombre}"/>
+
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewPacienteLabel_cedula}"/>
+                            <h:outputText value="#{pacienteController.selected.cedula}" title="#{bundle.ViewPacienteTitle_cedula}"/>
+                            <h:outputLabel value="                   "/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewPacienteLabel_profesion}"/>
+                            <h:outputText value="#{pacienteController.selected.profesion}" title="#{bundle.ViewPacienteTitle_profesion}"/>
+
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewPacienteLabel_lugartrabajo}"/>
+                            <h:outputText value="#{pacienteController.selected.lugartrabajo}" title="#{bundle.ViewPacienteTitle_lugartrabajo}"/>
+                            <h:outputLabel value="                   "/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewPacienteLabel_genero}"/>
+                            <h:outputText value="#{pacienteController.selected.genero}" title="#{bundle.ViewPacienteTitle_genero}"/>
+
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewPacienteLabel_estadocivil}"/>
+                            <h:outputText value="#{pacienteController.selected.estadocivil}" title="#{bundle.ViewPacienteTitle_estadocivil}"/>
+                            <h:outputLabel value="                   "/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewPacienteLabel_numerohijos}"/>
+                            <h:outputText value="#{pacienteController.selected.numerohijos}" title="#{bundle.ViewPacienteTitle_numerohijos}"/>
+
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewPacienteLabel_edad}"/>
+                            <h:outputText value="#{pacienteController.selected.edad}" title="#{bundle.ViewPacienteTitle_edad}"/>
+                            <h:outputLabel value="                   "/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewPacienteLabel_fechanacimiento}"/>
+                            <h:outputText value="#{pacienteController.selected.fechanacimiento}" title="#{bundle.ViewPacienteTitle_fechanacimiento}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewPacienteLabel_telefono}"/>
+                            <h:outputText value="#{pacienteController.selected.telefono}" title="#{bundle.ViewPacienteTitle_telefono}"/>
+                            <h:outputLabel value="                   "/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewPacienteLabel_celular}"/>
+                            <h:outputText value="#{pacienteController.selected.celular}" title="#{bundle.ViewPacienteTitle_celular}"/>
+
+
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewPacienteLabel_email}"/>
+                            <h:outputText value="#{pacienteController.selected.email}" title="#{bundle.ViewPacienteTitle_email}"/>
+
+                            <h:outputLabel value="                   "/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewPacienteLabel_nacionalidad}"/>
+                            <h:outputText value="#{pacienteController.selected.nacionalidad}" title="#{bundle.ViewPacienteTitle_nacionalidad}"/>
+
+
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewPacienteLabel_provincia}"/>
+                            <h:outputText value="#{pacienteController.selected.provincia}" title="#{bundle.ViewPacienteTitle_provincia}"/>
+                            <h:outputLabel value="                   "/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewPacienteLabel_direccion}"/>
+                            <h:outputText value="#{pacienteController.selected.direccion}" title="#{bundle.ViewPacienteTitle_direccion}"/>
+                        </p:panelGrid>
+                        <br />
+                        <br />
+                        <br />
+                         <p:commandButton title="Exportar como PDF" value="Imprimir" ajax="false">
+                             <f:param name="action" value="#{pacienteController.selected.pacienteid}"/>
+                            <p:dataExporter type="pdf" target="tabla_detalles" fileName="Detalle_Paciente"  encoding="ISO-8859-1"  preProcessor="#{pacienteController.preProcessDetallePDF}"/>
+                        </p:commandButton>
+                        <p:commandButton action="#{pacienteController.prepareList}" style="font-size: 12px" value="#{bundle.ViewPacienteShowAllLink}" ajax="false"/>
+                    </p:fieldset>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

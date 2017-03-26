@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Lugar Geográfico"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form styleClass="jsfcrud_list_form">
+            
+                <p:panel header="Lugar Geográfico" style="font-size: 12px" >
+                     <p:messages severity="error" globalOnly="true"  />
+                    <p:menubar>
+                        <p:menuitem value="Nuevo" icon="ui-icon-newwin" style="color: cornflowerblue"  action="#{lugarGeograficoController.prepareCreate}" ajax="false" />
+                         <p:menuitem title="Exportar como PDF" icon="ui-icon-print" style="color: cornflowerblue" value="PDF" ajax="false" >
+                            <p:dataExporter type="pdf" target="TableData" fileName="Lugar Geográfico" excludeColumns="5" encoding="ISO-8859-1"  preProcessor="#{lugarGeograficoController.preProcessPDF}"/>
+                        </p:menuitem>
+                       
+                    </p:menubar>
+                    <f:facet name="footer">
+                        <h:outputText style="color: cornflowerblue" value="Hay un total de #{lugarGeograficoController.items.rowCount} registros" />
+                    </f:facet>
+
+                    
+                    <p:dataTable var="item" id="TableData" emptyMessage="No hay registros" value="#{lugarGeograficoController.items}" paginatorPosition="bottom" paginator="true" rows="5" widgetVar="cabTable" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,15 ">
+
+                        <p:column sortBy="#{item.idLugar}" filterBy="#{item.idLugar}" filterMatchMode="exact">
+                            <f:facet name="header">
+                                <h:outputText value="Id"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idLugar}"/>
+                        </p:column>    
+                    
+                        <p:column filterBy="#{item.lugarGeograficop.desCorta}" sortBy="#{item.lugarGeografico.desCorta}" filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="Padre"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lugarGeograficop.desCorta}" />
+                        </p:column>
+
+                        
+                        <p:column sortBy="#{item.desCorta}" filterBy="#{item.desCorta}"  filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="Des. corta"/>
+                            </f:facet>
+                            <h:outputText value="#{item.desCorta}"/>
+                        </p:column>
+
+                        <p:column sortBy="#{item.desLarga}" filterBy="#{item.desLarga}"  filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="Des. Larga"/>
+                            </f:facet>
+                            <h:outputText value="#{item.desLarga}"/>
+                        </p:column>
+                        
+                        <p:column sortBy="#{item.nivel}" filterBy="#{item.nivel}"  filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="Nivel"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nivel}"/>
+                        </p:column>                       
+                        
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Acciones"/>
+                            </f:facet>
+                            
+                            <h:outputText value=" "/>
+                            
+                            <p:commandButton icon="ui-icon-arrowrefresh-1-w" action="#{lugarGeograficoController.prepareEdit}" title="#{bundle.ListPacienteEditLink}" ajax="false">
+                                <f:param name="action" value="#{item.position}"/>
+                            </p:commandButton>
+  
+							<h:outputText value=" "/>
+                            	<p:commandButton icon="ui-icon-close" action="#{lugarGeograficoController.destroy}" title="#{bundle.ListPacienteDestroyLink}" ajax="false">
+                                <f:param name="action" value="#{item.position}"/>
+                            </p:commandButton>
+                            
+                        </p:column>
+                    </p:dataTable>
+
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

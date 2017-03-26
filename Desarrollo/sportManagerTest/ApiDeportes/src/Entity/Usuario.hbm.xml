@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/12/2014 11:11:15 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="Entity.Usuario" table="usuario" schema="seguimiento">
+        <id name="usuId" type="int">
+            <column name="usu_id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="docente" class="Entity.Docente" fetch="select">
+            <column name="emp_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="parametroDetalleByPadCodigo" class="Entity.ParametroDetalle" fetch="select">
+            <column name="pad_codigo" length="6" not-null="true" />
+        </many-to-one>
+        <many-to-one name="parametroDetalleByParPadCodigo" class="Entity.ParametroDetalle" fetch="select">
+            <column name="par_pad_codigo" length="6" not-null="true" />
+        </many-to-one>
+        <property name="usuDescripcion" type="string">
+            <column name="usu_descripcion" length="64" not-null="true" />
+        </property>
+        <property name="usuLogin" type="string">
+            <column name="usu_login" length="16" not-null="true" />
+        </property>
+        <property name="usuPassword" type="string">
+            <column name="usu_password" length="8" not-null="true" />
+        </property>
+        <property name="audUsuCrea" type="int">
+            <column name="aud_usu_crea" not-null="true" />
+        </property>
+        <property name="audUsuModi" type="int">
+            <column name="aud_usu_modi" not-null="true" />
+        </property>
+        <property name="audFechaCrea" type="date">
+            <column name="aud_fecha_crea" length="13" not-null="true" />
+        </property>
+        <property name="audFechaModi" type="date">
+            <column name="aud_fecha_modi" length="13" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

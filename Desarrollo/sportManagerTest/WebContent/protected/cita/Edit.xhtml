@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCitaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel header="#{bundle.EditCitaTitle}" style="font-size: 12px" >
+                    <p:panelGrid columns="4" styleClass="panel_grid_border" style="font-size: 12px">
+
+                        <h:outputLabel value="#{bundle.CreateCitaLabel_paciente}" for="paciente" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="paciente"  style="width: 100%" value="#{citaController.selected.paciente}"  required="true" requiredMessage="#{bundle.CreateCitaRequiredMessage_paciente}">
+                                <f:selectItems value="#{pacienteController.itemsAvailableSelectOneByUser}"/>
+                            </p:selectOneMenu>
+                            <p:message for="paciente" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateCitaLabel_medico}" for="medico" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="medico"  style="width: 100%" value="#{citaController.selected.medico}"  required="true" requiredMessage="#{bundle.CreateCitaRequiredMessage_medico}">
+                                <f:selectItems value="#{medicoController.itemsAvailableSelectOneByUser}"/>
+                            </p:selectOneMenu>
+                            <p:message for="medico" />
+                        </h:panelGroup>
+
+
+                        <h:outputText/>
+                        <h:outputText/>
+
+                        <h:outputLabel value="#{bundle.CreateCitaLabel_numero}" for="numero" />
+                        <h:panelGroup>
+                            <p:spinner size="18" min="1"  id="numero"  style="width: 100%" value="#{citaController.selected.numero}" title="#{bundle.CreateCitaTitle_numero}" required="true" requiredMessage="#{bundle.CreateCitaRequiredMessage_numero}"/>
+                            <p:message for="numero" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateCitaLabel_duracion}" for="duracion" />
+                        <h:panelGroup>  
+                            <p:calendar id="duracion"  maxHour="10" value="#{citaController.selected.duracion}" pattern="HH:mm" title="#{bundle.CreateCitaTitle_duracion}" required="true" requiredMessage="#{bundle.CreateCitaRequiredMessage_duracion}" timeOnly="true"/>
+                            <p:message for="duracion" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateCitaLabel_tipo}" for="tipo" />
+                        <h:panelGroup>
+                            <p:inputText id="tipo" maxlength="100" style="width: 100%" value="#{citaController.selected.tipo}" title="#{bundle.CreateCitaTitle_tipo}" required="true" requiredMessage="#{bundle.CreateCitaRequiredMessage_tipo}" validatorMessage="#{bundle.CreateMedicoString_nombre}">
+                                <f:validateRegex pattern="^[a-zA-Z ]+$" />
+                            </p:inputText>
+                            <p:message for="tipo" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateCitaLabel_acude}" for="acude" />
+                        <p:fieldset>
+                            <h:panelGroup>  
+                                <p:selectOneRadio id="acude" value="#{citaController.selected.acude}" required="true" requiredMessage="#{bundle.CreateCitaRequiredMessage_acude}">
+                                    <f:selectItem itemLabel="Si" itemValue="Si" />
+                                    <f:selectItem itemLabel="No" itemValue="No" />
+                                </p:selectOneRadio>
+                                <p:message for="acude" />
+                            </h:panelGroup>
+                        </p:fieldset>
+
+                        <h:outputLabel value="#{bundle.CreateCitaLabel_fechacita}" for="fechacita" />
+                        <h:panelGroup>  
+                            <p:calendar id="fechacita"  value="#{citaController.selected.fechacita}" pattern="MM/dd/yyyy hh:mm a" title="#{bundle.CreateCitaTitle_fechacita}" required="true" requiredMessage="#{bundle.CreateCitaRequiredMessage_fechacita}"/>
+                            <p:message for="fechacita" />
+                        </h:panelGroup>
+                        <h:outputLabel value="#{bundle.CreateCitaLabel_descripcion}" for="descripcion" />
+
+                        <h:panelGroup>
+                            <p:inputTextarea id="descripcion" maxlength="1000" style="width: 100%" value="#{citaController.selected.descripcion}" title="#{bundle.CreateCitaTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateCitaRequiredMessage_descripcion}"/>
+                            <p:message for="descripcion" />
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateCitaLabel_notas}" for="notas" />
+                        <h:panelGroup>  
+                            <p:inputTextarea id="notas" maxlength="1000" style="width: 265%" value="#{citaController.selected.notas}" title="#{bundle.CreateCitaTitle_notas}" required="true" requiredMessage="#{bundle.CreateCitaRequiredMessage_notas}"/>
+                            <p:message for="notas" />
+                        </h:panelGroup>
+
+
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <br />
+                    <p:commandButton action="#{citaController.update}" value="#{bundle.CreateCitaSaveLink}" ajax="false"/>
+                    <p:commandButton action="#{citaController.prepareList}" value="#{bundle.CreateCitaShowAllLink}" immediate="true" ajax="false"/>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

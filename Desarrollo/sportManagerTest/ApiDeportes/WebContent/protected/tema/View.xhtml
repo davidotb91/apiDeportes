@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="Detalle Tema">
+            <h:outputText value="Detalle Tema"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel header="Detalle Tema" style="font-size: 12px" >
+                    <p:dataTable id="tabla_detalles" style="font-size: 12px" value="#{tema.selected}" var="medico" styleClass="borderless" rendered="false">
+                        <p:column>
+                        </p:column>
+                    </p:dataTable>
+                    <p:fieldset >
+                        <p:panelGrid columns="5" styleClass="panel_grid_border">
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewPacienteLabel_medico}"/>
+                            <h:outputText value="#{temaController.selected.teId}" title="Id:"/>
+                            <h:outputLabel value="                   "/>
+                            <h:outputText style="font-weight: bold" value="Estado"/>
+                            <h:outputText value="#{temaController.selected.parametroDetalle.padDesCorta}" title=""/>
+
+                            <h:outputText style="font-weight: bold" value="Estudiante"/>
+                            <h:outputText value="#{temaController.selected.estudiante.estApellidos} #{temaController.selected.estudiante.estNombres}" title=""/>
+                            <h:outputLabel value="                   "/>
+                            <h:outputText style="font-weight: bold" value="Maestría"/>
+                            <h:outputText value="#{temaController.selected.parametroDetalleMaestria.padDesCorta}" title=""/>
+
+                            <h:outputText style="font-weight: bold" value="Tema"/>
+                            <h:outputText value="#{temaController.selected.temDescripcion}" title=""/>
+                            <h:outputLabel value="                   "/>
+                            <h:outputText style="font-weight: bold" value="Fecha Inicio"/>
+                            <h:outputText value="#{temaController.selected.temFechaPresentacion}" title=""/>
+
+                            <h:outputText style="font-weight: bold" value="Fecha Máxima"/>
+                            <h:outputText value="#{temaController.selected.temFechaMaximaAprobacion}" title=""/>
+                            <h:outputLabel value="                   "/>
+                            <h:outputText style="font-weight: bold" value="Abstract"/>
+                            <h:outputText value="#{temaController.selected.temObservarcharciones}" title=""/>
+
+                        </p:panelGrid>
+                        <br />
+                        <br />
+                        <br />
+                        <p:commandButton action="#{temaController.prepareListE}" style="font-size: 12px" value="#{bundle.ViewPacienteShowAllLink}" ajax="false"/>
+                    </p:fieldset>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCitaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel header="#{bundle.ViewCitaTitle}" style="font-size: 12px" >
+                     <p:dataTable id="tabla_detalles" style="font-size: 12px" value="#{cita.selected}" var="medico" styleClass="borderless" rendered="false">
+                        <p:column>
+                        </p:column>
+                    </p:dataTable>
+                    <p:fieldset >
+                        <p:panelGrid columns="5" styleClass="panel_grid_border">
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewCitaLabel_paciente}"/>
+                            <h:outputText value="#{citaController.selected.paciente.nombre} #{citaController.selected.paciente.apellidopaterno}" title="#{bundle.ViewCitaTitle_paciente}"/>
+                            <h:outputText value="                    "/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewCitaLabel_medico}"/>
+                            <h:outputText value="#{citaController.selected.medico.nombre} #{citaController.selected.medico.apellidopaterno}" title="#{bundle.ViewCitaTitle_medico}"/>
+
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewCitaLabel_numero}"/>
+                            <h:outputText value="#{citaController.selected.numero}" title="#{bundle.ViewCitaTitle_numero}"/>
+                            <h:outputText value="                    "/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewCitaLabel_fechacita}"/>
+                            <h:outputText value="#{citaController.selected.fechacita}" title="#{bundle.ViewCitaTitle_fechacita}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewCitaLabel_hora}"/>
+                            <h:outputText value="#{citaController.selected.horarioString} " title="#{bundle.ViewCitaTitle_hora}"/>
+                            <h:outputText value="                    "/>
+
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewCitaLabel_acude}"/>
+                            <h:outputText value="#{citaController.selected.acude}" title="#{bundle.ViewCitaTitle_acude}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewCitaLabel_tipo}"/>
+                            <h:outputText value="#{citaController.selected.tipo}" title="#{bundle.ViewCitaTitle_tipo}"/>
+
+                        </p:panelGrid>
+                        <br/>
+                        <p:fieldset>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewCitaLabel_notas}"/>
+                            <br/>
+                            <br/>
+                            <h:outputText value="#{citaController.selected.notas}" title="#{bundle.ViewCitaTitle_notas}"/>
+                            <br/>
+                            <br/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewCitaLabel_descripcion}"/>
+                            <br/>
+                            <br/>
+                            <h:outputText value="#{citaController.selected.descripcion}" title="#{bundle.ViewCitaTitle_descripcion}"/>
+
+
+                        </p:fieldset>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <p:commandButton title="Exportar como PDF" value="Imprimir" ajax="false">
+                            <f:param name="action" value="#{citaController.selected.citaid}"/>
+                            <p:dataExporter type="pdf" target="tabla_detalles" fileName="Detalle_Cita"  encoding="ISO-8859-1"  preProcessor="#{citaController.preProcessDetallePDF}"/>
+                        </p:commandButton>
+                        <p:commandButton action="#{citaController.prepareList}" value="#{bundle.ViewCitaShowAllLink}" ajax="false"/>
+                    </p:fieldset>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

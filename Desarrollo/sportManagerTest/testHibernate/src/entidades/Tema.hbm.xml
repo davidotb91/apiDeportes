@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-mar-2017 23:14:36 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="entidades.Tema" table="tema" schema="seguimiento">
+        <id name="teId" type="int">
+            <column name="te_id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="parametroDetalleByPadeCodigoMaestria" class="entidades.ParametroDetalle" fetch="select">
+            <column name="pade_codigo_maestria" length="6" />
+        </many-to-one>
+        <many-to-one name="parametroDetalleByPadCodigo" class="entidades.ParametroDetalle" fetch="select">
+            <column name="pad_codigo" length="6" not-null="true" />
+        </many-to-one>
+        <many-to-one name="docente" class="entidades.Docente" fetch="select">
+            <column name="doc_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="estudiante" class="entidades.Estudiante" fetch="select">
+            <column name="est_id" not-null="true" />
+        </many-to-one>
+        <property name="temDescripcion" type="string">
+            <column name="tem_descripcion" length="64" not-null="true" />
+        </property>
+        <property name="temFechaPresentacion" type="date">
+            <column name="tem_fecha_presentacion" length="13" not-null="true" />
+        </property>
+        <property name="temFechaMaximaAprobacion" type="date">
+            <column name="tem_fecha_maxima_aprobacion" length="13" not-null="true" />
+        </property>
+        <property name="temObservarcharciones" type="string">
+            <column name="tem_observarcharciones" length="1024" not-null="true" />
+        </property>
+        <property name="temNotaFinal" type="double">
+            <column name="tem_nota_final" precision="17" scale="17" not-null="true" />
+        </property>
+        <property name="audUsuCrea" type="int">
+            <column name="aud_usu_crea" not-null="true" />
+        </property>
+        <property name="audUsuModi" type="int">
+            <column name="aud_usu_modi" not-null="true" />
+        </property>
+        <property name="audFechaCrea" type="date">
+            <column name="aud_fecha_crea" length="13" not-null="true" />
+        </property>
+        <property name="audFechaModi" type="date">
+            <column name="aud_fecha_modi" length="13" not-null="true" />
+        </property>
+        <property name="temFechaAprobacion" type="date">
+            <column name="tem_fecha_aprobacion" length="13" />
+        </property>
+        <set name="seguimientoTesises" table="seguimiento_tesis" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="te_id" />
+            </key>
+            <one-to-many class="entidades.SeguimientoTesis" />
+        </set>
+    </class>
+</hibernate-mapping>

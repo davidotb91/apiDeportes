@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/03/2017 14:13:39 by Hibernate Tools 5.1.2.Final -->
+<hibernate-mapping>
+    <class name="Entity.CampeonatoEquipo" table="campeonato_equipo" catalog="dbcampeonatos" optimistic-lock="version">
+        <id name="campId" type="int">
+            <column name="CAMP_ID" />
+            <generator class="foreign">
+                <param name="property">campeonato</param>
+            </generator>
+        </id>
+        <one-to-one name="campeonato" class="Entity.Campeonato" constrained="true"></one-to-one>
+        <many-to-one name="equipo" class="Entity.Equipo" fetch="select">
+            <column name="EQUI_ID" not-null="true" />
+        </many-to-one>
+        <property name="caeqEstado" type="string">
+            <column name="CAEQ_ESTADO" length="32" />
+        </property>
+        <property name="audUsuCrea" type="string">
+            <column name="AUD_USU_CREA" length="128" />
+        </property>
+        <property name="audUsuModi" type="string">
+            <column name="AUD_USU_MODI" length="128" />
+        </property>
+        <property name="audFechaCrea" type="timestamp">
+            <column name="AUD_FECHA_CREA" length="0" />
+        </property>
+        <property name="audFechaModi" type="timestamp">
+            <column name="AUD_FECHA_MODI" length="0" />
+        </property>
+        <set name="requisitoses" table="requisitos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CAMP_ID" />
+            </key>
+            <one-to-many class="Entity.Requisitos" />
+        </set>
+        <set name="fixturesForSpoCampId3" table="fixture" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SPO_CAMP_ID3" />
+            </key>
+            <one-to-many class="Entity.Fixture" />
+        </set>
+        <set name="fixturesForSpoCampId2" table="fixture" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SPO_CAMP_ID2" />
+            </key>
+            <one-to-many class="Entity.Fixture" />
+        </set>
+        <set name="fixturesForSpoCampId" table="fixture" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SPO_CAMP_ID" />
+            </key>
+            <one-to-many class="Entity.Fixture" />
+        </set>
+    </class>
+</hibernate-mapping>

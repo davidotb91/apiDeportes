@@ -1,0 +1,15 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+ 
+  <h:head></h:head>
+ 
+  <h:body>
+     <h:form id="form" >
+ 
+        <p:fileUpload fileUploadListener="#{fileUploadView.handleFileUpload}" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" sizeLimit="10000000" description="Select Images"/>
+ 
+    </h:form>
+  </h:body>
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-mar-2017 23:14:36 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="entidades.VistaReporteEstudiantes" table="vista_reporte_estudiantes" schema="seguimiento">
+        <composite-id name="id" class="entidades.VistaReporteEstudiantesId">
+            <key-property name="apellidos" type="string">
+                <column name="apellidos" length="64" />
+            </key-property>
+            <key-property name="nombres" type="string">
+                <column name="nombres" length="64" />
+            </key-property>
+            <key-property name="descripcion" type="string">
+                <column name="descripcion" length="64" />
+            </key-property>
+            <key-property name="maestria" type="string">
+                <column name="maestria" length="64" />
+            </key-property>
+            <key-property name="estadoMaestria" type="string">
+                <column name="estado_maestria" length="64" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

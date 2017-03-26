@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/03/2017 13:31:25 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="entity.LugarGeografico" table="lugar_geografico" schema="seguimiento">
+        <id name="idLugar" type="int">
+            <column name="id_lugar" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="lugarGeografico" class="entity.LugarGeografico" fetch="select">
+            <column name="lug_id_lugar" not-null="true" />
+        </many-to-one>
+        <property name="desCorta" type="string">
+            <column name="des_corta" length="64" not-null="true" />
+        </property>
+        <property name="desLarga" type="string">
+            <column name="des_larga" length="200" not-null="true" />
+        </property>
+        <property name="nivel" type="int">
+            <column name="nivel" not-null="true" />
+        </property>
+        <property name="audUsuCrea" type="int">
+            <column name="aud_usu_crea" not-null="true" />
+        </property>
+        <property name="audUsuModi" type="int">
+            <column name="aud_usu_modi" not-null="true" />
+        </property>
+        <property name="audFechaCrea" type="date">
+            <column name="aud_fecha_crea" length="13" not-null="true" />
+        </property>
+        <property name="audFechaModi" type="date">
+            <column name="aud_fecha_modi" length="13" not-null="true" />
+        </property>
+        <set name="estudiantes" table="estudiante" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_lugar" not-null="true" />
+            </key>
+            <one-to-many class="entity.Estudiante" />
+        </set>
+        <set name="lugarGeograficos" table="lugar_geografico" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="lug_id_lugar" not-null="true" />
+            </key>
+            <one-to-many class="entity.LugarGeografico" />
+        </set>
+    </class>
+</hibernate-mapping>

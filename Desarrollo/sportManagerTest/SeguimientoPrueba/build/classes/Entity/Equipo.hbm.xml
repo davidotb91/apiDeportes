@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/03/2017 14:13:39 by Hibernate Tools 5.1.2.Final -->
+<hibernate-mapping>
+    <class name="Entity.Equipo" table="equipo" catalog="dbcampeonatos" optimistic-lock="version">
+        <id name="equiId" type="java.lang.Integer">
+            <column name="EQUI_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="usuario" class="Entity.Usuario" fetch="select">
+            <column name="USUA_ID" />
+        </many-to-one>
+        <property name="equiNombre" type="string">
+            <column name="EQUI_NOMBRE" length="32" />
+        </property>
+        <property name="equiDescripcion" type="string">
+            <column name="EQUI_DESCRIPCION" length="64" />
+        </property>
+        <property name="equiFechaFundacion" type="timestamp">
+            <column name="EQUI_FECHA_FUNDACION" length="0" />
+        </property>
+        <property name="equiPresidente" type="string">
+            <column name="EQUI_PRESIDENTE" length="64" />
+        </property>
+        <property name="equiMailContacto" type="string">
+            <column name="EQUI_MAIL_CONTACTO" length="64" />
+        </property>
+        <property name="equiDireccion" type="string">
+            <column name="EQUI_DIRECCION" length="64" />
+        </property>
+        <property name="equiTelefono" type="string">
+            <column name="EQUI_TELEFONO" length="32" />
+        </property>
+        <property name="equiObservaciones" type="string">
+            <column name="EQUI_OBSERVACIONES" />
+        </property>
+        <property name="equiEscudo" type="binary">
+            <column name="EQUI_ESCUDO" />
+        </property>
+        <property name="equiBandera" type="binary">
+            <column name="EQUI_BANDERA" />
+        </property>
+        <property name="audUsuCrea" type="string">
+            <column name="AUD_USU_CREA" length="128" />
+        </property>
+        <property name="audUsuModi" type="string">
+            <column name="AUD_USU_MODI" length="128" />
+        </property>
+        <property name="audFechaCrea" type="timestamp">
+            <column name="AUD_FECHA_CREA" length="0" />
+        </property>
+        <property name="audFechaModi" type="timestamp">
+            <column name="AUD_FECHA_MODI" length="0" />
+        </property>
+        <set name="jugadors" table="jugador" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EQUI_ID" />
+            </key>
+            <one-to-many class="Entity.Jugador" />
+        </set>
+        <set name="campeonatoEquipos" table="campeonato_equipo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EQUI_ID" not-null="true" />
+            </key>
+            <one-to-many class="Entity.CampeonatoEquipo" />
+        </set>
+    </class>
+</hibernate-mapping>

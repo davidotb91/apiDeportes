@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDiagnosticoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+           <h:form>
+               <p:panel header="#{bundle.CreateDiagnosticoTitle}" style="font-size: 12px" >
+                    <p:panelGrid columns="2" styleClass="panel_grid_border" style="font-size: 12px">
+
+                        <h:outputLabel value="#{bundle.CreateDiagnosticoLabel_titulo}" for="titulo" />
+                        <h:panelGroup>
+                            <p:inputText id="titulo" value="#{diagnosticoController.selected.titulo}" title="#{bundle.CreateDiagnosticoTitle_titulo}" required="true" requiredMessage="#{bundle.CreateDiagnosticoRequiredMessage_titulo}"/>
+                            <p:message for="titulo" />   
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.CreateDiagnosticoLabel_descripcion}" for="descripcion" />
+                        <h:panelGroup>
+                            <p:inputTextarea  style="width: 200%" id="descripcion" value="#{diagnosticoController.selected.descripcion}" title="#{bundle.CreateDiagnosticoTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateDiagnosticoRequiredMessage_descripcion}"/>
+                            <p:message for="descripcion" />   
+                        </h:panelGroup>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <br />
+                    <p:commandButton action="#{diagnosticoController.update}" value="#{bundle.CreateDiagnosticoSaveLink}" ajax="false" />
+
+                    <p:commandButton action="#{diagnosticoController.prepareList}" value="#{bundle.CreateDiagnosticoShowAllLink}" immediate="true" ajax="false"/>
+                </p:panel> 
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

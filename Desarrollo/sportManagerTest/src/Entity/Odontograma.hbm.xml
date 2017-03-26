@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-jul-2014 19:36:53 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Entity.Odontograma" table="odontograma" schema="clinica">
+        <id name="odontogramaid" type="int">
+            <column name="odontogramaid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="paciente" class="Entity.Paciente" fetch="select">
+            <column name="pacienteid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="medico" class="Entity.Medico" fetch="select">
+            <column name="medicoid" not-null="true" />
+        </many-to-one>
+        
+        <property name="fecha" type="date">
+            <column name="fecha" length="13" not-null="true" />
+        </property>
+        <property name="numerodepieza" type="string">
+            <column name="numerodepieza" length="20" not-null="true" />
+        </property>
+        <property name="materialrelleno" type="string">
+            <column name="materialrelleno" length="200" not-null="true" />
+        </property>
+        <property name="materialsellado" type="string">
+            <column name="materialsellado" length="200" not-null="true" />
+        </property>
+        <property name="descripciontratamiento" type="string">
+            <column name="descripciontratamiento" length="1000" not-null="true" />
+        </property>
+        <property name="realizado" type="string">
+            <column name="realizado" length="20" not-null="true" />
+        </property>
+        <property name="presupuesto" type="string">
+            <column name="presupuesto" length="20" not-null="true" />
+        </property>
+        <property name="formadepago" type="string">
+            <column name="formadepago" length="100" not-null="true" />
+        </property>
+        <property name="image" type="string">
+            <column name="image" not-null="true" />
+        </property>
+        <!--set name="archivos" inverse="true">
+            <key>
+                <column name="odontogramaid" not-null="true" />
+            </key>
+            <one-to-many class="Entity.Archivo" />
+        </set>
+        <set name="tratamientos" inverse="true">
+            <key>
+                <column name="odontogramaid" not-null="true" />
+            </key>
+            <one-to-many class="Entity.Tratamiento" />
+        </set-->
+        
+    </class>
+</hibernate-mapping>

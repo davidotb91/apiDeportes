@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Panel de control"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <style>
+                .dashboard-panel {
+                    margin-right: 10px;
+                    margin-bottom: 10px;
+                }
+                .citas-bar-chart {
+                    width: 500px;
+                }
+            </style>
+            <p:dashboard model="#{dashboardController.model}" style="font-size: 14px">
+                <p:panel id="Consultas" header="Consultas" closable="true" toggleable="true" styleClass="dashboard-panel">
+                    <center><h:graphicImage value="/img/consulta.png" /></center>
+                    <center>
+                        <h:form>
+                            <p:commandButton value="#{consultaController.dashBoardMessage}" action="/faces/protected/consulta/List.xhtml" ajax="false" />
+                        </h:form>
+                    </center>
+                </p:panel>
+                <p:panel id="Odontogramas" header="Odontogramas" closable="true" toggleable="true" styleClass="dashboard-panel">
+                    <center><h:graphicImage value="/img/odontograma.png" /></center>
+                    <center>
+                        <h:form>
+                            <p:commandButton value="#{odontogramaController.dashBoardMessage}" action="/faces/protected/odontograma/List.xhtml" ajax="false" />
+                        </h:form>
+                    </center>
+                </p:panel>
+                <p:panel id="GraficaCitas" header="Citas de hoy" closable="true" toggleable="true" styleClass="dashboard-panel citas-bar-chart">
+                    <p:barChart value="#{dashboardController.citaChart}" />
+                </p:panel>
+            </p:dashboard>
+        </ui:define>
+    </ui:composition>
+
+</html>

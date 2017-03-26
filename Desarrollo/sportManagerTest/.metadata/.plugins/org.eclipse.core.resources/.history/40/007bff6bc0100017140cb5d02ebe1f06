@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/03/2017 13:33:24 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="entity.SpoCampeonato" table="spo_campeonato" catalog="dbcampeonatos" optimistic-lock="version">
+        <id name="campId" type="java.lang.Integer">
+            <column name="CAMP_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="spoParametroDetalleByPadeId" class="entity.SpoParametroDetalle" fetch="select">
+            <column name="PADE_ID" />
+        </many-to-one>
+        <many-to-one name="spoParametroDetalleBySpoPadeId" class="entity.SpoParametroDetalle" fetch="select">
+            <column name="SPO_PADE_ID" />
+        </many-to-one>
+        <many-to-one name="spoParametroDetalleBySpoPadeId2" class="entity.SpoParametroDetalle" fetch="select">
+            <column name="SPO_PADE_ID2" />
+        </many-to-one>
+        <property name="campDescripcion" type="string">
+            <column name="CAMP_DESCRIPCION" length="64" />
+        </property>
+        <property name="campFechaInicio" type="timestamp">
+            <column name="CAMP_FECHA_INICIO" length="0" />
+        </property>
+        <property name="campFechaFin" type="timestamp">
+            <column name="CAMP_FECHA_FIN" length="0" />
+        </property>
+        <property name="campNumeroEquipos" type="java.lang.Long">
+            <column name="CAMP_NUMERO_EQUIPOS" />
+        </property>
+        <property name="campObservaciones" type="string">
+            <column name="CAMP_OBSERVACIONES" />
+        </property>
+        <property name="audUsuCrea" type="string">
+            <column name="AUD_USU_CREA" length="128" />
+        </property>
+        <property name="audUsuModi" type="string">
+            <column name="AUD_USU_MODI" length="128" />
+        </property>
+        <property name="audFechaCrea" type="timestamp">
+            <column name="AUD_FECHA_CREA" length="0" />
+        </property>
+        <property name="audFechaModi" type="timestamp">
+            <column name="AUD_FECHA_MODI" length="0" />
+        </property>
+        <one-to-one name="spoCampeonatoEquipo" class="entity.SpoCampeonatoEquipo"></one-to-one>
+        <set name="spoCaracteristicas" table="spo_caracteristica" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CAMP_ID" />
+            </key>
+            <one-to-many class="entity.SpoCaracteristica" />
+        </set>
+        <set name="spoFixtures" table="spo_fixture" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CAMP_ID" />
+            </key>
+            <one-to-many class="entity.SpoFixture" />
+        </set>
+        <one-to-one name="campeonaoAuspiciante" class="entity.CampeonaoAuspiciante"></one-to-one>
+    </class>
+</hibernate-mapping>

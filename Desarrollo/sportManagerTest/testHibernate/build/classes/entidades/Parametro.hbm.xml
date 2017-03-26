@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-mar-2017 23:14:36 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="entidades.Parametro" table="parametro" schema="seguimiento">
+        <comment>tipo_empleado tipo recurso recurso perfil</comment>
+        <id name="parId" type="int">
+            <column name="par_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="parDesCorta" type="string">
+            <column name="par_des_corta" length="64" not-null="true" />
+        </property>
+        <property name="parDesLarga" type="string">
+            <column name="par_des_larga" not-null="true" />
+        </property>
+        <property name="parSimbolo" type="string">
+            <column name="par_simbolo" length="6" not-null="true" />
+        </property>
+        <property name="audUsuCrea" type="int">
+            <column name="aud_usu_crea" not-null="true" />
+        </property>
+        <property name="audUsuModi" type="int">
+            <column name="aud_usu_modi" not-null="true" />
+        </property>
+        <property name="audFechaCrea" type="date">
+            <column name="aud_fecha_crea" length="13" not-null="true" />
+        </property>
+        <property name="audFechaModif" type="date">
+            <column name="aud_fecha_modif" length="13" not-null="true" />
+        </property>
+        <set name="parametroDetalles" table="parametro_detalle" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="para_id" not-null="true" />
+            </key>
+            <one-to-many class="entidades.ParametroDetalle" />
+        </set>
+    </class>
+</hibernate-mapping>

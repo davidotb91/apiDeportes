@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCabecerafacturaViewLink}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:panel id="messagePanel" layout="block" rendered="false">
+                <p:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </p:panel>
+            <h:form>
+                <p:panel header="#{bundle.ListCabecerafacturaViewLink}" style="font-size: 12px" >
+                    <p:fieldset >
+                        <p:panelGrid columns="2" styleClass="panel_grid_border">
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewCabecerafacturaLabel_paciente}"/>
+                            <h:outputText value="#{cabecerafacturaController.selected.paciente.nombre} #{cabecerafacturaController.selected.paciente.apellidopaterno}" title="#{bundle.ViewCabecerafacturaTitle_paciente}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.CreateCabecerafacturaLabel_numerofactura}"/>
+                            <h:outputText value="#{cabecerafacturaController.selected.numerofactura}" title="#{bundle.ViewCabecerafacturaTitle_numerofactura}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewCabecerafacturaLabel_total}"/>
+                            <h:outputText value="#{cabecerafacturaController.selected.total}" title="#{bundle.ViewCabecerafacturaTitle_total}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewCabecerafacturaLabel_descuento}"/>
+                            <h:outputText value="#{cabecerafacturaController.selected.descuento}" title="#{bundle.ViewCabecerafacturaTitle_descuento}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.CreateCabecerafacturaLabel_otroimpuestos}"/>
+                            <h:outputText value="#{cabecerafacturaController.selected.otroimpuestos}" title="#{bundle.ViewCabecerafacturaTitle_otroimpuestos}"/>
+                            <h:outputText style="font-weight: bold"  value="#{bundle.ViewCabecerafacturaLabel_iva}"/>
+                            <h:outputText value="#{cabecerafacturaController.selected.iva}" title="#{bundle.ViewCabecerafacturaTitle_iva}"/>
+                            <h:outputText style="font-weight: bold"  value="#{bundle.ViewCabecerafacturaLabel_observaciones}"/>
+                            <h:outputText value="#{cabecerafacturaController.selected.observaciones}" title="#{bundle.ViewCabecerafacturaTitle_observaciones}"/>
+
+                        </p:panelGrid>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <p:commandButton action="#{cabecerafacturaController.destroyAndView}" value="#{bundle.ViewRecetaDestroyLink}" ajax="false"/>
+                        <p:commandButton action="#{cabecerafacturaController.prepareList}" style="font-size: 12px" value="#{bundle.CreateCabecerafacturaShowAllLink}" ajax="false"/>
+                    </p:fieldset>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Jugadores"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+        
+		  <h:form>
+			<h:panelGroup >
+				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+			</h:panelGroup>
+		</h:form> 
+
+           <h:form>
+           	
+               <p:panel header="Jugadores" style="font-size: 12px" >
+
+                   <p:panelGrid columns="2" styleClass="panel_grid_border">
+                    
+<!-- 					<h:outputLabel value="Estado" for="parametroDetalleByPadCodigo" /> -->
+<!--                         <h:panelGroup> -->
+<!--                             <p:selectOneMenu style="width:525px" id="parametroDetalleByPadCodigo" value="#{jugadorController.selected.parametroDetalleByPadCodigo}" required="true" requiredMessage="#{bundle.labelRequerido}"> -->
+<!--                                 <f:selectItems value="#{parametroDetalleController.itemsAvailablesByState}"/> -->
+<!--                             </p:selectOneMenu> -->
+<!--                             <p:message for="parametroDetalleByPadCodigo" /> -->
+<!--                         </h:panelGroup> -->
+                        
+<!-- 					<h:outputLabel value="Facultad" for="parametroDetalleByParPadCodigo" /> -->
+<!--                         <h:panelGroup> -->
+<!--                             <p:selectOneMenu style="width:525px" id="parametroDetalleByParPadCodigo" value="#{jugadorController.selected.parametroDetalleByParPadCodigo}" required="true" requiredMessage="#{bundle.labelRequerido}"> -->
+<!--                                 <f:selectItems value="#{parametroDetalleController.itemsAvailablesByFacultad}"/> -->
+<!--                             </p:selectOneMenu> -->
+<!--                             <p:message for="parametroDetalleByParPadCodigo" /> -->
+<!--                         </h:panelGroup> -->
+                        
+                       <h:outputLabel value="Nombres" for="jugaNombres"  />
+                       <h:panelGroup>
+                           <p:inputText id="jugaNombres" style="width:525px" maxlength="64" value="#{jugadorController.selected.jugaNombres}"  required="true" requiredMessage="#{bundle.labelRequerido}" validatorMessage="#{bundle.labelFormatoIncorrecto}">
+                           		<f:validateRegex pattern="^[a-zA-Z ]+$" />
+                           </p:inputText>
+                           <p:message for="jugaNombres" />
+                       </h:panelGroup>
+
+                       <h:outputLabel value="Apellidos" for="jugaApellidos"  />
+                       <h:panelGroup>
+                           <p:inputText id="jugaApellidos" style="width:525px" maxlength="64" value="#{jugadorController.selected.jugaApellidos}"  required="true" requiredMessage="#{bundle.labelRequerido}" validatorMessage="#{bundle.labelFormatoIncorrecto}">
+                           		<f:validateRegex pattern="^[a-zA-Z ]+$" />
+                           </p:inputText>
+                           <p:message for="jugaApellidos" />
+                       </h:panelGroup>
+
+                        
+                       <h:outputLabel value="Cédula" for="jugaNumeroCedula"  />
+                       <h:panelGroup>
+                           <p:inputText id="jugaNumeroCedula" style="width:250px" maxlength="10" value="#{jugadorController.selected.jugaNumeroCedula}"  required="true" requiredMessage="#{bundle.labelRequerido}" validator="#{jugadorController.validateCedula}">
+	                           
+                           </p:inputText>
+                           <p:message for="jugaNumeroCedula" />
+                       </h:panelGroup>
+
+<!--                        <h:outputLabel value="Celular" for="docCelular"  /> -->
+<!--                        <h:panelGroup> -->
+<!--                            <p:inputText id="docCelular" style="width:525px" maxlength="10" value="#{jugadorController.selected.docCelular}"  required="true" requiredMessage="#{bundle.labelRequerido}" validatorMessage="#{bundle.labelFormatoIncorrecto}"> -->
+<!--                            			<f:validateRegex pattern="[0-9]+" /> -->
+<!--                            </p:inputText> -->
+<!--                            <p:message for="docCelular" /> -->
+<!--                        </h:panelGroup>                        -->
+
+
+<!--                        <h:outputLabel value="Teléfono" for="docTelefono"  /> -->
+<!--                        <h:panelGroup> -->
+<!--                            <p:inputText id="docTelefono" style="width:525px" maxlength="10" value="#{jugadorController.selected.docTelefono}"  required="true" requiredMessage="#{bundle.labelRequerido}" validatorMessage="#{bundle.labelFormatoIncorrecto}"> -->
+<!--                            		<f:validateRegex pattern="[0-9]+" /> -->
+<!--                            </p:inputText> -->
+<!--                            <p:message for="docTelefono" /> -->
+<!--                        </h:panelGroup> -->
+
+<!--                        <h:outputLabel value="Dirección" for="docDireccion"  /> -->
+<!--                        <h:panelGroup> -->
+<!--                            <p:inputText id="docDireccion" style="width:525px" maxlength="64" value="#{jugadorController.selected.docDireccion}"  required="true" requiredMessage="#{bundle.labelRequerido}" validatorMessage="#{bundle.labelFormatoIncorrecto}"> -->
+<!--                            		<f:validateRegex pattern="^[0-9a-zA-Z ]+$" /> -->
+<!--                            </p:inputText> -->
+<!--                            <p:message for="docDireccion" /> -->
+<!--                        </h:panelGroup>                        -->
+
+                   <p:commandButton action="#{jugadorController.create}" value="#{bundle.CreatePacienteSaveLink}" ajax="false"  >
+                       <f:param name="action" value="#{jugadorController.selected.docId}"/>
+                   </p:commandButton>
+
+                   <p:commandButton action="#{jugadorController.prepareList}" value="#{bundle.CreatePacienteShowAllLink}" immediate="true" ajax="false"/>
+				</p:panelGrid>
+				
+				
+               </p:panel>
+           </h:form>
+
+        </ui:define>
+    </ui:composition>
+
+</html>

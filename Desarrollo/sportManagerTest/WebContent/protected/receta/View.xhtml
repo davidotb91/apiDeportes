@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRecetaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel header="#{bundle.ViewRecetaTitle}" style="font-size: 12px" >
+                    <p:dataTable id="tabla_detalles" style="font-size: 12px" styleClass="borderless" rendered="false">
+                        <p:column style="background-color: grey">
+                            <f:facet name="header">
+                                <h:outputText value="  "/>
+                            </f:facet>
+                        </p:column>
+                    </p:dataTable>
+                    <p:fieldset  >
+                        <p:panelGrid columns="2" styleClass="panel_grid_border">
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewRecetaLabel_numero}"/>
+                            <h:outputText value="#{recetaController.selected.numero}" title="#{bundle.ViewRecetaTitle_numero}"/>
+                           
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewRecetaLabel_paciente}"/>
+                            <h:outputText value="#{recetaController.selected.paciente.nombre} #{recetaController.selected.paciente.apellidopaterno}" title="#{bundle.ViewRecetaTitle_paciente}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewRecetaLabel_medico}"/>
+                            <h:outputText value="#{recetaController.selected.medico.nombre} #{recetaController.selected.medico.apellidopaterno}" title="#{bundle.ViewRecetaTitle_medico}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewRecetaLabel_fechaprescripcion}"/>
+                            <h:outputText value="#{recetaController.selected.fechaprescripcion}" title="#{bundle.ViewRecetaTitle_fechaprescripcion}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewRecetaLabel_farmaco}"/>
+                            <h:outputText value="#{recetaController.selected.farmaco}" title="#{bundle.ViewRecetaTitle_farmaco}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewRecetaLabel_numeroenvases}"/>
+                            <h:outputText value="#{recetaController.selected.numeroenvases}" title="#{bundle.ViewRecetaTitle_numeroenvases}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewRecetaLabel_duraciontratamiento}"/>
+                            <h:outputText value="#{recetaController.selected.duraciontratamiento}" title="#{bundle.ViewRecetaTitle_duraciontratamiento}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewRecetaLabel_posologia}"/>
+                            <h:outputText value="#{recetaController.selected.posologia}" title="#{bundle.ViewRecetaTitle_posologia}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewRecetaLabel_pauta}"/>
+                            <h:outputText value="#{recetaController.selected.pauta}" title="#{bundle.ViewRecetaTitle_pauta}"/>
+                            <h:outputText style="font-weight: bold" value="#{bundle.ViewRecetaLabel_informacionadicional}"/>
+                            <h:outputText value="#{recetaController.selected.informacionadicional}" title="#{bundle.ViewRecetaTitle_informacionadicional}"/>
+                        </p:panelGrid>
+
+                        <br />
+                        <br />
+                        <br />
+                        <p:commandButton title="Exportar como PDF" value="Imprimir" ajax="false">
+                            <f:param name="action" value="#{recetaController.selected.recetaid}"/>
+                            <p:dataExporter type="pdf" target="tabla_detalles" fileName="Detalle_Receta"  encoding="ISO-8859-1"  preProcessor="#{recetaController.preProcessDetallePDF}"/>
+                        </p:commandButton>
+                        <p:commandButton action="#{recetaController.prepareList}" value="#{bundle.ViewRecetaShowAllLink}" ajax="false"/>
+                    </p:fieldset>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

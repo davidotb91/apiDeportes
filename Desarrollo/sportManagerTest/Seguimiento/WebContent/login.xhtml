@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Iniciar sesión"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <center>
+            <br></br>
+            <br></br>
+                <p:panel header="Iniciar sesión" style="font-size: 14px">                    
+                    <p:messages severity="error,info"></p:messages>
+                    <h:panelGrid columns="2">
+                        <h:graphicImage value="/img/tesis04.jpg" width="250px" height="400px" />
+                        <h:form>
+                            <h:panelGrid columns="1">
+                                <h:outputLabel value="Correo electrónico (usuario)" for="txt_email" />
+                                <p:inputText value="#{loginBean.name}" id="txt_email" 
+                                             required="true" requiredMessage="El correo electrónico es requerido."
+                                             disabled="#{loginBean.appBlocked}" />
+
+                                <h:outputLabel value="Contraseña" for="txt_password" />
+                                <p:password value="#{loginBean.password}" id="txt_password" 
+                                            required="true" requiredMessage="La contraseña es requerida."
+                                            disabled="#{loginBean.appBlocked}" />
+
+                                <p:commandButton action="#{loginBean.validate}" value="Iniciar sesión" disabled="#{loginBean.appBlocked}"
+                                                 style="margin-top: 10px" ajax="false"/>
+                            </h:panelGrid>
+                        </h:form>
+                    </h:panelGrid>  
+                </p:panel>
+            </center>
+        </ui:define>
+    </ui:composition>
+
+</html>

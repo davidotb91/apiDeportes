@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListRecetaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <p:panel header="#{bundle.ListRecetaTitle}" style="font-size: 12px" >
+                    <p:menubar>
+                        <p:menuitem value="#{bundle.ListRecetaCreateLink}" icon="ui-icon-newwin" style="color: cornflowerblue" action="#{recetaController.prepareCreate}" ajax="false" />
+                           <p:menuitem title="Exportar como PDF" icon="ui-icon-print" style="color: cornflowerblue" value="Imprimir" ajax="false" >
+                            <p:dataExporter type="pdf" target="TableReceta" fileName="Listado_Receta" excludeColumns="5" encoding="ISO-8859-1"  preProcessor="#{recetaController.preProcessPDF}"/>
+                        </p:menuitem>
+                    </p:menubar>
+
+                    <f:facet name="footer">
+                        <h:outputText style="color: cornflowerblue" value="Hay un total de #{recetaController.items.rowCount} registros" />
+                    </f:facet>
+
+                    
+                    <p:dataTable var="item"  id="TableReceta" value="#{recetaController.items}" emptyMessage="No hay registros" paginator="true" rows="5" widgetVar="cabTable" paginatorPosition="bottom" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,15 ">
+
+                        <p:column sortBy="#{item.paciente.nombre}" filterBy="#{item.paciente.nombre}" headerText="#{bundle.ListRecetaTitle_paciente}" filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCabecerafacturaTitle_paciente}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.paciente.nombre} #{item.paciente.apellidopaterno}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.medico.nombre}" filterBy="#{item.medico.nombre}" headerText="#{bundle.ListRecetaTitle_medico}" filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRecetaTitle_medico}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.medico.nombre} #{item.medico.apellidopaterno}"/>
+                        </p:column>
+                       <p:column filterBy="#{item.dateForFilter}" sortBy="#{item.dateForFilter}" filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRecetaTitle_fechaprescripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateForFilter}" />
+                        </p:column>
+                        <p:column sortBy="#{item.farmaco}" filterBy="#{item.farmaco}" headerText="#{bundle.ListRecetaTitle_farmaco}" filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRecetaTitle_farmaco}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.farmaco}"/>
+                        </p:column>
+
+                        <p:column sortBy="#{item.duraciontratamiento}" filterBy="#{item.duraciontratamiento}" headerText="#{bundle.ListRecetaTitle_duraciontratamiento}" filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRecetaTitle_duraciontratamiento} "/>
+                            </f:facet>
+                            <h:outputText value="#{item.duraciontratamiento} día(s)"/>
+                        </p:column>
+
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Acciones"/>
+                            </f:facet>
+                            <p:commandButton icon="star"  action="#{recetaController.prepareView}" title="#{bundle.ListCabecerafacturaViewLink}" ajax="false">
+                                <f:param name="action" value="#{item.position}"/>
+                            </p:commandButton>
+                            <h:outputText value=" "/>
+                            <p:commandButton icon="ui-icon-arrowrefresh-1-w" action="#{recetaController.prepareEdit}" title="#{bundle.ListCabecerafacturaEditLink}" ajax="false">
+                                <f:param name="action" value="#{item.position}"/>
+                            </p:commandButton>
+                            <h:outputText value=" "/>
+                            <p:commandButton icon="ui-icon-close" action="#{recetaController.destroy}" title="#{bundle.ListCabecerafacturaDestroyLink}" ajax="false">
+                                <f:param name="action" value="#{item.position}"/>
+                            </p:commandButton>
+                        </p:column>
+                    </p:dataTable>
+
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

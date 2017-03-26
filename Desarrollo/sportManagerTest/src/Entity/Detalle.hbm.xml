@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-jul-2014 19:36:53 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Entity.Detalle" table="detalle" schema="clinica">
+        <id name="detalleid" type="int">
+            <column name="detalleid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cabecerafactura" class="Entity.Cabecerafactura" fetch="select" lazy="false">
+            <column name="cabecerafactura" not-null="true" />
+        </many-to-one>
+        <property name="concepto" type="string">
+            <column name="concepto" length="200" not-null="true" />
+        </property>
+        <property name="unidades" type="string">
+            <column name="unidades" length="20" not-null="true" />
+        </property>
+        <property name="importe" type="string">
+            <column name="importe" length="20" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

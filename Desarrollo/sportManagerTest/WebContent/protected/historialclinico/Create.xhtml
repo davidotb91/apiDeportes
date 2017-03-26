@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateHistorialclinicoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateHistorialclinicoLabel_historialclinicoid}" for="historialclinicoid" />
+                    <h:inputText id="historialclinicoid" value="#{historialclinicoController.selected.historialclinicoid}" title="#{bundle.CreateHistorialclinicoTitle_historialclinicoid}" required="true" requiredMessage="#{bundle.CreateHistorialclinicoRequiredMessage_historialclinicoid}"/>
+                    <h:outputLabel value="#{bundle.CreateHistorialclinicoLabel_paciente}" for="paciente" />
+                    <h:selectOneMenu id="paciente" value="#{historialclinicoController.selected.paciente}" title="#{bundle.CreateHistorialclinicoTitle_paciente}" required="true" requiredMessage="#{bundle.CreateHistorialclinicoRequiredMessage_paciente}">
+                        <f:selectItems value="#{pacienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateHistorialclinicoLabel_fechahistorial}" for="fechahistorial" />
+                    <h:inputText id="fechahistorial" value="#{historialclinicoController.selected.fechahistorial}" title="#{bundle.CreateHistorialclinicoTitle_fechahistorial}" required="true" requiredMessage="#{bundle.CreateHistorialclinicoRequiredMessage_fechahistorial}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateHistorialclinicoLabel_padecimiento}" for="padecimiento" />
+                    <h:inputText id="padecimiento" value="#{historialclinicoController.selected.padecimiento}" title="#{bundle.CreateHistorialclinicoTitle_padecimiento}" required="true" requiredMessage="#{bundle.CreateHistorialclinicoRequiredMessage_padecimiento}"/>
+                    <h:outputLabel value="#{bundle.CreateHistorialclinicoLabel_diagnostico}" for="diagnostico" />
+                    <h:inputText id="diagnostico" value="#{historialclinicoController.selected.diagnostico}" title="#{bundle.CreateHistorialclinicoTitle_diagnostico}" required="true" requiredMessage="#{bundle.CreateHistorialclinicoRequiredMessage_diagnostico}"/>
+                    <h:outputLabel value="#{bundle.CreateHistorialclinicoLabel_tratamiento}" for="tratamiento" />
+                    <h:inputText id="tratamiento" value="#{historialclinicoController.selected.tratamiento}" title="#{bundle.CreateHistorialclinicoTitle_tratamiento}" required="true" requiredMessage="#{bundle.CreateHistorialclinicoRequiredMessage_tratamiento}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{historialclinicoController.create}" value="#{bundle.CreateHistorialclinicoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{historialclinicoController.prepareList}" value="#{bundle.CreateHistorialclinicoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateHistorialclinicoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/12/2014 11:11:15 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="Entity.Estudiante" table="estudiante" schema="seguimiento">
+        <id name="estId" type="int">
+            <column name="est_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="parametroDetalle" class="Entity.ParametroDetalle" fetch="select">
+            <column name="pad_codigo" length="6" not-null="true" />
+        </many-to-one>        
+        <many-to-one name="parametroDetalleFacultad" class="Entity.ParametroDetalle" fetch="select">
+            <column name="pad_codigo_facultad" length="6" not-null="true" />
+        </many-to-one>        
+        <many-to-one name="parametroDetalleProfesion" class="Entity.ParametroDetalle" fetch="select">
+            <column name="pad_codigo_profesion" length="6" not-null="true" />
+        </many-to-one>
+        <many-to-one name="lugarGeografico" class="Entity.LugarGeografico" fetch="select">
+            <column name="id_lugar" not-null="true" />
+        </many-to-one>
+        <property name="estCedula" type="string">
+            <column name="est_cedula" length="13" not-null="true" />
+        </property>
+        <property name="estNombres" type="string">
+            <column name="est_nombres" length="64" not-null="true" />
+        </property>
+        <property name="estApellidos" type="string">
+            <column name="est_apellidos" length="64" not-null="true" />
+        </property>
+        <property name="estTelefono" type="string">
+            <column name="est_telefono" length="10" not-null="true" />
+        </property>
+        <property name="estDireccion" type="string">
+            <column name="est_direccion" length="64" not-null="true" />
+        </property>
+        <property name="estCelular" type="string">
+            <column name="est_celular" length="10" not-null="true" />
+        </property>
+        <property name="audUsuCrea" type="int">
+            <column name="aud_usu_crea" not-null="true" />
+        </property>
+        <property name="audUsuModi" type="int">
+            <column name="aud_usu_modi" not-null="true" />
+        </property>
+        <property name="audFechaCrea" type="date">
+            <column name="aud_fecha_crea" length="13" not-null="true" />
+        </property>
+        <property name="audFechaModi" type="date">
+            <column name="aud_fecha_modi" length="13" not-null="true" />
+        </property>
+        <set name="temas" table="tema" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="est_id" not-null="true" />
+            </key>
+            <one-to-many class="Entity.Tema" />
+        </set>
+        <property name="estPassword" type="string">
+            <column name="est_password" length="16" not-null="true" />
+        </property>        
+    </class>
+</hibernate-mapping>

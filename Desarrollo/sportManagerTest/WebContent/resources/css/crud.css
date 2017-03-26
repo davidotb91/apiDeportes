@@ -1,0 +1,43 @@
+/* 
+    Document   : crud
+    Created on : 10-jul-2014, 15:26:20
+    Author     : Alain
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.panel_grid_border tr, .panel_grid_border td { 
+    border: transparent;
+    font-size: 14px;
+}
+
+.ui-layout-unit-content ui-widget-content{
+    background-color: #006699
+}
+
+.ui-widget-content {
+  
+}
+
+.pdfClass{
+    font-size: 9px;
+    border: none
+}
+
+.pdfDetalleClass{
+    font-size: 16px;
+    border-style: none;
+    padding: 0;
+}
+
+.ui-datatable .borderless .ui-datatable-data tr,
+.ui-datatable .borderless .ui-datatable-data-empty tr,
+.ui-datatable .borderless .ui-datatable-data td,
+.ui-datatable .borderless .ui-datatable-data-empty td
+.ui-datatable .borderless .ui-datatable-data th {
+    border-style: none;
+    padding: 0;
+}
+.ui-layout-unit .ui-widget .ui-widget-content .ui-corner-all .ui-layout-north .azul_banner .ui-layout-pane .ui-layout-pane-north{
+    color: #006699
+}

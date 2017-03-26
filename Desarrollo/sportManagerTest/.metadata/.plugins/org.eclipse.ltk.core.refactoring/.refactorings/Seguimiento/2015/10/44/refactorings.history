@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;borrar&apos; to &apos;aesProject/src&apos;&#x0D;&#x0A;- Original project: &apos;Seguimiento&apos;&#x0D;&#x0A;- Destination element: &apos;aesProject/src&apos;&#x0D;&#x0A;- Original element: &apos;Seguimiento/src/borrar&apos;" description="Copy package" destination="=aesProject/src" element1="/src&lt;borrar" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1445915723846" version="1.0"/>
+</session>

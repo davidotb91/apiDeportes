@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+    <style>
+        #banner{
+            background: #2f6af0;
+        }
+        #banner> div{
+            background: #2f6af0;
+        }
+
+    </style>
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title><ui:insert name="title">Default Title</ui:insert></title>
+            </f:facet>
+            <h:outputStylesheet name="css/crud.css"/>
+        </h:head>
+
+        <h:body >
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="80"  id="banner" styleClass="azul_banner"  resizable="false" closable="false" collapsible="false">
+                    <h:graphicImage value="/img/banner.png" />
+                    <div style="float: right;margin-top: 10px;margin-right: 5px">
+                        <h:outputText value="Bienvenido #{SesionBean.usuario.nombre}" 
+                                      rendered="#{SesionBean.logueado}" style="font-size: 12px ;color: #ffffff; font-weight: bold"/>
+                        <h:form>
+                            <p:commandButton value="Perfil" action="#{loginBean.profile}"
+                                             rendered="#{SesionBean.logueado}" ajax="false" icon="ui-icon-gear" style="font-size: 13px" />
+                            <p:commandButton value="Salir" action="#{loginBean.invalidate}"
+                                             rendered="#{SesionBean.logueado}" ajax="false" icon="ui-icon-squaresmall-close" style="font-size: 13px" />
+                        </h:form>
+                    </div>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="30" closable="true" collapsible="true" >
+                    <center><h:outputText value="Sistema clínico 2014" style="color:cornflowerblue ;text-align: center;font-size: 10px"/></center>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="188" header="Panel de control" collapsible="true" style="font-size: 14px"
+                              rendered="#{SesionBean.logueado}">
+                 <!-- ETA -->   
+                <p:menu model="#{menuBean.model}"/>
+                 <!-- ETA -->   
+                </p:layoutUnit>
+
+				
+                <p:layoutUnit position="center">
+                    <ui:insert name="body">Default Body</ui:insert>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+
+</html>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Catálogos"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+        
+		  <h:form>
+			<h:panelGroup >
+				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+			</h:panelGroup>
+		</h:form> 
+
+           <h:form>
+           	
+               <p:panel header="Estudiantes" style="font-size: 12px" >
+
+                   <p:panelGrid columns="2" styleClass="panel_grid_border">
+                    
+					<h:outputLabel value="Estado" for="parametro" />
+                        <h:panelGroup>
+                            <p:selectOneMenu style="width:525px" id="parametro" value="#{estudianteController.selected.parametroDetalle}" required="true" requiredMessage="#{bundle.labelRequerido}">
+                                <f:selectItems value="#{parametroDetalleController.itemsAvailableCatalogEstudent}"/>
+                            </p:selectOneMenu>
+                            <p:message for="parametro" />
+                        </h:panelGroup>
+
+					<h:outputLabel value="Procedencia" for="lugarGeografico" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="lugarGeografico" style="width:525px" value="#{estudianteController.selected.lugarGeografico}" required="true" requiredMessage="#{bundle.labelRequerido}">
+                                <f:selectItems value="#{lugarGeograficoController.itemsAvailableSelectOneByUser}"/>
+                            </p:selectOneMenu>
+                            <p:message for="lugarGeografico" />
+                        </h:panelGroup>
+
+					<h:outputLabel value="Facultad" for="parametroDetalleFacultad" />
+                        <h:panelGroup>
+                            <p:selectOneMenu style="width:525px" id="parametroDetalleFacultad" value="#{estudianteController.selected.parametroDetalleFacultad}" required="true" requiredMessage="#{bundle.labelRequerido}">
+                                <f:selectItems value="#{parametroDetalleController.itemsAvailablesByFacultad}"/>
+                            </p:selectOneMenu>
+                            <p:message for="parametroDetalleFacultad" />
+                        </h:panelGroup>
+
+					<h:outputLabel value="Profesión" for="parametroDetalleProfesion" />
+                        <h:panelGroup>
+                            <p:selectOneMenu style="width:525px" id="parametroDetalleProfesion" value="#{estudianteController.selected.parametroDetalleProfesion}" required="true" requiredMessage="#{bundle.labelRequerido}">
+                                <f:selectItems value="#{parametroDetalleController.itemsAvailableCatalogProfesion}"/>
+                            </p:selectOneMenu>
+                            <p:message for="parametroDetalleProfesion" />
+                        </h:panelGroup>
+
+                        
+                       <h:outputLabel value="Cédula" for="estCedula"  />
+                       <h:panelGroup>
+                           <p:inputText id="estCedula" style="width:250px" maxlength="10" value="#{estudianteController.selected.estCedula}"  required="true" requiredMessage="#{bundle.labelRequerido}" validatorMessage="#{bundle.labelFormatoIncorrecto}">
+	                           	<f:validateRegex pattern="[0-9]+" />
+                           </p:inputText>
+                           <p:message for="estCedula" />
+                       </h:panelGroup>
+
+                       <h:outputLabel value="Nombres" for="estNombres"  />
+                       <h:panelGroup>
+                           <p:inputText id="estNombres" style="width:525px" maxlength="64" value="#{estudianteController.selected.estNombres}"  required="true" requiredMessage="#{bundle.labelRequerido}" validatorMessage="#{bundle.labelFormatoIncorrecto}">
+                           		<f:validateRegex pattern="^[a-zA-Z ]+$" />
+                           </p:inputText>
+                           <p:message for="estNombres" />
+                       </h:panelGroup>
+
+                       <h:outputLabel value="Apellidos" for="estApellidos"  />
+                       <h:panelGroup>
+                           <p:inputText id="estApellidos" style="width:525px" maxlength="64" value="#{estudianteController.selected.estApellidos}"  required="true" requiredMessage="#{bundle.labelRequerido}" validatorMessage="#{bundle.labelFormatoIncorrecto}">
+                           		<f:validateRegex pattern="^[a-zA-Z ]+$" />
+                           </p:inputText>
+                           <p:message for="estApellidos" />
+                       </h:panelGroup>
+
+                       <h:outputLabel value="Teléfono" for="estTelefono"  />
+                       <h:panelGroup>
+                           <p:inputText id="estTelefono" style="width:525px" maxlength="10" value="#{estudianteController.selected.estTelefono}"  required="true" requiredMessage="#{bundle.labelRequerido}" validatorMessage="#{bundle.labelFormatoIncorrecto}">
+                           		<f:validateRegex pattern="[0-9]+" />
+                           </p:inputText>
+                           <p:message for="estTelefono" />
+                       </h:panelGroup>
+                       
+                       <h:outputLabel value="Celular" for="estCelular"  />
+                       <h:panelGroup>
+                           <p:inputText id="estCelular" style="width:525px" maxlength="10" value="#{estudianteController.selected.estCelular}"  required="true" requiredMessage="#{bundle.labelRequerido}" validatorMessage="#{bundle.labelFormatoIncorrecto}">
+                           			<f:validateRegex pattern="[0-9]+" />
+                           </p:inputText>
+                           <p:message for="estCelular" />
+                       </h:panelGroup>                       
+
+                       <h:outputLabel value="Dirección" for="estDireccion"  />
+                       <h:panelGroup>
+                           <p:inputText id="estDireccion" style="width:525px" maxlength="64" value="#{estudianteController.selected.estDireccion}"  required="true" requiredMessage="#{bundle.labelRequerido}" validatorMessage="#{bundle.labelFormatoIncorrecto}">
+                           		<f:validateRegex pattern="^[0-9a-zA-Z ]+$" />
+                           </p:inputText>
+                           <p:message for="estDireccion" />
+                       </h:panelGroup>                       
+
+                   <p:commandButton action="#{estudianteController.create}" value="#{bundle.CreatePacienteSaveLink}" ajax="false"  >
+                       <f:param name="action" value="#{estudianteController.selected.estId}"/>
+                   </p:commandButton>
+
+                   <p:commandButton action="#{estudianteController.prepareList}" value="#{bundle.CreatePacienteShowAllLink}" immediate="true" ajax="false"/>
+				</p:panelGrid>
+				
+				
+               </p:panel>
+           </h:form>
+
+        </ui:define>
+    </ui:composition>
+
+</html>

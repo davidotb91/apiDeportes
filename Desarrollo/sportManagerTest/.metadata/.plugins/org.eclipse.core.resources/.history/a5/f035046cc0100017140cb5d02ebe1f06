@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/03/2017 13:33:24 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="entity.SpoPartidoJugador" table="spo_partido_jugador" catalog="dbcampeonatos" optimistic-lock="version">
+        <id name="partId" type="java.lang.Integer">
+            <column name="PART_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="spoFixture" class="entity.SpoFixture" fetch="select">
+            <column name="FIXT_ID" />
+        </many-to-one>
+        <many-to-one name="spoJugador" class="entity.SpoJugador" fetch="select">
+            <column name="JUGA_ID" />
+        </many-to-one>
+        <many-to-one name="spoParametroDetalle" class="entity.SpoParametroDetalle" fetch="select">
+            <column name="PADE_ID" />
+        </many-to-one>
+        <property name="partValor" type="java.lang.Long">
+            <column name="PART_VALOR" />
+        </property>
+        <property name="audUsuCrea" type="string">
+            <column name="AUD_USU_CREA" length="128" />
+        </property>
+        <property name="audUsuModi" type="string">
+            <column name="AUD_USU_MODI" length="128" />
+        </property>
+        <property name="audFechaModi" type="timestamp">
+            <column name="AUD_FECHA_MODI" length="0" />
+        </property>
+        <property name="audFechaCrea" type="timestamp">
+            <column name="AUD_FECHA_CREA" length="0" />
+        </property>
+    </class>
+</hibernate-mapping>

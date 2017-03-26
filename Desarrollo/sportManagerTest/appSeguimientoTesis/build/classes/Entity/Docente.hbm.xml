@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17/01/2015 09:09:23 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="Entity.Docente" table="docente" schema="clinica">
+        <id name="docId" type="int">
+            <column name="doc_id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="parametroDetalleByPadCodigo" class="Entity.ParametroDetalle" fetch="select">
+            <column name="pad_codigo" length="6" not-null="true" />
+        </many-to-one>
+        <many-to-one name="parametroDetalleByParPadCodigo" class="Entity.ParametroDetalle" fetch="select">
+            <column name="par_pad_codigo" length="6" not-null="true" />
+        </many-to-one>
+        <property name="docNombres" type="string">
+            <column name="doc_nombres" length="64" not-null="true" />
+        </property>
+        <property name="docApellidos" type="string">
+            <column name="doc_apellidos" length="64" not-null="true" />
+        </property>
+        <property name="docCedula" type="string">
+            <column name="doc_cedula" length="12" not-null="true" />
+        </property>
+        <property name="docCelular" type="string">
+            <column name="doc_celular" length="10" not-null="true" />
+        </property>
+        <property name="docTelefono" type="string">
+            <column name="doc_telefono" length="9" not-null="true" />
+        </property>
+        <property name="docDireccion" type="string">
+            <column name="doc_direccion" length="64" not-null="true" />
+        </property>
+        <property name="docEstado" type="string">
+            <column name="doc_estado" length="4" not-null="true" />
+        </property>
+        <property name="docLogin" type="string">
+            <column name="doc_login" length="32" not-null="true" />
+        </property>
+        <property name="docPassword" type="string">
+            <column name="doc_password" length="16" not-null="true" />
+        </property>                
+        <property name="audUsuCrea" type="int">
+            <column name="aud_usu_crea" not-null="true" />
+        </property>
+        <property name="audUsuModi" type="int">
+            <column name="aud_usu_modi" not-null="true" />
+        </property>
+        <property name="audFechaCrea" type="date">
+            <column name="aud_fecha_crea" length="13" not-null="true" />
+        </property>
+        <property name="audFechaModi" type="date">
+            <column name="aud_fecha_modi" length="13" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

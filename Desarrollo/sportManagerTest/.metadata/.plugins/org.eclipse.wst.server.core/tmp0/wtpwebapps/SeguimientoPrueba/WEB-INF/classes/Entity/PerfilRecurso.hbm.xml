@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/03/2017 14:13:39 by Hibernate Tools 5.1.2.Final -->
+<hibernate-mapping>
+    <class name="Entity.PerfilRecurso" table="perfil_recurso" catalog="dbcampeonatos" optimistic-lock="version">
+        <composite-id name="id" class="Entity.PerfilRecursoId">
+            <key-property name="padeId" type="int">
+                <column name="PADE_ID" />
+            </key-property>
+            <key-property name="spoPadeId" type="int">
+                <column name="SPO_PADE_ID" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="parametroDetalleBySpoPadeId" class="Entity.ParametroDetalle" update="false" insert="false" fetch="select">
+            <column name="SPO_PADE_ID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="parametroDetalleByPadeId" class="Entity.ParametroDetalle" update="false" insert="false" fetch="select">
+            <column name="PADE_ID" not-null="true" />
+        </many-to-one>
+        <property name="audUsuCrea" type="string">
+            <column name="AUD_USU_CREA" length="128" />
+        </property>
+        <property name="audUsuModi" type="string">
+            <column name="AUD_USU_MODI" length="128" />
+        </property>
+        <property name="audFechaCrea" type="timestamp">
+            <column name="AUD_FECHA_CREA" length="0" />
+        </property>
+        <property name="audFechaModi" type="timestamp">
+            <column name="AUD_FECHA_MODI" length="0" />
+        </property>
+    </class>
+</hibernate-mapping>

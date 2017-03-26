@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/03/2017 13:33:24 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="entity.SpoCaracteristica" table="spo_caracteristica" catalog="dbcampeonatos" optimistic-lock="version">
+        <id name="caraId" type="java.lang.Integer">
+            <column name="CARA_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="spoCampeonato" class="entity.SpoCampeonato" fetch="select">
+            <column name="CAMP_ID" />
+        </many-to-one>
+        <many-to-one name="spoParametroDetalleByPadeId" class="entity.SpoParametroDetalle" fetch="select">
+            <column name="PADE_ID" />
+        </many-to-one>
+        <many-to-one name="spoParametroDetalleBySpoPadeId" class="entity.SpoParametroDetalle" fetch="select">
+            <column name="SPO_PADE_ID" />
+        </many-to-one>
+        <property name="caraTexto" type="string">
+            <column name="CARA_TEXTO" length="64" />
+        </property>
+        <property name="audUsuCrea" type="string">
+            <column name="AUD_USU_CREA" length="128" />
+        </property>
+        <property name="audUsuModi" type="string">
+            <column name="AUD_USU_MODI" length="128" />
+        </property>
+        <property name="audFechaCrea" type="timestamp">
+            <column name="AUD_FECHA_CREA" length="0" />
+        </property>
+        <property name="audFechaModi" type="timestamp">
+            <column name="AUD_FECHA_MODI" length="0" />
+        </property>
+    </class>
+</hibernate-mapping>

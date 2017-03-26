@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="dbcampeonatos" match-name="campeonao_auspiciante"/>
+  <table-filter match-catalog="dbcampeonatos" match-name="campeonato"/>
+  <table-filter match-catalog="dbcampeonatos" match-name="campeonato_equipo"/>
+  <table-filter match-catalog="dbcampeonatos" match-name="caracteristica"/>
+  <table-filter match-catalog="dbcampeonatos" match-name="equipo"/>
+  <table-filter match-catalog="dbcampeonatos" match-name="fixture"/>
+  <table-filter match-catalog="dbcampeonatos" match-name="jugador"/>
+  <table-filter match-catalog="dbcampeonatos" match-name="parametro"/>
+  <table-filter match-catalog="dbcampeonatos" match-name="parametro_detalle"/>
+  <table-filter match-catalog="dbcampeonatos" match-name="partido_jugador"/>
+  <table-filter match-catalog="dbcampeonatos" match-name="perfil_recurso"/>
+  <table-filter match-catalog="dbcampeonatos" match-name="requisitos"/>
+  <table-filter match-catalog="dbcampeonatos" match-name="usuario"/>
+</hibernate-reverse-engineering>
